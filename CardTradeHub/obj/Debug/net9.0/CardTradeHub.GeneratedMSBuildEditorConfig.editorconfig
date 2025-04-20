@@ -1,0 +1,117 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CardTradeHub
+build_property.RootNamespace = CardTradeHub
+build_property.ProjectDir = /Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Admin/ManageCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWFuYWdlQ2FyZHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Admin/ManageTrades.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWFuYWdlVHJhZGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Admin/ManageUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWFuYWdlVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Cards/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZHMvQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Cards/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZHMvRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Cards/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZHMvRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Cards/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZHMvRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Cards/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZHMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Cards/MyCards.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FyZHMvTXlDYXJkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/MyTrades/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTXlUcmFkZXMvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/MyTrades/TradeDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTXlUcmFkZXMvVHJhZGVEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Transactions/MyTrades.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVHJhbnNhY3Rpb25zL015VHJhZGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-pgsg6h6b99

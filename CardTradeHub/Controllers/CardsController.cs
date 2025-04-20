@@ -1,0 +1,422 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+using CardTradeHub.Models;
+using CardTradeHub.Models.ViewModels;
+using CardTradeHub.Data;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+
+namespace CardTradeHub.Controllers
+{
+    public class CardsController : Controller
+    {
+        private readonly CardTradeHubContext _context;
+        private readonly int _pageSize = 8; // 每页显示8张卡片
+
+        public CardsController(CardTradeHubContext context)
+        {
+            _context = context;
+        }
+
+        // GET: /Cards
+        public async Task<IActionResult> Index(int page = 1)
+        {
+            var query = _context.Cards
+                .Where(c => c.Status == "Available")  // Only show available cards
+                .OrderByDescending(c => c.ListedDate)
+                .Include(c => c.User);
+
+            var totalItems = await query.CountAsync();
+            var totalPages = (int)Math.Ceiling(totalItems / (double)_pageSize);
+
+            // 确保页码在有效范围内
+            page = Math.Max(1, Math.Min(page, totalPages));
+
+            var cards = await query
+                .Skip((page - 1) * _pageSize)
+                .Take(_pageSize)
+                .ToListAsync();
+
+            ViewBag.CurrentPage = page;
+            ViewBag.TotalPages = totalPages;
+            ViewBag.HasPreviousPage = page > 1;
+            ViewBag.HasNextPage = page < totalPages;
+
+            return View(cards);
+        }
+
+        // GET: /Cards/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var card = await _context.Cards
+                .Include(c => c.User)
+                .FirstOrDefaultAsync(m => m.CardID == id);
+
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            return View(card);
+        }
+
+        // GET: Cards/MyCards
+        [Authorize]
+        public async Task<IActionResult> MyCards()
+        {
+            var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int userId))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var userCards = await _context.Cards
+                .Where(c => c.UserID == userId && c.Status != "Deleted")
+                .OrderByDescending(c => c.ListedDate)
+                .ToListAsync();
+
+            var viewModel = new MyCardsViewModel
+            {
+                UserCards = userCards
+            };
+
+            return View(viewModel);
+        }
+
+        // GET: Cards/Create
+        [HttpGet]
+        [Authorize]
+        public IActionResult Create()
+        {
+            return View(new CreateCardViewModel());
+        }
+
+        // POST: Cards/Create
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateCardViewModel model, IFormFile? ImageFile)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    string? imageUrl = null;
+                    if (ImageFile != null && ImageFile.Length > 0)
+                    {
+                        // Generate a unique filename
+                        var fileName = Path.GetRandomFileName() + Path.GetExtension(ImageFile.FileName);
+                        var filePath = Path.Combine("wwwroot", "images", "cards", fileName);
+
+                        // Ensure the directory exists
+                        var directory = Path.GetDirectoryName(filePath);
+                        if (directory != null && !Directory.Exists(directory))
+                        {
+                            Directory.CreateDirectory(directory);
+                        }
+
+                        // Save the file
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await ImageFile.CopyToAsync(stream);
+                        }
+
+                        // Set the URL (relative to wwwroot)
+                        imageUrl = "/images/cards/" + fileName;
+                    }
+
+                    var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+                    var card = new Card
+                    {
+                        Title = model.Title,
+                        Description = model.Description,
+                        Category = model.Category,
+                        Condition = model.Condition,
+                        Price = model.Price,
+                        ImageUrl = imageUrl,
+                        UserID = userId,
+                        ListedDate = DateTime.UtcNow,
+                        Status = "Available"
+                    };
+
+                    _context.Add(card);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(MyCards));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", "Error creating card: " + ex.Message);
+                }
+            }
+            return View(model);
+        }
+
+        // POST: Cards/Purchase/5
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Purchase(int id)
+        {
+            try
+            {
+                var card = await _context.Cards
+                    .Include(c => c.User)
+                    .FirstOrDefaultAsync(c => c.CardID == id);
+
+                if (card == null)
+                {
+                    return Json(new { success = false, message = "Card not found." });
+                }
+
+                if (card.Status != "Available")
+                {
+                    return Json(new { success = false, message = "Card is not available for purchase." });
+                }
+
+                var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                if (string.IsNullOrEmpty(userIdStr) || !int.TryParse(userIdStr, out int buyerId))
+                {
+                    return Json(new { success = false, message = "User not found." });
+                }
+
+                if (card.UserID == buyerId)
+                {
+                    return Json(new { success = false, message = "You cannot purchase your own card." });
+                }
+
+                var buyer = await _context.Users.FindAsync(buyerId);
+                if (buyer == null)
+                {
+                    return Json(new { success = false, message = "Buyer not found." });
+                }
+
+                using var transaction = await _context.Database.BeginTransactionAsync();
+                try
+                {
+                    var sellerId = card.UserID; // Save the original seller ID
+                    var seller = card.User; // Save the original seller
+
+                    // Update card status and owner
+                    card.Status = "Sold";
+                    card.UserID = buyerId; // Transfer ownership to the buyer
+                    card.User = buyer; // Set the new owner
+                    _context.Cards.Update(card);
+
+                    // Create transaction record
+                    var cardTransaction = new Transaction
+                    {
+                        CardID = card.CardID,
+                        Card = card,
+                        BuyerID = buyerId,
+                        Buyer = buyer,
+                        SellerID = sellerId,
+                        Seller = seller,
+                        Amount = card.Price,
+                        Date = DateTime.UtcNow,
+                        Status = "Completed",
+                        PaymentMethod = "Direct",
+                        TransactionReference = Guid.NewGuid().ToString(),
+                        ShippingAddress = "Default Address", // This should be updated to use actual user address
+                        TrackingNumber = "",
+                        HasDispute = false,
+                        DisputeReason = "",
+                        DisputeStatus = "None"
+                    };
+
+                    _context.Transactions.Add(cardTransaction);
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
+                    return Json(new { success = true, message = "Card purchased successfully!" });
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    return Json(new { success = false, message = $"An error occurred while processing your purchase: {ex.Message}" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = $"An unexpected error occurred: {ex.Message}" });
+            }
+        }
+
+        // GET: Cards/Edit/5
+        [Authorize]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var card = await _context.Cards.FindAsync(id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the current user owns this card
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            if (card.UserID != userId)
+            {
+                return Forbid();
+            }
+
+            var viewModel = new CreateCardViewModel
+            {
+                Title = card.Title,
+                Description = card.Description,
+                Category = card.Category,
+                Condition = card.Condition,
+                Price = card.Price,
+                ImageUrl = card.ImageUrl
+            };
+
+            return View(viewModel);
+        }
+
+        // POST: Cards/Edit/5
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, CreateCardViewModel model)
+        {
+            if (id == 0)
+            {
+                return NotFound();
+            }
+
+            var card = await _context.Cards.FindAsync(id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the current user owns this card
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            if (card.UserID != userId)
+            {
+                return Forbid();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    card.Title = model.Title;
+                    card.Description = model.Description;
+                    card.Category = model.Category;
+                    card.Condition = model.Condition;
+                    card.Price = model.Price;
+                    card.ImageUrl = model.ImageUrl;
+
+                    _context.Update(card);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(MyCards));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CardExists(card.CardID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return View(model);
+        }
+
+        // POST: Cards/Delete/5
+        [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var card = await _context.Cards.FindAsync(id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the current user owns this card
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            if (card.UserID != userId)
+            {
+                return Forbid();
+            }
+
+            // Instead of deleting, mark the card as deleted
+            card.Status = "Deleted";
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(MyCards));
+        }
+
+        // GET: Cards/ListCard/5
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ListCard(int id)
+        {
+            var card = await _context.Cards.FindAsync(id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the current user owns this card
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            if (card.UserID != userId)
+            {
+                return Forbid();
+            }
+
+            // Make the card available
+            card.Status = "Available";
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Your card has been listed successfully!";
+            return RedirectToAction(nameof(MyCards));
+        }
+
+        // GET: Cards/UnlistCard/5
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> UnlistCard(int id)
+        {
+            var card = await _context.Cards.FindAsync(id);
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            // Check if the current user owns this card
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? "0");
+            if (card.UserID != userId)
+            {
+                return Forbid();
+            }
+
+            // Remove the card from public view
+            card.Status = "Unlisted";
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Your card has been unlisted successfully!";
+            return RedirectToAction(nameof(MyCards));
+        }
+
+        private bool CardExists(int id)
+        {
+            return _context.Cards.Any(e => e.CardID == id);
+        }
+    }
+} 

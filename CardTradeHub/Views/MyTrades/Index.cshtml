@@ -1,0 +1,105 @@
+@model CardTradeHub.Models.ViewModels.MyTradesViewModel
+
+@{
+    ViewData["Title"] = "My Trades";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">My Trades</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h2 class="h4 mb-0">Purchases</h2>
+                </div>
+                <div class="card-body">
+                    @if (!Model.Purchases.Any())
+                    {
+                        <div class="alert alert-info">
+                            <p class="mb-0">You haven't purchased any cards yet.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var purchase in Model.Purchases)
+                            {
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-1">@purchase.Card.Title</h5>
+                                        <span class="badge bg-success">Purchased</span>
+                                    </div>
+                                    <p class="mb-1">From: @purchase.Seller.Username</p>
+                                    <p class="mb-1">Price: @purchase.Card.Price.ToString("C")</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">@purchase.Date.ToString("MMM dd, yyyy HH:mm")</small>
+                                        <a asp-action="TradeDetails" asp-route-id="@purchase.TransactionID" 
+                                           class="btn btn-sm btn-outline-primary">View Details</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header bg-light">
+                    <h2 class="h4 mb-0">Sales</h2>
+                </div>
+                <div class="card-body">
+                    @if (!Model.Sales.Any())
+                    {
+                        <div class="alert alert-info">
+                            <p class="mb-0">You haven't sold any cards yet.</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list-group">
+                            @foreach (var sale in Model.Sales)
+                            {
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h5 class="mb-1">@sale.Card.Title</h5>
+                                        <span class="badge bg-primary">Sold</span>
+                                    </div>
+                                    <p class="mb-1">To: @sale.Buyer.Username</p>
+                                    <p class="mb-1">Price: @sale.Card.Price.ToString("C")</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">@sale.Date.ToString("MMM dd, yyyy HH:mm")</small>
+                                        <a asp-action="TradeDetails" asp-route-id="@sale.TransactionID" 
+                                           class="btn btn-sm btn-outline-primary">View Details</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        
+        .list-group-item {
+            transition: background-color 0.2s ease;
+        }
+        
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .badge {
+            font-size: 0.875rem;
+        }
+    </style>
+} 

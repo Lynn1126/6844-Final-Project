@@ -1,0 +1,56 @@
+@model IEnumerable<CardTradeHub.Models.Transaction>
+
+@{
+    ViewData["Title"] = "Manage Trades";
+}
+
+<div class="container">
+    <h1 class="mb-4">Manage Trades</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Card</th>
+                    <th>Buyer</th>
+                    <th>Seller</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var transaction in Model)
+                {
+                    <tr>
+                        <td>@transaction.Card.Title</td>
+                        <td>@transaction.Buyer.Username</td>
+                        <td>@transaction.Seller.Username</td>
+                        <td>@transaction.Amount.ToString("C")</td>
+                        <td>@transaction.Date.ToString("MMM dd, yyyy")</td>
+                        <td>
+                            @if (transaction.HasDispute)
+                            {
+                                <span class="badge bg-danger">Dispute</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-success">Completed</span>
+                            }
+                        </td>
+                        <td>
+                            @if (transaction.HasDispute)
+                            {
+                                <form asp-action="ResolveDispute" asp-route-id="@transaction.TransactionID" method="post" class="d-inline">
+                                    <input type="hidden" name="resolution" value="Resolved by Admin" />
+                                    <button type="submit" class="btn btn-sm btn-success">Resolve</button>
+                                </form>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 

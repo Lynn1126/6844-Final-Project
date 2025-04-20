@@ -1,0 +1,62 @@
+@model IEnumerable<CardTradeHub.Models.User>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<div class="container">
+    <h1 class="mb-4">Manage Users</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Cards</th>
+                    <th>Transactions</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Username</td>
+                        <td>@user.Email</td>
+                        <td>
+                            <span class="badge bg-@(user.Role == "Admin" ? "danger" : "primary")">
+                                @user.Role
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge bg-@(user.IsActive ? "success" : "secondary")">
+                                @(user.IsActive ? "Active" : "Inactive")
+                            </span>
+                        </td>
+                        <td>@user.Cards.Count</td>
+                        <td>@user.Transactions.Count</td>
+                        <td>
+                            <div class="btn-group">
+                                <form asp-action="ToggleUserStatus" asp-route-id="@user.UserID" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-sm btn-@(user.IsActive ? "warning" : "success")">
+                                        @(user.IsActive ? "Deactivate" : "Activate")
+                                    </button>
+                                </form>
+                                @if (user.Role != "Admin")
+                                {
+                                    <form asp-action="ChangeUserRole" asp-route-id="@user.UserID" method="post" class="d-inline">
+                                        <input type="hidden" name="role" value="Admin" />
+                                        <button type="submit" class="btn btn-sm btn-danger">Make Admin</button>
+                                    </form>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 

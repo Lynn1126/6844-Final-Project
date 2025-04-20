@@ -1,0 +1,67 @@
+@model CardTradeHub.Models.Transaction
+
+@{
+    ViewData["Title"] = "Trade Details";
+}
+
+<div class="container mt-4">
+    <h2>Trade Details</h2>
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Card Information</h4>
+                    <dl class="row">
+                        <dt class="col-sm-4">Card Title</dt>
+                        <dd class="col-sm-8">@Model.Card.Title</dd>
+
+                        <dt class="col-sm-4">Condition</dt>
+                        <dd class="col-sm-8">@Model.Card.Condition</dd>
+
+                        <dt class="col-sm-4">Price</dt>
+                        <dd class="col-sm-8">@Model.Card.Price.ToString("C")</dd>
+                    </dl>
+                </div>
+                <div class="col-md-6">
+                    <h4>Transaction Details</h4>
+                    <dl class="row">
+                        <dt class="col-sm-4">Transaction Date</dt>
+                        <dd class="col-sm-8">@Model.Date.ToString("g")</dd>
+
+                        <dt class="col-sm-4">Seller</dt>
+                        <dd class="col-sm-8">@Model.Seller.Username</dd>
+
+                        <dt class="col-sm-4">Buyer</dt>
+                        <dd class="col-sm-8">@Model.Buyer.Username</dd>
+
+                        <dt class="col-sm-4">Status</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-success">Completed</span>
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a asp-action="Index" class="btn btn-secondary">Back to Trades</a>
+    </div>
+</div>
+
+@section Styles {
+    <style>
+        .card {
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        
+        dt {
+            font-weight: 600;
+            color: #666;
+        }
+        
+        dd {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+} 

@@ -1,0 +1,91 @@
+@model IEnumerable<CardTradeHub.Models.Card>
+@{
+    ViewData["Title"] = "Trading Cards";
+}
+
+<div class="container">
+    <h1 class="text-center mb-4">Available Trading Cards</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        @foreach (var card in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
+                        @if (!string.IsNullOrEmpty(card.ImageUrl))
+                        {
+                            <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <img src="~/images/card-placeholder.jpg" class="card-img-top" alt="Card placeholder"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@card.Title</h5>
+                        <p class="card-text text-muted">@card.Description</p>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">@card.Category</span>
+                            <span class="fw-bold text-primary">$@card.Price.ToString("N2")</span>
+                        </div>
+                        <a asp-action="Details" asp-route-id="@card.CardID" class="btn btn-primary w-100">View Details</a>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <small class="text-muted">
+                            Listed by @card.User.Username on @card.ListedDate.ToString("MMM dd, yyyy")
+                        </small>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="d-flex justify-content-center mt-4">
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    @if (ViewBag.HasPreviousPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage - 1 })" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                    }
+
+                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                    {
+                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                            <a class="page-link" href="@Url.Action("Index", new { page = i })">@i</a>
+                        </li>
+                    }
+
+                    @if (ViewBag.HasNextPage)
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="@Url.Action("Index", new { page = ViewBag.CurrentPage + 1 })" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // 为了让卡片图片保持相同的宽高比
+        document.addEventListener('DOMContentLoaded', function () {
+            const cardImgs = document.querySelectorAll('.card-img-top');
+            cardImgs.forEach(img => {
+                img.style.height = '200px';
+                img.style.objectFit = 'cover';
+            });
+        });
+    </script>
+} 

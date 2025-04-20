@@ -1,0 +1,101 @@
+﻿@model IEnumerable<CardTradeHub.Models.Card>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mt-4">
+    <!-- Hero Section -->
+    <div class="row align-items-center mt-5 mb-5">
+        <div class="col-12 text-center">
+            <img src="~/images/logo.png" alt="CardTradeHub Logo" class="mb-4" style="height: 200px;">
+            <h1 class="display-4">Welcome to CardTradeHub</h1>
+            <p class="lead">Your trusted platform for trading collectible cards.</p>
+            <a asp-controller="Cards" asp-action="Index" class="btn btn-primary btn-lg">Browse Cards</a>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row mt-5 mb-5">
+        <div class="col-12 text-center mb-4">
+            <h2>Why Choose CardTradeHub?</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Secure Trading</h3>
+                    <p class="card-text">Trade with confidence using our secure platform and verified user system.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Wide Selection</h3>
+                    <p class="card-text">Access a vast collection of cards from various categories and editions.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body text-center">
+                    <h3 class="card-title">Easy Management</h3>
+                    <p class="card-text">Manage your collection and trades with our user-friendly interface.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Latest Cards Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Latest Cards</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var card in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
+                        @if (!string.IsNullOrEmpty(card.ImageUrl))
+                        {
+                            <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <img src="/images/default-card.jpg" class="card-img-top" alt="Default Card Image"
+                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@card.Title</h5>
+                        <p class="card-text text-muted">@card.Description</p>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">@card.Category</span>
+                            <span class="fw-bold text-primary">$@card.Price.ToString("N2")</span>
+                        </div>
+                        <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" 
+                           class="btn btn-primary w-100">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="row mt-4 mb-5">
+        <div class="col-12 text-center">
+            <a asp-controller="Cards" asp-action="Index" class="btn btn-outline-primary">View All Cards</a>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="row mt-5 mb-5">
+        <div class="col-12 text-center">
+            <h2>Ready to Start Trading?</h2>
+            <p class="lead">Join our community of card collectors today!</p>
+            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">Sign Up Now</a>
+        </div>
+    </div>
+</div>

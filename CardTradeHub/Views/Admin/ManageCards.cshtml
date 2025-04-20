@@ -1,0 +1,47 @@
+@model IEnumerable<CardTradeHub.Models.Card>
+
+@{
+    ViewData["Title"] = "Manage Cards";
+}
+
+<div class="container">
+    <h1 class="mb-4">Manage Cards</h1>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Seller</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Listed Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var card in Model)
+                {
+                    <tr>
+                        <td>@card.Title</td>
+                        <td>@card.User.Username</td>
+                        <td>@card.Price.ToString("C")</td>
+                        <td>
+                            <span class="badge bg-@(card.Status == "Available" ? "success" : "secondary")">
+                                @card.Status
+                            </span>
+                        </td>
+                        <td>@card.ListedDate.ToString("MMM dd, yyyy")</td>
+                        <td>
+                            <form asp-action="ToggleCardStatus" asp-route-id="@card.CardID" method="post" class="d-inline">
+                                <button type="submit" class="btn btn-sm btn-@(card.Status == "Available" ? "warning" : "success")">
+                                    @(card.Status == "Available" ? "Make Unavailable" : "Make Available")
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div> 

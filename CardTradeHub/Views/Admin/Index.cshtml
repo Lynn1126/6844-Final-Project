@@ -1,0 +1,59 @@
+@model IEnumerable<CardTradeHub.Models.User>
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container">
+    <h1 class="mb-4">Admin Dashboard</h1>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">User Management</h5>
+                    <p class="card-text">Manage users and their roles.</p>
+                    <a asp-action="ManageUsers" class="btn btn-primary">Manage Users</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Card Management</h5>
+                    <p class="card-text">Manage all cards in the system.</p>
+                    <a asp-action="ManageCards" class="btn btn-primary">Manage Cards</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Trade Management</h5>
+                    <p class="card-text">View and manage all trades.</p>
+                    <a asp-action="ManageTrades" class="btn btn-primary">Manage Trades</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function toggleUserStatus(userId) {
+            if (confirm('Are you sure you want to toggle this user\'s status?')) {
+                $.post(`/Admin/ToggleUserStatus/${userId}`, function() {
+                    location.reload();
+                });
+            }
+        }
+
+        function makeAdmin(userId) {
+            if (confirm('Are you sure you want to make this user an admin?')) {
+                $.post(`/Admin/ChangeUserRole/${userId}`, { role: 'Admin' }, function() {
+                    location.reload();
+                });
+            }
+        }
+    </script>
+} 
