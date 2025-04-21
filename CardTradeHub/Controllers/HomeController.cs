@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using CardTradeHub.Models;
 using CardTradeHub.Data;
 using Microsoft.EntityFrameworkCore;
+using CardTradeHub.Models.ViewModels;
 
 namespace CardTradeHub.Controllers;
 

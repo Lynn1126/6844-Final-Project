@@ -21,14 +21,42 @@ namespace CardTradeHub.Controllers
         }
 
         // GET: /Cards
-        public async Task<IActionResult> Index(int page = 1)
+        public async Task<IActionResult> Index(string category = "", string searchTerm = "", int page = 1)
         {
             try
             {
+                // 获取所有可用的类别
+                var categories = await _context.Cards
+                    .Select(c => c.Category)
+                    .Distinct()
+                    .OrderBy(c => c)
+                    .ToListAsync();
+                ViewBag.Categories = categories;
+                ViewBag.SelectedCategory = category;
+                ViewBag.SearchTerm = searchTerm;
+
                 // 构建基础查询
                 var query = _context.Cards
-                    // .Where(c => c.Status == "Available")
-                    .OrderByDescending(c => c.ListedDate)
+                    .Where(c => c.Status == "Available");
+
+                // 应用类别筛选
+                if (!string.IsNullOrEmpty(category))
+                {
+                    query = query.Where(c => c.Category == category);
+                }
+
+                // 应用搜索条件
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    searchTerm = searchTerm.ToLower();
+                    query = query.Where(c => 
+                        c.Title.ToLower().Contains(searchTerm) ||
+                        c.Description.ToLower().Contains(searchTerm) ||
+                        c.Category.ToLower().Contains(searchTerm)
+                    );
+                }
+
+                query = query.OrderByDescending(c => c.ListedDate)
                     .Include(c => c.User);
 
                 // 获取总数
@@ -42,30 +70,12 @@ namespace CardTradeHub.Controllers
                 if (page > totalPages) page = totalPages;
 
                 var skip = (page - 1) * _pageSize;
-                Console.WriteLine($"Page size: {_pageSize}");
-                Console.WriteLine($"Total pages: {totalPages}");
-                Console.WriteLine($"Requested page: {page}");
-                Console.WriteLine($"Skip: {skip}");
-                Console.WriteLine($"Take: {_pageSize}");
 
                 // 执行分页查询
-                var cards = await _context.Cards
-                    .Where(c => c.Status == "Available")
-                    .OrderByDescending(c => c.ListedDate)
-                    .Include(c => c.User)
+                var cards = await query
                     .Skip(skip)
                     .Take(_pageSize)
                     .ToListAsync();
-
-                Console.WriteLine($"Cards retrieved: {cards.Count}");
-                if (cards.Count > 0)
-                {
-                    Console.WriteLine("Card IDs retrieved:");
-                    foreach (var card in cards)
-                    {
-                        Console.WriteLine($"- Card {card.CardID}: {card.Title} (Status: {card.Status})");
-                    }
-                }
 
                 ViewBag.CurrentPage = page;
                 ViewBag.TotalPages = totalPages;
@@ -112,14 +122,24 @@ namespace CardTradeHub.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var userCards = await _context.Cards
-                .Where(c => c.UserID == userId && c.Status != "Deleted")
+            var cards = await _context.Cards
+                .Where(c => c.UserID == userId)
                 .OrderByDescending(c => c.ListedDate)
                 .ToListAsync();
 
             var viewModel = new MyCardsViewModel
             {
-                UserCards = userCards
+                UserCards = cards.Select(card => new CardViewModel
+                {
+                    CardID = card.CardID,
+                    Title = card.Title,
+                    Description = card.Description,
+                    Category = card.Category,
+                    Condition = card.Condition,
+                    Status = card.Status,
+                    Price = card.Price,
+                    ImageUrl = card.ImageUrl
+                })
             };
 
             return View(viewModel);

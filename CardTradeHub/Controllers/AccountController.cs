@@ -11,6 +11,7 @@ using System.Security.Claims;
 using System.Collections.Generic;
 using CardTradeHub.Data;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace CardTradeHub.Controllers
 {
@@ -29,7 +30,7 @@ namespace CardTradeHub.Controllers
         [HttpGet]
         public IActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
+            if (User?.Identity?.IsAuthenticated == true)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -41,59 +42,71 @@ namespace CardTradeHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return View(model);
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                var user = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Email == model.Email);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Invalid username or password");
+                    return View(model);
+                }
+
+                var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash ?? "", model.Password);
+                if (result == PasswordVerificationResult.Failed)
+                {
+                    ModelState.AddModelError("", "Invalid username or password");
+                    return View(model);
+                }
+
+                if (!user.IsActive)
+                {
+                    ModelState.AddModelError("", "This account has been disabled");
+                    return View(model);
+                }
+                
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.Email),
+                    new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+                    new Claim("FullName", user.Username),
+                    new Claim(ClaimTypes.Role, user.Role ?? "User")
+                };
+
+                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                var authProperties = new AuthenticationProperties
+                {
+                    IsPersistent = model.RememberMe,
+                    ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
+                };
+
+                await HttpContext.SignInAsync(
+                    CookieAuthenticationDefaults.AuthenticationScheme,
+                    new ClaimsPrincipal(claimsIdentity),
+                    authProperties);
+
+                user.LastLoginDate = DateTime.UtcNow;
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index", "Home");
             }
-
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == model.Email);
-
-            if (user == null)
+            catch (Exception ex)
             {
-                return BadRequest("user not found");
+                Console.WriteLine($"Login error: {ex.Message}");
+                
+                return View("Error", new ErrorViewModel
+                {
+                    ErrorTitle = "Login Failed",
+                    ErrorMessage = "An error occurred during login. Please try again later.",
+                    RequestId = HttpContext.TraceIdentifier
+                });
             }
-
-            var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
-            if (result == PasswordVerificationResult.Failed)
-            {
-            }
-
-            if (!user.IsActive)
-            {
-                ModelState.AddModelError("", "This account has been deactivated.");
-                return View(model);
-            }
-            
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.Email),
-                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
-                new Claim("FullName", user.Username),
-                new Claim(ClaimTypes.Role, user.Role ?? "User")  // 确保角色不为空
-            };
-
-            // 添加调试输出
-            Console.WriteLine($"User Role: {user.Role}");
-            Console.WriteLine($"Claims: {string.Join(", ", claims.Select(c => $"{c.Type}: {c.Value}"))}");
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var authProperties = new AuthenticationProperties
-            {
-                IsPersistent = model.RememberMe,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
-            };
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
-
-            // 更新最后登录时间
-            user.LastLoginDate = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index", "Home");
         }
 
         // GET: /Account/Register
@@ -112,20 +125,33 @@ namespace CardTradeHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            try
             {
-                // Check if user already exists
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                // Check email domain
+                if (!IsValidEmailDomain(model.Email))
+                {
+                    ModelState.AddModelError("Email", "Please use a valid email domain");
+                    return View(model);
+                }
+
+                // Check if user exists
                 var existingUser = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Email == model.Email || u.Username == model.Username);
+                    .FirstOrDefaultAsync(u => u.Email.ToLower() == model.Email.ToLower() || 
+                                            u.Username.ToLower() == model.Username.ToLower());
                 if (existingUser != null)
                 {
-                    if (existingUser.Email == model.Email)
+                    if (existingUser.Email.ToLower() == model.Email.ToLower())
                     {
-                        ModelState.AddModelError("Email", "This email is already registered.");
+                        ModelState.AddModelError("Email", "This email has already been registered");
                     }
-                    if (existingUser.Username == model.Username)
+                    if (existingUser.Username.ToLower() == model.Username.ToLower())
                     {
-                        ModelState.AddModelError("Username", "This username is already taken.");
+                        ModelState.AddModelError("Username", "This username has already been taken");
                     }
                     return View(model);
                 }
@@ -133,24 +159,47 @@ namespace CardTradeHub.Controllers
                 // Create new user
                 var user = new User
                 {
-                    Username = model.Username,
-                    Email = model.Email,
+                    Username = model.Username.Trim(),
+                    Email = model.Email.Trim().ToLower(),
                     PasswordHash = _passwordHasher.HashPassword(null, model.Password),
                     Role = model.Email.ToLower() == "admin@cardtradehub.com" ? "Admin" : "User",
                     IsActive = true,
-                    CreatedAt = DateTime.UtcNow
+                    CreatedAt = DateTime.UtcNow,
+                    FirstName = model.FirstName?.Trim(),
+                    LastName = model.LastName?.Trim(),
+                    PhoneNumber = model.PhoneNumber?.Trim()
                 };
 
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
 
-                // Sign in the user
+                // Sign in user
                 await SignInUser(user);
 
                 return RedirectToAction("Index", "Home");
             }
-
-            return View(model);
+            catch (DbUpdateException ex)
+            {
+                // Database error
+                Console.WriteLine($"Database error: {ex.Message}");
+                return View("Error", new ErrorViewModel
+                {
+                    ErrorTitle = "Registration Failed",
+                    ErrorMessage = "An error occurred while saving user information. Please try again later.",
+                    RequestId = HttpContext.TraceIdentifier
+                });
+            }
+            catch (Exception ex)
+            {
+                // Other errors
+                Console.WriteLine($"Registration error: {ex.Message}");
+                return View("Error", new ErrorViewModel
+                {
+                    ErrorTitle = "Registration Failed",
+                    ErrorMessage = "An error occurred during registration. Please try again later.",
+                    RequestId = HttpContext.TraceIdentifier
+                });
+            }
         }
 
         // POST: /Account/Logout
@@ -354,6 +403,21 @@ namespace CardTradeHub.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             return RedirectToAction("Index", "Home");
+        }
+
+        // Validate email domain
+        private bool IsValidEmailDomain(string email)
+        {
+            if (string.IsNullOrEmpty(email))
+                return false;
+
+            var domain = email.Split('@').LastOrDefault();
+            if (string.IsNullOrEmpty(domain))
+                return false;
+
+            // List of invalid domains
+            var invalidDomains = new[] { "example.com", "test.com", "temporary.com" };
+            return !invalidDomains.Contains(domain.ToLower());
         }
     }
 }

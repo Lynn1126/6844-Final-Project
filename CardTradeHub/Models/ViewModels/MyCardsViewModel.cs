@@ -1,10 +1,40 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CardTradeHub.Models.ViewModels
 {
     public class MyCardsViewModel
     {
-        public List<Card> UserCards { get; set; }
+        public required IEnumerable<CardViewModel> UserCards { get; set; }
+    }
+
+    public class CardViewModel
+    {
+        public int CardID { get; set; }
+
+        [Required]
+        [Display(Name = "Title")]
+        public required string Title { get; set; }
+
+        [Required]
+        [Display(Name = "Description")]
+        public required string Description { get; set; }
+
+        [Required]
+        [Display(Name = "Category")]
+        public required string Category { get; set; }
+
+        [Required]
+        [Display(Name = "Condition")]
+        public required string Condition { get; set; }
+
+        [Required]
+        [Display(Name = "Status")]
+        public required string Status { get; set; }
+
+        public decimal Price { get; set; }
+        public string? ImageUrl { get; set; }
+        public bool IsActive => Status != "Deleted";
     }
 
     public class CreateCardViewModel
