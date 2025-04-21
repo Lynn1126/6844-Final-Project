@@ -1,4 +1,4 @@
-@model CardTradeHub.Models.Transaction
+@model CardTradeHub.Models.ViewModels.TradeDetailsViewModel
 
 @{
     ViewData["Title"] = "Trade Details";
@@ -13,31 +13,34 @@
                     <h4>Card Information</h4>
                     <dl class="row">
                         <dt class="col-sm-4">Card Title</dt>
-                        <dd class="col-sm-8">@Model.Card.Title</dd>
+                        <dd class="col-sm-8">@Model.CardTitle</dd>
 
-                        <dt class="col-sm-4">Condition</dt>
-                        <dd class="col-sm-8">@Model.Card.Condition</dd>
+                        <dt class="col-sm-4">Category</dt>
+                        <dd class="col-sm-8">@Model.CardCategory</dd>
 
                         <dt class="col-sm-4">Price</dt>
-                        <dd class="col-sm-8">@Model.Card.Price.ToString("C")</dd>
+                        <dd class="col-sm-8">@Model.Price.ToString("C")</dd>
                     </dl>
                 </div>
                 <div class="col-md-6">
                     <h4>Transaction Details</h4>
                     <dl class="row">
                         <dt class="col-sm-4">Transaction Date</dt>
-                        <dd class="col-sm-8">@Model.Date.ToString("g")</dd>
+                        <dd class="col-sm-8">@Model.TradeDate.ToString("g")</dd>
 
                         <dt class="col-sm-4">Seller</dt>
-                        <dd class="col-sm-8">@Model.Seller.Username</dd>
-
-                        <dt class="col-sm-4">Buyer</dt>
-                        <dd class="col-sm-8">@Model.Buyer.Username</dd>
+                        <dd class="col-sm-8">@Model.SellerName</dd>
 
                         <dt class="col-sm-4">Status</dt>
                         <dd class="col-sm-8">
-                            <span class="badge bg-success">Completed</span>
+                            <span class="badge bg-@(Model.Status == "Completed" ? "success" : "secondary")">@Model.Status</span>
                         </dd>
+
+                        @if (!string.IsNullOrEmpty(Model.TrackingNumber))
+                        {
+                            <dt class="col-sm-4">Tracking Number</dt>
+                            <dd class="col-sm-8">@Model.TrackingNumber</dd>
+                        }
                     </dl>
                 </div>
             </div>
