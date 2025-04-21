@@ -3084,11 +3084,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/CardTradeHub.csproj",
+      "projectUniqueName": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/CardTradeHub.csproj",
       "projectName": "CardTradeHub",
-      "projectPath": "/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/CardTradeHub.csproj",
+      "projectPath": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/CardTradeHub.csproj",
       "packagesPath": "/Users/lynn/.nuget/packages/",
-      "outputPath": "/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/obj/",
+      "outputPath": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/lynn/.nuget/NuGet/NuGet.Config"

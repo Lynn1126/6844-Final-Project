@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3MoYk6no/8Y=",
+  "dgSpecHash": "V/EhIEFUUBo=",
   "success": true,
-  "projectFilePath": "/Users/lynn/VS Code Project/6844 Final Project/Backup_4 357am/CardTradeHub/CardTradeHub.csproj",
+  "projectFilePath": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/CardTradeHub.csproj",
   "expectedPackageFiles": [
     "/Users/lynn/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/lynn/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",

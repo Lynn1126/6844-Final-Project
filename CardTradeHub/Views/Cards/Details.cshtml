@@ -35,7 +35,7 @@
                             <div class="col-md-6">
                                 <p class="mb-2"><strong>Condition:</strong> <span class="text-muted">@Model.Condition</span></p>
                                 <p class="mb-2"><strong>Seller:</strong> <span class="text-muted">@Model.User.Username</span></p>
-                                <p class="mb-2"><strong>Listed:</strong> <span class="text-muted">@Model.ListedDate.ToString("MMM dd, yyyy")</span></p>
+                                <p class="mb-2"><strong>Listed:</strong> <span class="text-muted">@Model.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture)</span></p>
                             </div>
                         </div>
                         <div class="mb-4">

@@ -4,28 +4,37 @@ namespace CardTradeHub.Models.ViewModels
 {
     public class RegisterViewModel
     {
-        [Required(ErrorMessage = "Username is required")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Username must be between 3 and 50 characters")]
+        [Required(ErrorMessage = "Please enter a username")]
+        [StringLength(50, ErrorMessage = "Username must be between {2} and {1} characters", MinimumLength = 3)]
+        [Display(Name = "Username")]
         public string Username { get; set; }
 
-        [Required(ErrorMessage = "Email is required")]
-        [EmailAddress(ErrorMessage = "Invalid email address")]
+        [Required(ErrorMessage = "Please enter an email address")]
+        [EmailAddress(ErrorMessage = "Please enter a valid email address")]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Password is required")]
-        [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters long")]
+        [Required(ErrorMessage = "Please enter a password")]
+        [StringLength(100, ErrorMessage = "Password must be between {2} and {1} characters", MinimumLength = 8)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$",
+            ErrorMessage = "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character")]
         [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage = "Confirm password is required")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match")]
         [DataType(DataType.Password)]
+        [Display(Name = "Confirm Password")]
+        [Compare("Password", ErrorMessage = "The passwords do not match")]
         public string ConfirmPassword { get; set; }
 
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Phone(ErrorMessage = "Invalid phone number")]
+        [Phone(ErrorMessage = "Please enter a valid phone number")]
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
     }
 } 

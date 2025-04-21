@@ -20,6 +20,8 @@ public class HomeController : Controller
     public async Task<IActionResult> Index()
     {
         var latestCards = await _context.Cards
+            .Where(c => c.Status == "Available")
+            .Include(c => c.User)
             .OrderByDescending(c => c.ListedDate)
             .Take(3)
             .ToListAsync();

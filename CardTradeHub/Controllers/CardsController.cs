@@ -23,28 +23,63 @@ namespace CardTradeHub.Controllers
         // GET: /Cards
         public async Task<IActionResult> Index(int page = 1)
         {
-            var query = _context.Cards
-                .Where(c => c.Status == "Available")  // Only show available cards
-                .OrderByDescending(c => c.ListedDate)
-                .Include(c => c.User);
+            try
+            {
+                // 构建基础查询
+                var query = _context.Cards
+                    // .Where(c => c.Status == "Available")
+                    .OrderByDescending(c => c.ListedDate)
+                    .Include(c => c.User);
 
-            var totalItems = await query.CountAsync();
-            var totalPages = (int)Math.Ceiling(totalItems / (double)_pageSize);
+                // 获取总数
+                var totalItems = await query.CountAsync();
+                Console.WriteLine($"Total available cards found: {totalItems}");
 
-            // 确保页码在有效范围内
-            page = Math.Max(1, Math.Min(page, totalPages));
+                var totalPages = (int)Math.Ceiling(totalItems / (double)_pageSize);
 
-            var cards = await query
-                .Skip((page - 1) * _pageSize)
-                .Take(_pageSize)
-                .ToListAsync();
+                // 确保页码在有效范围内
+                if (page < 1) page = 1;
+                if (page > totalPages) page = totalPages;
 
-            ViewBag.CurrentPage = page;
-            ViewBag.TotalPages = totalPages;
-            ViewBag.HasPreviousPage = page > 1;
-            ViewBag.HasNextPage = page < totalPages;
+                var skip = (page - 1) * _pageSize;
+                Console.WriteLine($"Page size: {_pageSize}");
+                Console.WriteLine($"Total pages: {totalPages}");
+                Console.WriteLine($"Requested page: {page}");
+                Console.WriteLine($"Skip: {skip}");
+                Console.WriteLine($"Take: {_pageSize}");
 
-            return View(cards);
+                // 执行分页查询
+                var cards = await _context.Cards
+                    .Where(c => c.Status == "Available")
+                    .OrderByDescending(c => c.ListedDate)
+                    .Include(c => c.User)
+                    .Skip(skip)
+                    .Take(_pageSize)
+                    .ToListAsync();
+
+                Console.WriteLine($"Cards retrieved: {cards.Count}");
+                if (cards.Count > 0)
+                {
+                    Console.WriteLine("Card IDs retrieved:");
+                    foreach (var card in cards)
+                    {
+                        Console.WriteLine($"- Card {card.CardID}: {card.Title} (Status: {card.Status})");
+                    }
+                }
+
+                ViewBag.CurrentPage = page;
+                ViewBag.TotalPages = totalPages;
+                ViewBag.HasPreviousPage = page > 1;
+                ViewBag.HasNextPage = page < totalPages;
+
+                return View(cards);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in Index method: {ex.Message}");
+                Console.WriteLine($"Stack trace: {ex.StackTrace}");
+                throw;
+            }
         }
 
         // GET: /Cards/Details/5

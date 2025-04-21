@@ -3,66 +3,93 @@
     ViewData["Title"] = "Register";
 }
 
-<div class="container">
+<div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h2 class="text-center">Register</h2>
-                </div>
-                <div class="card-body">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow">
+                <div class="card-body p-4">
+                    <h2 class="text-center mb-4">Create New Account</h2>
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <h5 class="alert-heading">Registration Failed</h5>
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                        </div>
+                    }
+                    
                     <form asp-action="Register" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="Username" class="control-label"></label>
-                            <input asp-for="Username" class="form-control" />
+                        <div class="mb-3">
+                            <label asp-for="Username" class="form-label"></label>
+                            <input asp-for="Username" class="form-control" placeholder="Enter username" />
                             <span asp-validation-for="Username" class="text-danger"></span>
                         </div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="Email" class="control-label"></label>
-                            <input asp-for="Email" class="form-control" />
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" placeholder="Enter email" />
                             <span asp-validation-for="Email" class="text-danger"></span>
                         </div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="Password" class="control-label"></label>
-                            <input asp-for="Password" class="form-control" type="password" />
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <div class="input-group">
+                                <input asp-for="Password" class="form-control" placeholder="Enter password" />
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                                </button>
+                            </div>
                             <span asp-validation-for="Password" class="text-danger"></span>
+                            <div class="password-requirements mt-2">
+                                <small class="text-muted">Password must meet the following requirements:</small>
+                                <ul class="small text-muted">
+                                    <li id="lengthCheck">Minimum 8 characters</li>
+                                    <li id="uppercaseCheck">At least one uppercase letter</li>
+                                    <li id="lowercaseCheck">At least one lowercase letter</li>
+                                    <li id="numberCheck">At least one number</li>
+                                    <li id="specialCheck">At least one special character</li>
+                                </ul>
+                            </div>
                         </div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="ConfirmPassword" class="control-label"></label>
-                            <input asp-for="ConfirmPassword" class="form-control" type="password" />
+
+                        <div class="mb-3">
+                            <label asp-for="ConfirmPassword" class="form-label"></label>
+                            <div class="input-group">
+                                <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm password" />
+                                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                    <i class="bi bi-eye" id="toggleConfirmPasswordIcon"></i>
+                                </button>
+                            </div>
                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         </div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="FirstName" class="control-label"></label>
-                            <input asp-for="FirstName" class="form-control" />
+
+                        <div class="mb-3">
+                            <label asp-for="FirstName" class="form-label"></label>
+                            <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
                             <span asp-validation-for="FirstName" class="text-danger"></span>
                         </div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="LastName" class="control-label"></label>
-                            <input asp-for="LastName" class="form-control" />
+
+                        <div class="mb-3">
+                            <label asp-for="LastName" class="form-label"></label>
+                            <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
                             <span asp-validation-for="LastName" class="text-danger"></span>
                         </div>
-                        
-                        <div class="form-group mb-3">
-                            <label asp-for="PhoneNumber" class="control-label"></label>
-                            <input asp-for="PhoneNumber" class="form-control" />
+
+                        <div class="mb-3">
+                            <label asp-for="PhoneNumber" class="form-label"></label>
+                            <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
                             <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                         </div>
-                        
-                        <div class="form-group text-center">
+
+                        <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary">Register</button>
                         </div>
+
+                        <div class="mt-3 text-center">
+                            <span>Already have an account?</span>
+                            <a asp-action="Login" class="text-decoration-none">Login here</a>
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer text-center">
-                    <p>Already have an account? <a asp-action="Login">Login here</a></p>
                 </div>
             </div>
         </div>
@@ -70,5 +97,57 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle functionality
+            function setupPasswordToggle(inputId, toggleBtnId, toggleIconId) {
+                const input = document.getElementById(inputId);
+                const toggleBtn = document.getElementById(toggleBtnId);
+                const toggleIcon = document.getElementById(toggleIconId);
+
+                toggleBtn.addEventListener('click', function() {
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                    
+                    if (type === 'password') {
+                        toggleIcon.classList.remove('bi-eye-slash');
+                        toggleIcon.classList.add('bi-eye');
+                    } else {
+                        toggleIcon.classList.remove('bi-eye');
+                        toggleIcon.classList.add('bi-eye-slash');
+                    }
+                });
+            }
+
+            setupPasswordToggle('Password', 'togglePassword', 'togglePasswordIcon');
+            setupPasswordToggle('ConfirmPassword', 'toggleConfirmPassword', 'toggleConfirmPasswordIcon');
+
+            // Password strength check
+            const password = document.getElementById('Password');
+            const requirements = {
+                lengthCheck: str => str.length >= 8,
+                uppercaseCheck: str => /[A-Z]/.test(str),
+                lowercaseCheck: str => /[a-z]/.test(str),
+                numberCheck: str => /\d/.test(str),
+                specialCheck: str => /[^\w\s]/.test(str)
+            };
+
+            function updateRequirements(value) {
+                for (let [requirement, checkFunction] of Object.entries(requirements)) {
+                    const element = document.getElementById(requirement);
+                    if (checkFunction(value)) {
+                        element.classList.remove('text-muted');
+                        element.classList.add('text-success');
+                    } else {
+                        element.classList.remove('text-success');
+                        element.classList.add('text-muted');
+                    }
+                }
+            }
+
+            password.addEventListener('input', function(e) {
+                updateRequirements(e.target.value);
+            });
+        });
+    </script>
 } 

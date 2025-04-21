@@ -4,6 +4,11 @@
 }
 
 <div class="container mt-4">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2 class="mb-4">Welcome back, @User.Identity.Name!</h2>
+    }
+    
     <!-- Hero Section -->
     <div class="row align-items-center mt-5 mb-5">
         <div class="col-12 text-center">
@@ -71,13 +76,18 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">@card.Title</h5>
-                        <p class="card-text text-muted">@card.Description</p>
+                        <p class="card-text text-muted">@(card.Description ?? "No description available")</p>
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <span class="text-muted">@card.Category</span>
                             <span class="fw-bold text-primary">$@card.Price.ToString("N2")</span>
                         </div>
                         <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" 
                            class="btn btn-primary w-100">View Details</a>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <small class="text-muted">
+                            Listed by @(card.User?.Username ?? "Unknown") on @(card.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                        </small>
                     </div>
                 </div>
             </div>
@@ -90,12 +100,15 @@
         </div>
     </div>
 
-    <!-- Call to Action -->
-    <div class="row mt-5 mb-5">
-        <div class="col-12 text-center">
-            <h2>Ready to Start Trading?</h2>
-            <p class="lead">Join our community of card collectors today!</p>
-            <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">Sign Up Now</a>
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <!-- Call to Action -->
+        <div class="row mt-5 mb-5">
+            <div class="col-12 text-center">
+                <h2>Ready to Start Trading?</h2>
+                <p class="lead">Join our community of card collectors today!</p>
+                <a asp-controller="Account" asp-action="Register" class="btn btn-primary btn-lg">Sign Up Now</a>
+            </div>
         </div>
-    </div>
+    }
 </div>

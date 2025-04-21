@@ -34,7 +34,7 @@
                     </div>
                     <div class="card-footer bg-transparent">
                         <small class="text-muted">
-                            Listed by @card.User.Username on @card.ListedDate.ToString("MMM dd, yyyy")
+                            Listed by @card.User.Username on @card.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture)
                         </small>
                     </div>
                 </div>
