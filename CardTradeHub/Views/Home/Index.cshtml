@@ -57,6 +57,81 @@
         </div>
     </div>
 
+    <style>
+        /* 卡片布局样式 */
+        .card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            flex: 1 0 auto;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: auto;
+            padding-top: 1rem;
+            width: 100%;
+        }
+
+        .card-price {
+            font-weight: 600;
+            color: var(--bs-gray-900);
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            min-width: 0;
+            flex: 1;
+            font-size: clamp(0.7rem, 3vw, 1rem);
+        }
+
+        .details-btn {
+            width: 110px;
+            padding: 0.375rem 0;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            height: 48px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            height: 60px;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            color: var(--bs-gray-700);
+        }
+
+        .card-category {
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+            color: var(--bs-secondary);
+        }
+
+        .card-footer {
+            font-size: 0.75rem;
+            color: var(--bs-gray-600);
+        }
+    </style>
+
     <div class="row">
         @foreach (var card in Model)
         {
@@ -70,22 +145,21 @@
                         }
                         else
                         {
-                            <img src="/images/default-card.jpg" class="card-img-top" alt="Default Card Image"
+                            <img src="~/images/card-placeholder.jpg" class="card-img-top" alt="Card placeholder"
                                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
                         }
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">@card.Title</h5>
-                        <p class="card-text text-muted">@(card.Description ?? "No description available")</p>
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span class="text-muted">@card.Category</span>
-                            <span class="fw-bold text-primary">$@card.Price.ToString("N2")</span>
+                        <h5 class="card-title" title="@card.Title">@card.Title</h5>
+                        <div class="card-category">@card.Category</div>
+                        <div class="card-description" title="@card.Description">@(card.Description ?? "No description available")</div>
+                        <div class="card-actions">
+                            <span class="card-price">@card.Price.ToString("C")</span>
+                            <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" class="btn btn-primary details-btn">View Details</a>
                         </div>
-                        <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" 
-                           class="btn btn-primary w-100">View Details</a>
                     </div>
                     <div class="card-footer bg-transparent">
-                        <small class="text-muted">
+                        <small>
                             Listed by @(card.User?.Username ?? "Unknown") on @(card.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture))
                         </small>
                     </div>

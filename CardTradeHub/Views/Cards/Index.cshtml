@@ -77,16 +77,21 @@
             height: 38px;
             padding: 0.375rem 0.75rem;
             line-height: 1.5;
+            display: flex;
+            align-items: center;
         }
 
         .search-form .form-control {
-            border-right: none;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
         }
 
         .search-form .btn {
-            border-left: none;
-            display: flex;
-            align-items: center;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin-top: -0.85px;  /* 向上微调1像素 */
         }
 
         .search-form .btn i {
