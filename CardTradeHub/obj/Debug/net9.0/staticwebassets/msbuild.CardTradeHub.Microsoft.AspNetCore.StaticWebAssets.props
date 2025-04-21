@@ -1224,5 +1224,23 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>CardTradeHub</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CardTradeHub</BasePath>
+      <RelativePath>uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>cs3t0bvvqh</Fingerprint>
+      <Integrity>lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
   </ItemGroup>
 </Project>

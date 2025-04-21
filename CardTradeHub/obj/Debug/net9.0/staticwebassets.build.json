@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "bP04dFo0atWDQWx0AjcfnV1FvtZKGb99UuzVicxCqEU=",
+  "Hash": "Pse+H7bAX6G4tl55csvV1xA8qRVeFFWl2bChapRVSkM=",
   "Source": "CardTradeHub",
   "BasePath": "_content/CardTradeHub",
   "Mode": "Default",
@@ -2808,6 +2808,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Identity": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
+      "SourceId": "CardTradeHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/",
+      "BasePath": "_content/CardTradeHub",
+      "RelativePath": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cs3t0bvvqh",
+      "Integrity": "lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg"
     }
   ],
   "Endpoints": [
@@ -22290,6 +22311,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-F1wMlgb/juW08DFUssW6Pm9EBKfjXXRiSK0F5FgXxJU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.cs3t0bvvqh.jpeg",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10288"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 21 Apr 2025 02:15:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cs3t0bvvqh"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10288"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 21 Apr 2025 02:15:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
         }
       ]
     }

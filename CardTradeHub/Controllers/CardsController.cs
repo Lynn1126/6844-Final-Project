@@ -322,7 +322,7 @@ namespace CardTradeHub.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, CreateCardViewModel model)
+        public async Task<IActionResult> Edit(int id, CreateCardViewModel model, IFormFile ImageFile)
         {
             if (id == 0)
             {
@@ -346,20 +346,94 @@ namespace CardTradeHub.Controllers
             {
                 try
                 {
+                    // 处理图片上传
+                    if (ImageFile != null && ImageFile.Length > 0)
+                    {
+                        // 验证文件类型
+                        var allowedTypes = new[] { "image/jpeg", "image/png", "image/gif" };
+                        if (!allowedTypes.Contains(ImageFile.ContentType.ToLower()))
+                        {
+                            ModelState.AddModelError("ImageFile", "Only JPG, PNG and GIF files are allowed.");
+                            return View(model);
+                        }
+
+                        // 验证文件大小（5MB）
+                        if (ImageFile.Length > 5 * 1024 * 1024)
+                        {
+                            ModelState.AddModelError("ImageFile", "File size cannot exceed 5MB.");
+                            return View(model);
+                        }
+
+                        // 获取文件扩展名并验证
+                        var extension = Path.GetExtension(ImageFile.FileName).ToLowerInvariant();
+                        var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                        if (string.IsNullOrEmpty(extension) || !allowedExtensions.Contains(extension))
+                        {
+                            ModelState.AddModelError("ImageFile", "Invalid file type. Only .jpg, .jpeg, .png, and .gif files are allowed.");
+                            return View(model);
+                        }
+
+                        // 创建上传目录
+                        var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "cards");
+                        if (!Directory.Exists(uploadsFolder))
+                        {
+                            Directory.CreateDirectory(uploadsFolder);
+                        }
+
+                        // 生成安全的文件名：时间戳_用户ID_GUID.扩展名
+                        var timestamp = DateTime.UtcNow.ToString("yyyyMMddHHmmss");
+                        var safeFileName = $"{timestamp}_{userId}_{Guid.NewGuid():N}{extension}";
+                        var filePath = Path.Combine(uploadsFolder, safeFileName);
+
+                        // 检查文件是否已存在（以防万一）
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            safeFileName = $"{timestamp}_{userId}_{Guid.NewGuid():N}{extension}";
+                            filePath = Path.Combine(uploadsFolder, safeFileName);
+                        }
+
+                        // 删除旧图片文件（如果存在）
+                        if (!string.IsNullOrEmpty(card.ImageUrl))
+                        {
+                            var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "cards",
+                                card.ImageUrl.TrimStart('/'));
+                            if (System.IO.File.Exists(oldFilePath))
+                            {
+                                try
+                                {
+                                    System.IO.File.Delete(oldFilePath);
+                                }
+                                catch (Exception ex)
+                                {
+                                    // 记录错误但继续执行，因为这不是关键操作
+                                    Console.WriteLine($"Error deleting old image: {ex.Message}");
+                                }
+                            }
+                        }
+
+                        // 保存新文件
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await ImageFile.CopyToAsync(stream);
+                        }
+
+                        // 更新数据库中的图片URL
+                        card.ImageUrl = $"/images/cards/{safeFileName}";
+                    }
+
+                    // 更新其他字段
                     card.Title = model.Title;
                     card.Description = model.Description;
                     card.Category = model.Category;
                     card.Condition = model.Condition;
                     card.Price = model.Price;
-                    card.ImageUrl = model.ImageUrl;
 
                     _context.Update(card);
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(MyCards));
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CardExists(card.CardID))
+                    if (!CardExists(id))
                     {
                         return NotFound();
                     }
@@ -368,6 +442,7 @@ namespace CardTradeHub.Controllers
                         throw;
                     }
                 }
+                return RedirectToAction(nameof(MyCards));
             }
             return View(model);
         }

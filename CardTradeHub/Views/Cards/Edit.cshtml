@@ -9,7 +9,7 @@
     <hr />
     <div class="row">
         <div class="col-md-6">
-            <form asp-action="Edit" method="post">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" name="id" value="@ViewContext.RouteData.Values["id"]" />
                 
@@ -59,10 +59,26 @@
                 </div>
                 
                 <div class="form-group mb-3">
-                    <label asp-for="ImageUrl" class="control-label"></label>
-                    <input asp-for="ImageUrl" class="form-control" />
+                    <label asp-for="ImageUrl" class="control-label">Current Image URL</label>
+                    <input asp-for="ImageUrl" class="form-control" readonly />
                     <span asp-validation-for="ImageUrl" class="text-danger"></span>
                 </div>
+
+                <div class="form-group mb-3">
+                    <label for="ImageFile" class="control-label">Upload New Image</label>
+                    <input type="file" name="ImageFile" id="ImageFile" class="form-control" accept="image/*" />
+                    <small class="text-muted">Supported formats: JPG, PNG, GIF. Max size: 5MB</small>
+                </div>
+
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <div class="form-group mb-3">
+                        <label class="control-label">Current Image Preview</label>
+                        <div class="mt-2">
+                            <img src="@Model.ImageUrl" alt="Current card image" class="img-thumbnail" style="max-width: 200px;" />
+                        </div>
+                    </div>
+                }
                 
                 <div class="form-group mb-3">
                     <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -76,4 +92,32 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        // 预览选择的图片
+        document.getElementById('ImageFile').addEventListener('change', function (e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    const preview = document.createElement('img');
+                    preview.src = e.target.result;
+                    preview.className = 'img-thumbnail mt-2';
+                    preview.style.maxWidth = '200px';
+                    
+                    const previewContainer = document.createElement('div');
+                    previewContainer.className = 'form-group mb-3';
+                    previewContainer.innerHTML = '<label class="control-label">New Image Preview</label>';
+                    previewContainer.appendChild(preview);
+                    
+                    const existingPreview = document.querySelector('.preview-container');
+                    if (existingPreview) {
+                        existingPreview.remove();
+                    }
+                    
+                    previewContainer.classList.add('preview-container');
+                    document.getElementById('ImageFile').parentNode.appendChild(previewContainer);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        });
+    </script>
 } 
