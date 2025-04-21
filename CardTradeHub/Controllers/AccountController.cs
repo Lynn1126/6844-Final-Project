@@ -51,15 +51,12 @@ namespace CardTradeHub.Controllers
 
             if (user == null)
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
-                return View(model);
+                return BadRequest("user not found");
             }
 
             var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
             if (result == PasswordVerificationResult.Failed)
             {
-                ModelState.AddModelError("", "Invalid login attempt.");
-                return View(model);
             }
 
             if (!user.IsActive)
@@ -184,8 +181,6 @@ namespace CardTradeHub.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-
         [HttpGet]
         [Authorize]
         public async Task<IActionResult> Profile()
@@ -298,6 +293,67 @@ namespace CardTradeHub.Controllers
             user.PasswordHash = _passwordHasher.HashPassword(null, newPassword);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        [HttpGet]
+        public IActionResult GoogleLogin()
+        {
+            var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
+            return Challenge(properties, "Google");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            if (!result.Succeeded)
+                return RedirectToAction("Login");
+
+            var claims = result.Principal.Identities.FirstOrDefault()?.Claims;
+            var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            
+            if (string.IsNullOrEmpty(email))
+                return RedirectToAction("Login");
+
+            // 检查用户是否已存在
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
+            if (user == null)
+            {
+                // 创建新用户
+                var username = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value ?? email.Split('@')[0];
+                user = new User
+                {
+                    Email = email,
+                    Username = username,
+                    PasswordHash = "GoogleAuth", // 标记为 Google 认证用户
+                    Role = "Customer",
+                    IsActive = true,
+                    CreatedAt = DateTime.UtcNow,
+                    RegisterDate = DateTime.UtcNow,
+                    LastLoginDate = DateTime.UtcNow,
+                    IsEmailVerified = true
+                };
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+            }
+
+            // 更新登录时间
+            user.LastLoginDate = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
+
+            // 创建身份验证票据
+            var identity = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
+                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role)
+            }, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var principal = new ClaimsPrincipal(identity);
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
