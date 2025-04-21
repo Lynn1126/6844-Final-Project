@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CardTradeHub")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+459fa0aa6c32d022062ab453035cb1b346ca8d1f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c6e879a9d077440b221f9600379b388d4cde9f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("CardTradeHub")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CardTradeHub")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
