@@ -62,6 +62,13 @@
         .card {
             display: flex;
             flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
         }
 
         .card-body {
@@ -71,32 +78,13 @@
             flex: 1 0 auto;
         }
 
-        .card-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: auto;
-            padding-top: 1rem;
-            width: 100%;
-        }
-
         .card-price {
             font-weight: 600;
             color: var(--bs-gray-900);
             margin: 0;
-            white-space: nowrap;
-            overflow: hidden;
-            min-width: 0;
-            flex: 1;
-            font-size: clamp(0.7rem, 3vw, 1rem);
-        }
-
-        .details-btn {
-            width: 110px;
-            padding: 0.375rem 0;
-            font-size: 0.875rem;
-            flex-shrink: 0;
+            font-size: 1.1rem;
+            margin-top: auto;
+            padding-top: 1rem;
         }
 
         .card-title {
@@ -130,40 +118,49 @@
             font-size: 0.75rem;
             color: var(--bs-gray-600);
         }
+
+        .card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
     </style>
 
     <div class="row">
         @foreach (var card in Model)
         {
             <div class="col-md-4 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
-                        @if (!string.IsNullOrEmpty(card.ImageUrl))
-                        {
-                            <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title"
-                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-                        }
-                        else
-                        {
-                            <img src="~/images/card-placeholder.jpg" class="card-img-top" alt="Card placeholder"
-                                 style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-                        }
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title" title="@card.Title">@card.Title</h5>
-                        <div class="card-category">@card.Category</div>
-                        <div class="card-description" title="@card.Description">@(card.Description ?? "No description available")</div>
-                        <div class="card-actions">
-                            <span class="card-price">@card.Price.ToString("C")</span>
-                            <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" class="btn btn-primary details-btn">View Details</a>
+                <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" class="card-link">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
+                            @if (!string.IsNullOrEmpty(card.ImageUrl))
+                            {
+                                <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title"
+                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                            }
+                            else
+                            {
+                                <img src="~/images/card-placeholder.jpg" class="card-img-top" alt="Card placeholder"
+                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
+                            }
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" title="@card.Title">@card.Title</h5>
+                            <div class="card-category">@card.Category</div>
+                            <div class="card-description" title="@card.Description">@(card.Description ?? "No description available")</div>
+                            <div class="card-price">@card.Price.ToString("C")</div>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <small>
+                                Listed by @(card.User?.Username ?? "Unknown") on @(card.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                            </small>
                         </div>
                     </div>
-                    <div class="card-footer bg-transparent">
-                        <small>
-                            Listed by @(card.User?.Username ?? "Unknown") on @(card.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture))
-                        </small>
-                    </div>
-                </div>
+                </a>
             </div>
         }
     </div>
