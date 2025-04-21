@@ -1,24 +1,186 @@
-html {
-  font-size: 14px;
-  position: relative;
-  min-height: 100%;
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+  padding: 2rem 0;
+}
+
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* 响应式容器大小 */
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
+  .container {
+    max-width: 720px;
   }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
+
+/* 响应式排版 */
+@media (max-width: 576px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+/* 卡片网格系统 */
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 576px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* 卡片样式 */
+.card {
+  transition: transform 0.2s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  background-color: #f8f9fa;
+}
+
+.card-body {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-footer {
+  background-color: rgba(0,0,0,0.03);
+  margin-top: auto;
+}
+
+/* 导航栏响应式调整 */
+.navbar {
+  padding: 0.5rem 1rem;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    padding: 0.5rem 0;
+  }
+  .navbar-nav .nav-item {
+    padding: 0.25rem 0;
+  }
+}
+
+/* 页脚样式 */
+.footer {
+  flex-shrink: 0;
+  background-color: #212529;
+  color: white;
+  padding: 1rem 0;
+  margin-top: 2rem;
+}
+
+@media (max-width: 767.98px) {
+  .footer {
+    text-align: center;
+  }
+  .footer .text-md-end {
+    text-align: center !important;
+    margin-top: 1rem;
+  }
+}
+
+/* 表单和按钮样式 */
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.25rem;
+}
+
+/* 工具类 */
+.mt-6 { margin-top: 4rem; }
+.mb-6 { margin-bottom: 4rem; }
+.py-6 { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* 辅助类 */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-body {
-  margin-bottom: 60px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
@@ -30,69 +192,9 @@ body {
   text-align: start;
 }
 
-main {
-  flex: 1;
-}
-
-.card {
-  transition: transform 0.2s;
-  margin-bottom: 1rem;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
 .btn-custom {
   padding: 0.5rem 1.5rem;
   border-radius: 0.25rem;
-}
-
-.img-fluid {
-  max-width: 100%;
-  height: auto;
-}
-
-.container {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-footer {
-  margin-top: auto;
-}
-
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.75rem;
-  }
-  h3 {
-    font-size: 1.5rem;
-  }
-}
-
-.mt-6 {
-  margin-top: 4rem;
-}
-
-.mb-6 {
-  margin-bottom: 4rem;
-}
-
-.form-control:focus {
-  border-color: #6c757d;
-  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
-}
-
-/* Card styles */
-.card-img-top {
-  height: 200px;
-  object-fit: cover;
-  background-color: #f8f9fa;
 }
 
 .card-title {
@@ -117,4 +219,60 @@ footer {
 .badge {
   font-weight: 500;
   padding: 0.5em 0.75em;
+}
+
+/* MyCards页面的样式 */
+.btn-group {
+  display: flex;
+}
+
+.btn-group > form {
+  flex: 1;
+}
+
+.btn-group .btn {
+  border-radius: 0;
+  flex: 1;
+}
+
+.btn-group > :first-child .btn {
+  border-top-left-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.btn-group > :last-child .btn {
+  border-top-right-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
+
+/* MyTrades页面的样式 */
+.trade-card {
+  transition: all 0.3s ease;
+}
+
+.trade-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.status-badge {
+  font-size: 0.85rem;
+  padding: 0.35em 0.65em;
+}
+
+.btn-icon {
+  margin-right: 0.5rem;
+}
+
+/* 密码输入框图标样式 */
+#togglePassword {
+  padding: 0.375rem 0.75rem;
+}
+
+#togglePassword .bi {
+  font-size: 0.875rem;
+}
+
+#togglePassword:hover {
+  background-color: #e9ecef;
 }

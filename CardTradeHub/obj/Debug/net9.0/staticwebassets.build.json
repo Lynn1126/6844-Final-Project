@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Pse+H7bAX6G4tl55csvV1xA8qRVeFFWl2bChapRVSkM=",
+  "Hash": "6IHDKqfWa2F5HQ7NTWHR4Dphzk2+KsBwj1oms9iERuQ=",
   "Source": "CardTradeHub",
   "BasePath": "_content/CardTradeHub",
   "Mode": "Default",
@@ -941,12 +941,12 @@
       "OriginalItemSpec": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css"
     },
     {
-      "Identity": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-v6lsymwg1q.gz",
+      "Identity": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-navbok3asb.gz",
       "SourceId": "CardTradeHub",
       "SourceType": "Discovered",
       "ContentRoot": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/",
       "BasePath": "_content/CardTradeHub",
-      "RelativePath": "css/site#[.{fingerprint=v6lsymwg1q}]?.css.gz",
+      "RelativePath": "css/site#[.{fingerprint=navbok3asb}]?.css.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -955,8 +955,8 @@
       "RelatedAsset": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/css/site.css",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "kpp0igjl0e",
-      "Integrity": "KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8=",
+      "Fingerprint": "re8el5haur",
+      "Integrity": "ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/css/site.css"
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "v6lsymwg1q",
-      "Integrity": "R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ=",
+      "Fingerprint": "navbok3asb",
+      "Integrity": "0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
@@ -1443,6 +1443,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
+      "SourceId": "CardTradeHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/",
+      "BasePath": "_content/CardTradeHub",
+      "RelativePath": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0#[.{fingerprint}]?.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "cs3t0bvvqh",
+      "Integrity": "lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg"
     },
     {
       "Identity": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/adloppaz.kgu.jpg",
@@ -2808,27 +2829,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
-    },
-    {
-      "Identity": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
-      "SourceId": "CardTradeHub",
-      "SourceType": "Discovered",
-      "ContentRoot": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/",
-      "BasePath": "_content/CardTradeHub",
-      "RelativePath": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb#[.{fingerprint}]?.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "cs3t0bvvqh",
-      "Integrity": "lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg"
     }
   ],
   "Endpoints": [
@@ -3430,12 +3430,12 @@
     },
     {
       "Route": "css/site.css",
-      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-v6lsymwg1q.gz",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-navbok3asb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001392757660"
+          "Quality": "0.000708717222"
         }
       ],
       "ResponseHeaders": [
@@ -3445,15 +3445,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "717"
+          "Value": "1410"
         },
         {
           "Name": "ETag",
-          "Value": "\"KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8=\""
+          "Value": "\"ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 01:36:23 GMT"
+          "Value": "Mon, 21 Apr 2025 03:11:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3473,13 +3473,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ=\""
+          "Value": "W/\"0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ="
+          "Value": "sha256-0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4="
         }
       ]
     },
@@ -3494,7 +3494,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1748"
+          "Value": "4213"
         },
         {
           "Name": "Content-Type",
@@ -3502,11 +3502,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ=\""
+          "Value": "\"0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 01:36:23 GMT"
+          "Value": "Mon, 21 Apr 2025 03:11:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3516,13 +3516,13 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ="
+          "Value": "sha256-0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4="
         }
       ]
     },
     {
       "Route": "css/site.css.gz",
-      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-v6lsymwg1q.gz",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-navbok3asb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3531,7 +3531,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "717"
+          "Value": "1410"
         },
         {
           "Name": "Content-Type",
@@ -3539,11 +3539,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8=\""
+          "Value": "\"ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 01:36:23 GMT"
+          "Value": "Mon, 21 Apr 2025 03:11:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3561,18 +3561,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8="
+          "Value": "sha256-ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs="
         }
       ]
     },
     {
-      "Route": "css/site.v6lsymwg1q.css",
-      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-v6lsymwg1q.gz",
+      "Route": "css/site.navbok3asb.css",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-navbok3asb.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.001392757660"
+          "Quality": "0.000708717222"
         }
       ],
       "ResponseHeaders": [
@@ -3582,15 +3582,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "717"
+          "Value": "1410"
         },
         {
           "Name": "ETag",
-          "Value": "\"KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8=\""
+          "Value": "\"ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 01:36:23 GMT"
+          "Value": "Mon, 21 Apr 2025 03:11:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3610,13 +3610,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ=\""
+          "Value": "W/\"0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "v6lsymwg1q"
+          "Value": "navbok3asb"
         },
         {
           "Name": "label",
@@ -3624,12 +3624,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ="
+          "Value": "sha256-0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4="
         }
       ]
     },
     {
-      "Route": "css/site.v6lsymwg1q.css",
+      "Route": "css/site.navbok3asb.css",
       "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/css/site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3639,7 +3639,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1748"
+          "Value": "4213"
         },
         {
           "Name": "Content-Type",
@@ -3647,11 +3647,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ=\""
+          "Value": "\"0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 01:36:23 GMT"
+          "Value": "Mon, 21 Apr 2025 03:11:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3661,7 +3661,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "v6lsymwg1q"
+          "Value": "navbok3asb"
         },
         {
           "Name": "label",
@@ -3669,13 +3669,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ="
+          "Value": "sha256-0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4="
         }
       ]
     },
     {
-      "Route": "css/site.v6lsymwg1q.css.gz",
-      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-v6lsymwg1q.gz",
+      "Route": "css/site.navbok3asb.css.gz",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net9.0/compressed/p7zjxnef2x-navbok3asb.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3684,7 +3684,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "717"
+          "Value": "1410"
         },
         {
           "Name": "Content-Type",
@@ -3692,11 +3692,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8=\""
+          "Value": "\"ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 01:36:23 GMT"
+          "Value": "Mon, 21 Apr 2025 03:11:41 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3714,7 +3714,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "v6lsymwg1q"
+          "Value": "navbok3asb"
         },
         {
           "Name": "label",
@@ -3722,7 +3722,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-KITZ9jsuQJUzHfG7SwNQZ6SHs2pWYSnjcKWOP8msVo8="
+          "Value": "sha256-ExsCsWtRp2cclFQnaraF/5NXPI/Fi/AeS/a1QYg5aEs="
         }
       ]
     },
@@ -4021,6 +4021,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-+/824NtfTA0L7Mr42Fo+86YJP4R5cigdi9S7Fx5VVl4="
+        }
+      ]
+    },
+    {
+      "Route": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.cs3t0bvvqh.jpeg",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10288"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 21 Apr 2025 02:25:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "cs3t0bvvqh"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
+        }
+      ]
+    },
+    {
+      "Route": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
+      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "10288"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 21 Apr 2025 02:25:54 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
         }
       ]
     },
@@ -22311,88 +22393,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-F1wMlgb/juW08DFUssW6Pm9EBKfjXXRiSK0F5FgXxJU="
-        }
-      ]
-    },
-    {
-      "Route": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.cs3t0bvvqh.jpeg",
-      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10288"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 02:15:40 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "cs3t0bvvqh"
-        },
-        {
-          "Name": "label",
-          "Value": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
-        }
-      ]
-    },
-    {
-      "Route": "uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
-      "AssetFile": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10288"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 02:15:40 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
         }
       ]
     }

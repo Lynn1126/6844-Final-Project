@@ -52,6 +52,13 @@
                                         <button type="submit" class="btn btn-sm btn-danger">Make Admin</button>
                                     </form>
                                 }
+                                else if (user.Email != "admin@cardtradehub.com") // 不允许取消主管理员的权限
+                                {
+                                    <form asp-action="ChangeUserRole" asp-route-id="@user.UserID" method="post" class="d-inline">
+                                        <input type="hidden" name="role" value="User" />
+                                        <button type="submit" class="btn btn-sm btn-secondary">Cancel Admin</button>
+                                    </form>
+                                }
                             </div>
                         </td>
                     </tr>

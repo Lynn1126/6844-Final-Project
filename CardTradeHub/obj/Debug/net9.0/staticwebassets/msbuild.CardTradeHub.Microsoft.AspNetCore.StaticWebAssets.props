@@ -30,8 +30,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>v6lsymwg1q</Fingerprint>
-      <Integrity>R9TkwBEwLTZ2O6Om2HeAxRR+GZKvccDHgWt2yXsEHSQ=</Integrity>
+      <Fingerprint>navbok3asb</Fingerprint>
+      <Integrity>0fTX40QDugqsZDFrfxYL/5CvPQ+zl2tmo2CtRWlJPr4=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
@@ -53,6 +53,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\favicon.ico'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\cards\20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>CardTradeHub</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/CardTradeHub</BasePath>
+      <RelativePath>images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>cs3t0bvvqh</Fingerprint>
+      <Integrity>lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\cards\20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\cards\adloppaz.kgu.jpg'))">
       <SourceType>Package</SourceType>
@@ -1223,24 +1241,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\lib\jquery\LICENSE.txt'))</OriginalItemSpec>
-    </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg'))">
-      <SourceType>Package</SourceType>
-      <SourceId>CardTradeHub</SourceId>
-      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
-      <BasePath>_content/CardTradeHub</BasePath>
-      <RelativePath>uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg</RelativePath>
-      <AssetKind>All</AssetKind>
-      <AssetMode>All</AssetMode>
-      <AssetRole>Primary</AssetRole>
-      <RelatedAsset></RelatedAsset>
-      <AssetTraitName></AssetTraitName>
-      <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>cs3t0bvvqh</Fingerprint>
-      <Integrity>lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=</Integrity>
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\uploads\6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

@@ -20,7 +20,7 @@ namespace CardTradeHub.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> MyTrades()
+        public async Task<IActionResult> Index()
         {
             var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
@@ -45,6 +45,24 @@ namespace CardTradeHub.Controllers
             };
 
             return View(viewModel);
+        }
+
+        public async Task<IActionResult> TradeDetails(int id)
+        {
+            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            var transaction = await _context.Transactions
+                .Include(t => t.Card)
+                .Include(t => t.Buyer)
+                .Include(t => t.Seller)
+                .FirstOrDefaultAsync(t => t.TransactionID == id && (t.BuyerID == userId || t.SellerID == userId));
+
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+
+            return View(transaction);
         }
     }
 } 

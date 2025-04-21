@@ -51,13 +51,21 @@ namespace CardTradeHub.Controllers
 
             if (user == null)
             {
-                return BadRequest("user not found");
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
             }
 
             var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.Password);
             if (result == PasswordVerificationResult.Failed)
             {
-                return BadRequest("password is incorrect");
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
+
+            if (!user.IsActive)
+            {
+                ModelState.AddModelError("", "This account has been deactivated.");
+                return View(model);
             }
             
             var claims = new List<Claim>
@@ -65,19 +73,28 @@ namespace CardTradeHub.Controllers
                 new Claim(ClaimTypes.Name, user.Email),
                 new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
                 new Claim("FullName", user.Username),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role ?? "User")  // 确保角色不为空
             };
+
+            // 添加调试输出
+            Console.WriteLine($"User Role: {user.Role}");
+            Console.WriteLine($"Claims: {string.Join(", ", claims.Select(c => $"{c.Type}: {c.Value}"))}");
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var authProperties = new AuthenticationProperties
             {
-                IsPersistent = model.RememberMe
+                IsPersistent = model.RememberMe,
+                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
             };
 
             await HttpContext.SignInAsync(
                 CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
+
+            // 更新最后登录时间
+            user.LastLoginDate = DateTime.UtcNow;
+            await _context.SaveChangesAsync();
 
             return RedirectToAction("Index", "Home");
         }

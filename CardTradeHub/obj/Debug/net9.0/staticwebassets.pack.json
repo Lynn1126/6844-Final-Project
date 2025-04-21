@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
+      "PackagePath": "staticwebassets/images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg"
+    },
+    {
       "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/adloppaz.kgu.jpg",
       "PackagePath": "staticwebassets/images/cards/adloppaz.kgu.jpg"
     },
@@ -271,10 +275,6 @@
     {
       "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.slim.min.map",
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.map"
-    },
-    {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg",
-      "PackagePath": "staticwebassets/uploads/6c43b6be-b9e3-4720-9755-564859c3dc21_fc69e0e492c6b9e6ed327e011834c0eb.jpeg"
     },
     {
       "Id": "obj/Debug/net9.0/staticwebassets/msbuild.CardTradeHub.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

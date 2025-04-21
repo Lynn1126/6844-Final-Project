@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="CardTradeHub - Your trusted platform for card trading" />
     <title>@ViewData["Title"] - CardTradeHub</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -10,26 +11,46 @@
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="/">
-                    <img src="~/images/logo.png" alt="CardTradeHub Logo" height="40" class="d-inline-block align-text-top">
+                <a class="navbar-brand d-flex align-items-center" href="/">
+                    <img src="~/images/logo.png" alt="CardTradeHub Logo" height="40" class="me-2">
+                    <span class="d-none d-sm-inline">CardTradeHub</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"> #  <!-- 响应式汉堡菜单按钮，在小屏幕显示 -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto"> # # <!-- me-auto使菜单项靠左对齐 -->
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house-door"></i>
+                                <span class="ms-1">Home</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Cards" asp-action="Index">Cards</a>
+                            <a class="nav-link" asp-controller="Cards" asp-action="Index">
+                                <i class="bi bi-grid"></i>
+                                <span class="ms-1">Cards</span>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Trade" asp-action="Index">Trade</a>
+                            <a class="nav-link" asp-route="trade">
+                                <i class="bi bi-arrow-left-right"></i>
+                                <span class="ms-1">My Trades</span>
+                            </a>
                         </li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Admin" asp-action="Index">
+                                    <i class="bi bi-gear"></i>
+                                    <span class="ms-1">Admin</span>
+                                </a>
+                            </li>
+                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -37,19 +58,44 @@
         </nav>
     </header>
 
-    <main role="main" class="container py-4">
-        @RenderBody()
+    <main role="main">
+        <div class="container py-4">
+            @if (IsSectionDefined("Header"))
+            {
+                @RenderSection("Header", required: false)
+            }
+            else
+            {
+                <div class="row mb-4">
+                    <div class="col">
+                        <h1 class="display-4">@ViewData["Title"]</h1>
+                    </div>
+                </div>
+            }
+            @RenderBody()
+        </div>
     </main>
 
-    <footer class="footer bg-dark text-light mt-auto py-3"> # <!-- 深色背景页脚，自动边距，内边距3个单位 -->
+    <footer class="footer mt-auto">
         <div class="container">
-            <div class="row"> 
-                <div class="col-md-6">  # <!-- 在中等屏幕上占6列 -->
-                    <h5>CardTradeHub</h5>
-                    <p>Your trusted platform for card trading.</p>
+            <div class="row py-3">
+                <div class="col-12 col-md-6 mb-3 mb-md-0">
+                    <h5 class="text-light">CardTradeHub</h5>
+                    <p class="text-light mb-0">Your trusted platform for card trading.</p>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <p>&copy; 2024 CardTradeHub. All rights reserved.</p>
+                <div class="col-12 col-md-6 text-center text-md-end">
+                    <div class="mb-2">
+                        <a href="#" class="text-light text-decoration-none me-3">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="text-light text-decoration-none me-3">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="text-light text-decoration-none">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                    </div>
+                    <p class="text-light mb-0">&copy; @DateTime.Now.Year CardTradeHub. All rights reserved.</p>
                 </div>
             </div>
         </div>
