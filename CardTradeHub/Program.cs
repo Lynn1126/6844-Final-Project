@@ -35,6 +35,10 @@ builder.Services.AddAuthentication(options =>
     options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
     options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
     options.CallbackPath = "/signin-google";
+    options.SaveTokens = true;
+    options.AuthorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth";
+    options.Scope.Add("profile");
+    options.Scope.Add("email");
 });
 
 // Add authorization

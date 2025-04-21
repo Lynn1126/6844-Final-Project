@@ -207,7 +207,24 @@ namespace CardTradeHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
+            // Sign out from our application
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Clear session
+            HttpContext.Session.Clear();
+
+            // Clear authentication cookies
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                if (cookie.StartsWith(".AspNetCore.") || 
+                    cookie.StartsWith("Microsoft.Authentication") ||
+                    cookie.Equals("CardTradeHub.Auth"))
+                {
+                    Response.Cookies.Delete(cookie);
+                }
+            }
+
+            // Redirect to home page
             return RedirectToAction("Index", "Home");
         }
 
@@ -376,7 +393,7 @@ namespace CardTradeHub.Controllers
                     Email = email,
                     Username = username,
                     PasswordHash = "GoogleAuth", // 标记为 Google 认证用户
-                    Role = "Customer",
+                    Role = "User",
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
                     RegisterDate = DateTime.UtcNow,
@@ -397,7 +414,8 @@ namespace CardTradeHub.Controllers
                 new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
                 new Claim(ClaimTypes.Name, user.Username),
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Role),
+                new Claim("FullName", user.Username)
             }, CookieAuthenticationDefaults.AuthenticationScheme);
 
             var principal = new ClaimsPrincipal(identity);
