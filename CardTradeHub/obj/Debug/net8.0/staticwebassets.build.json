@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JPcpBOb5/IfTCUaPOnTUGYoUY2sqFrAyHJXbAk87Mbc=",
+  "Hash": "QbhcJSsQ1GWovkz+NqiGvAn9uLoHsvGY1Y/oC2/TKVs=",
   "Source": "CardTradeHub",
   "BasePath": "_content/CardTradeHub",
   "Mode": "Default",
@@ -99,6 +99,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg",
+      "SourceId": "CardTradeHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\",
+      "BasePath": "_content/CardTradeHub",
+      "RelativePath": "images/cards/64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "piub0wsm3z",
+      "Integrity": "v9AUfFAl6NC1OO5zGTwveLlsZt86j1rU0EiJ7w2lRZA=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\cards\\64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg"
     },
     {
       "Identity": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\adloppaz.kgu.jpg",
@@ -2233,6 +2254,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
+        }
+      ]
+    },
+    {
+      "Route": "images/cards/64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg",
+      "AssetFile": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1120822"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v9AUfFAl6NC1OO5zGTwveLlsZt86j1rU0EiJ7w2lRZA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 22 Apr 2025 04:47:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-v9AUfFAl6NC1OO5zGTwveLlsZt86j1rU0EiJ7w2lRZA="
+        }
+      ]
+    },
+    {
+      "Route": "images/cards/64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.piub0wsm3z.jpg",
+      "AssetFile": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1120822"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"v9AUfFAl6NC1OO5zGTwveLlsZt86j1rU0EiJ7w2lRZA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 22 Apr 2025 04:47:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "piub0wsm3z"
+        },
+        {
+          "Name": "label",
+          "Value": "images/cards/64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-v9AUfFAl6NC1OO5zGTwveLlsZt86j1rU0EiJ7w2lRZA="
         }
       ]
     },

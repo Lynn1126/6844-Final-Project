@@ -11,10 +11,13 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Username</th>
                     <th>Email</th>
                     <th>Role</th>
                     <th>Status</th>
+                    <th>Register Date</th>
+                    <th>Last Login</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -32,14 +35,14 @@
                             </span>
                         </td>
                         <td>@user.RegisterDate.ToString("yyyy-MM-dd")</td>
-                        <td>@(user.LastLoginDate != null ? user.LastLoginDate.ToString("yyyy-MM-dd HH:mm") : "Never logged in")</td>
+                        <td>@(user.LastLoginDate == default(DateTime) ? "Never" : user.LastLoginDate.ToString("yyyy-MM-dd HH:mm"))</td>
                         <td>
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-primary" onclick="editUser('@user.Id')">Edit</button>
-                                <button class="btn btn-sm @(user.IsActive ? "btn-danger" : "btn-success")" 
-                                        onclick="toggleUserStatus('@user.Id', @user.IsActive.ToString().ToLower())">
+                            <div class="d-inline-flex">
+                                <a href="#" class="btn btn-outline-primary btn-sm px-3" onclick="editUser('@user.Id'); return false;">Edit</a>
+                                <a href="#" class="btn btn-outline-@(user.IsActive ? "danger" : "success") btn-sm px-3 ms-2" 
+                                   onclick="toggleUserStatus('@user.Id', @user.IsActive.ToString().ToLower()); return false;">
                                     @(user.IsActive ? "Disable" : "Enable")
-                                </button>
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -48,4 +51,20 @@
         </table>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function editUser(userId) {
+            window.location.href = `/Admin/EditUser/${userId}`;
+        }
+
+        function toggleUserStatus(userId, currentStatus) {
+            if (confirm('Are you sure you want to ' + (currentStatus ? 'disable' : 'enable') + ' this user?')) {
+                $.post(`/Admin/ToggleUserStatus/${userId}`, function() {
+                    location.reload();
+                });
+            }
+        }
+    </script>
+}
 

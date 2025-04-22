@@ -43,6 +43,8 @@ namespace CardTradeHub.Models.ViewModels
 
     public class CreateCardViewModel
     {
+        public int CardID { get; set; }
+
         [Required(ErrorMessage = "Title is required")]
         [StringLength(100, ErrorMessage = "Title cannot be longer than 100 characters")]
         public string Title { get; set; }
@@ -58,9 +60,12 @@ namespace CardTradeHub.Models.ViewModels
         public string Condition { get; set; }
 
         [Required(ErrorMessage = "Price is required")]
-        [Range(0.01, 1000000, ErrorMessage = "Price must be between $0.01 and $1,000,000")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
         public decimal Price { get; set; }
 
         public string? ImageUrl { get; set; }
+
+        [Required(ErrorMessage = "Status is required")]
+        public string Status { get; set; } = "Available";
     }
 } 

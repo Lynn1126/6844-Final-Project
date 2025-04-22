@@ -1,0 +1,85 @@
+@model CardTradeHub.Models.Transaction
+
+@{
+    ViewData["Title"] = "Trade Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Trade Details #@Model.TransactionID</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <h5>Card Information</h5>
+                            <p><strong>Title:</strong> @Model.Card?.Title</p>
+                            <p><strong>Price:</strong> $@Model.Card?.Price.ToString("F2")</p>
+                            <p><strong>Category:</strong> @Model.Card?.Category</p>
+                            <p><strong>Condition:</strong> @Model.Card?.Condition</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Transaction Information</h5>
+                            <p><strong>Buyer:</strong> @Model.Buyer?.UserName</p>
+                            <p><strong>Seller:</strong> @Model.Seller?.UserName</p>
+                            <p>
+                                <strong>Status:</strong>
+                                <span class="badge @(Model.Status switch {
+                                    "Completed" => "bg-success",
+                                    "Cancelled" => "bg-danger",
+                                    _ => "bg-warning"
+                                })">@Model.Status</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    @if (Model.HasDispute)
+                    {
+                        <div class="alert alert-danger">
+                            <h5>Dispute Information</h5>
+                            <p><strong>Status:</strong> Pending</p>
+                        </div>
+                    }
+
+                    <div class="mt-4">
+                        <h5>Update Status</h5>
+                        <div class="btn-group">
+                            <button class="btn btn-outline-primary" onclick="updateStatus(@Model.TransactionID, 'Pending')">
+                                Mark as Pending
+                            </button>
+                            <button class="btn btn-outline-success" onclick="updateStatus(@Model.TransactionID, 'Completed')">
+                                Mark as Completed
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="updateStatus(@Model.TransactionID, 'Cancelled')">
+                                Mark as Cancelled
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a asp-action="ManageTrades" class="btn btn-secondary">Back to Trade List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function updateStatus(id, status) {
+            if (confirm(`Are you sure you want to mark this trade as ${status}?`)) {
+                $.post(`/Admin/UpdateTradeStatus/${id}`, { status: status })
+                    .done(function () {
+                        location.reload();
+                    })
+                    .fail(function (xhr) {
+                        alert('Error updating status: ' + xhr.responseText);
+                    });
+            }
+        }
+    </script>
+} 

@@ -5,18 +5,17 @@
 }
 
 <div class="container mt-4">
-    <h1 class="mb-4">Manage Trades</h1>
+    <h2 class="mb-4">@ViewData["Title"]</h2>
 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Date</th>
-                    <th>Card</th>
+                    <th>Card Title</th>
+                    <th>Price</th>
                     <th>Buyer</th>
                     <th>Seller</th>
-                    <th>Amount</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
@@ -27,22 +26,22 @@
                     <tr>
                         <td>@trade.TransactionID</td>
                         <td>@trade.Card?.Title</td>
+                        <td>@(trade.Card?.Price.ToString("C"))</td>
                         <td>@trade.Buyer?.UserName</td>
                         <td>@trade.Seller?.UserName</td>
-                        <td>@trade.Amount.ToString("C")</td>
                         <td>
                             <span class="badge bg-@(trade.Status switch {
-                                "Pending" => "warning",
                                 "Completed" => "success",
                                 "Cancelled" => "danger",
-                                _ => "secondary"
-                            })">@trade.Status</span>
+                                _ => "warning"
+                            })">
+                                @trade.Status
+                            </span>
                         </td>
-                        <td>@trade.Date.ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-info" onclick="viewDetails(@trade.TransactionID)">Details</button>
-                                <button class="btn btn-sm btn-warning" onclick="updateStatus(@trade.TransactionID)">Update Status</button>
+                            <div class="d-inline-flex">
+                                <a href="/Admin/TradeDetails/@trade.TransactionID" 
+                                   class="btn btn-outline-primary btn-sm px-3">Details</a>
                             </div>
                         </td>
                     </tr>
@@ -51,3 +50,13 @@
         </table>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable({
+                "order": [[0, "desc"]]
+            });
+        });
+    </script>
+}

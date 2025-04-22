@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-4">
-    <h1 class="mb-4">Manage Cards</h1>
+    <h2 class="mb-4">@ViewData["Title"]</h2>
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -17,6 +17,7 @@
                     <th>Price</th>
                     <th>Owner</th>
                     <th>Status</th>
+                    <th>Listed Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -28,13 +29,20 @@
                         <td>@card.Title</td>
                         <td>@card.Category</td>
                         <td>@card.Price.ToString("C")</td>
-                        <td>@card.UserID</td>
-                        <td>@card.Status</td>
+                        <td>@card.User?.UserName</td>
+                        <td>
+                            <span class="badge bg-@(card.Status == "Available" ? "success" : "danger")">
+                                @card.Status
+                            </span>
+                        </td>
                         <td>@card.ListedDate.ToString("yyyy-MM-dd")</td>
                         <td>
-                            <div class="btn-group">
-                                <button class="btn btn-sm btn-primary" onclick="editCard(@card.CardID)">Edit</button>
-                                <button class="btn btn-sm btn-danger" onclick="deleteCard(@card.CardID)">Delete</button>
+                            <div class="d-inline-flex">
+                                <a href="#" class="btn btn-outline-primary btn-sm px-3" onclick="editCard(@card.CardID); return false;">Edit</a>
+                                <a href="#" class="btn btn-outline-@(card.Status == "Available" ? "danger" : "success") btn-sm px-3 ms-2" 
+                                   onclick="toggleCardStatus(@card.CardID, '@card.Status'); return false;">
+                                    @(card.Status == "Available" ? "Disable" : "Enable")
+                                </a>
                             </div>
                         </td>
                     </tr>
@@ -47,14 +55,16 @@
 @section Scripts {
     <script>
         function editCard(id) {
-            // TODO: 实现编辑功能
-            alert('Edit card ID: ' + id);
+            window.location.href = `/Admin/EditCard/${id}`;
         }
 
-        function deleteCard(id) {
-            if (confirm('Are you sure you want to delete this card?')) {
-                // TODO: 实现删除功能
-                alert('Delete card ID: ' + id);
+        function toggleCardStatus(id, currentStatus) {
+            if (confirm('Are you sure you want to ' + (currentStatus === 'Available' ? 'disable' : 'enable') + ' this card?')) {
+                $.post(`/Admin/ToggleCardStatus/${id}`, function(response) {
+                    if (response.success) {
+                        location.reload();
+                    }
+                });
             }
         }
     </script>
