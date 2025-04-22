@@ -52,12 +52,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 1,
-                    Title = "Charizard First Edition",
-                    Description = "First edition Charizard in mint condition",
+                    Title = "Pikachu Pokemon Center Kyoto",
+                    Description = "2019 Pikachu Pokemon Center Kyoto",
                     Category = "Pokemon",
                     Condition = "Mint",
-                    Price = 1000.00M,
-                    ImageUrl = "/images/cards/charizard.jpg",
+                    Price = 200.00M,
+                    ImageUrl = "/images/cards/pikachu.jpg",
                     ListedDate = _seedDate,
                     Status = "Available",
                     UserID = 1
@@ -65,12 +65,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 2,
-                    Title = "Black Lotus MTG",
-                    Description = "Rare Black Lotus card from Magic: The Gathering",
-                    Category = "Magic: The Gathering",
+                    Title = "Kobe Bryant 2012-13 Limited Auto",
+                    Description = "Kobe Bryant 2012-13 Limited Auto",
+                    Category = "Basketball",
                     Condition = "Good",
-                    Price = 5000.00M,
-                    ImageUrl = "/images/cards/black-lotus.jpg",
+                    Price = 3000.00M,
+                    ImageUrl = "/images/cards/kobe1.jpg",
                     ListedDate = _seedDate.AddDays(1),
                     Status = "Available",
                     UserID = 1
@@ -78,12 +78,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 3,
-                    Title = "Blue-Eyes White Dragon",
-                    Description = "Classic Yu-Gi-Oh! card in excellent condition",
-                    Category = "Yu-Gi-Oh",
+                    Title = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
+                    Description = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
+                    Category = "Football",
                     Condition = "Excellent",
-                    Price = 500.00M,
-                    ImageUrl = "/images/cards/blue-eyes.jpg",
+                    Price = 5000.00M,
+                    ImageUrl = "/images/cards/messi.jpg",
                     ListedDate = _seedDate.AddDays(2),
                     Status = "Available",
                     UserID = 1
@@ -91,12 +91,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 4,
-                    Title = "Pikachu Illustrator",
-                    Description = "Extremely rare Pikachu Illustrator promo card",
-                    Category = "Pokemon",
+                    Title = "Yao Ming 2016-17 Panini Flawless Autograph",
+                    Description = "Yao Ming 2016-17 Panini Flawless Autograph",
+                    Category = "Basketball",
                     Condition = "Near Mint",
-                    Price = 10000.00M,
-                    ImageUrl = "/images/cards/pikachu-illustrator.jpg",
+                    Price = 1000.00M,
+                    ImageUrl = "/images/cards/yao.jpg",
                     ListedDate = _seedDate.AddDays(3),
                     Status = "Available",
                     UserID = 1
@@ -104,12 +104,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 5,
-                    Title = "Time Walk",
-                    Description = "Vintage Time Walk card from MTG Alpha set",
+                    Title = "Black Lotus R",
+                    Description = "1993 Unlimited Black Lotus R",
                     Category = "Magic: The Gathering",
                     Condition = "Good",
                     Price = 3000.00M,
-                    ImageUrl = "/images/cards/time-walk.jpg",
+                    ImageUrl = "/images/cards/blacklotus.jpg",
                     ListedDate = _seedDate.AddDays(4),
                     Status = "Available",
                     UserID = 1
@@ -118,12 +118,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 6,
-                    Title = "Michael Jordan Rookie Card",
-                    Description = "1986 Fleer Michael Jordan Rookie Card",
+                    Title = "National Treasures Kevin Durant Auto USA",
+                    Description = "National Treasures Kevin Durant Auto USA",
                     Category = "Basketball",
                     Condition = "Near Mint",
-                    Price = 7500.00M,
-                    ImageUrl = "/images/cards/jordan-rookie.jpg",
+                    Price = 1500.00M,
+                    ImageUrl = "/images/cards/durant.jpg",
                     ListedDate = _seedDate.AddDays(5),
                     Status = "Available",
                     UserID = 1
@@ -131,12 +131,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 7,
-                    Title = "Mickey Mantle 1952 Topps",
-                    Description = "1952 Topps Mickey Mantle #311",
+                    Title = "Shohei Ohtani Topps Chrome",
+                    Description = "2019 Topps Chrome Shohei Ohtani",
                     Category = "Baseball",
                     Condition = "Good",
-                    Price = 15000.00M,
-                    ImageUrl = "/images/cards/mantle-1952.jpg",
+                    Price = 50.00M,
+                    ImageUrl = "/images/cards/shohei.jpg",
                     ListedDate = _seedDate.AddDays(6),
                     Status = "Available",
                     UserID = 1
@@ -144,12 +144,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 8,
-                    Title = "Tom Brady Rookie Card",
-                    Description = "2000 Playoff Contenders Tom Brady Rookie Card",
+                    Title = "David Beckham Autograph Card",
+                    Description = "2022-23 Panini Eminence David Beckham Autograph",
                     Category = "Football",
                     Condition = "Excellent",
-                    Price = 8000.00M,
-                    ImageUrl = "/images/cards/brady-rookie.jpg",
+                    Price = 1000.00M,
+                    ImageUrl = "/images/cards/beckham.jpg",
                     ListedDate = _seedDate.AddDays(7),
                     Status = "Available",
                     UserID = 1
@@ -157,12 +157,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 9,
-                    Title = "Exodia the Forbidden One",
-                    Description = "Complete set of all 5 Exodia pieces",
+                    Title = "Red Eyes Black Dragon",
+                    Description = "Red Eyes Black Dragon PSA 10",
                     Category = "Yu-Gi-Oh",
                     Condition = "Near Mint",
-                    Price = 800.00M,
-                    ImageUrl = "/images/cards/exodia.jpg",
+                    Price = 8000.00M,
+                    ImageUrl = "/images/cards/bluedragon.jpg",
                     ListedDate = _seedDate.AddDays(8),
                     Status = "Available",
                     UserID = 1
@@ -170,12 +170,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 10,
-                    Title = "LeBron James Rookie Card",
-                    Description = "2003-04 Upper Deck LeBron James Rookie Card",
+                    Title = "Kobe Bryant Gold Standard Superscribe",
+                    Description = "Kobe Bryant Gold Standard Superscribe Autograph",
                     Category = "Basketball",
                     Condition = "Mint",
-                    Price = 6000.00M,
-                    ImageUrl = "/images/cards/lebron-rookie.jpg",
+                    Price = 1500.00M,
+                    ImageUrl = "/images/cards/kobe2.jpg",
                     ListedDate = _seedDate.AddDays(9),
                     Status = "Available",
                     UserID = 1
@@ -196,12 +196,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 12,
-                    Title = "Babe Ruth 1933 Goudey",
-                    Description = "1933 Goudey Babe Ruth Baseball Card",
+                    Title = "Juan Soto Autograph Card",
+                    Description = "2021 Topps Definitive Juan Soto Autograph Card",
                     Category = "Baseball",
                     Condition = "Good",
-                    Price = 12000.00M,
-                    ImageUrl = "/images/cards/ruth-1933.jpg",
+                    Price = 2000.00M,
+                    ImageUrl = "/images/cards/soto.jpg",
                     ListedDate = _seedDate.AddDays(11),
                     Status = "Available",
                     UserID = 1
@@ -222,12 +222,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 14,
-                    Title = "Kobe Bryant Rookie Card",
-                    Description = "1996-97 Topps Chrome Kobe Bryant Rookie Card",
+                    Title = "Kobe Bryant Hoops Slam",
+                    Description = "2020-21 Kobe Bryant Hoops Slam",
                     Category = "Basketball",
                     Condition = "Near Mint",
-                    Price = 5500.00M,
-                    ImageUrl = "/images/cards/kobe-rookie.jpg",
+                    Price = 500.00M,
+                    ImageUrl = "/images/cards/kobe3.jpg",
                     ListedDate = _seedDate.AddDays(13),
                     Status = "Available",
                     UserID = 1
@@ -261,12 +261,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 17,
-                    Title = "Ancient Mew Promo",
-                    Description = "Pokemon Movie Ancient Mew Promo Card",
+                    Title = "Lillie Full Art PSA 10",
+                    Description = "Pokemon Lillie Full Art PSA 10",
                     Category = "Pokemon",
-                    Condition = "Near Mint",
+                    Condition = "Mint",
                     Price = 200.00M,
-                    ImageUrl = "/images/cards/ancient-mew.jpg",
+                    ImageUrl = "/images/cards/lillie.jpg",
                     ListedDate = _seedDate.AddDays(16),
                     Status = "Available",
                     UserID = 1
@@ -274,12 +274,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 18,
-                    Title = "Jerry Rice Rookie Card",
-                    Description = "1986 Topps Jerry Rice Rookie Card",
-                    Category = "Football",
+                    Title = "Kareem Abdul-Jabbar Unparalleled Autograph",
+                    Description = "Kareem Abdul-Jabbar Unparalleled Autograph",
+                    Category = "Basketball",
                     Condition = "Excellent",
                     Price = 3500.00M,
-                    ImageUrl = "/images/cards/rice-rookie.jpg",
+                    ImageUrl = "/images/cards/jabbar.jpg",
                     ListedDate = _seedDate.AddDays(17),
                     Status = "Available",
                     UserID = 1
@@ -287,12 +287,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 19,
-                    Title = "Ancestral Recall",
-                    Description = "Alpha Edition Ancestral Recall",
-                    Category = "Magic: The Gathering",
+                    Title = "Juan Soto Rookie Card",
+                    Description = "Topps Chrome Juan Soto Rookie Card PSA 10",
+                    Category = "Baseball",
                     Condition = "Good",
-                    Price = 4500.00M,
-                    ImageUrl = "/images/cards/ancestral-recall.jpg",
+                    Price = 400.00M,
+                    ImageUrl = "/images/cards/soto2.jpg",
                     ListedDate = _seedDate.AddDays(18),
                     Status = "Available",
                     UserID = 1
@@ -300,12 +300,12 @@ namespace CardTradeHub.Data
                 new Card
                 {
                     CardID = 20,
-                    Title = "Red Eyes Black Dragon",
-                    Description = "First Edition Red Eyes Black Dragon",
-                    Category = "Yu-Gi-Oh",
+                    Title = "Stephen Curry 2018-19 Immaculate Moments",
+                    Description = "Stephen Curry 2018-19 Immaculate Moments",
+                    Category = "Basketball",
                     Condition = "Near Mint",
-                    Price = 600.00M,
-                    ImageUrl = "/images/cards/red-eyes.jpg",
+                    Price = 2600.00M,
+                    ImageUrl = "/images/cards/curry.jpg",
                     ListedDate = _seedDate.AddDays(19),
                     Status = "Available",
                     UserID = 1

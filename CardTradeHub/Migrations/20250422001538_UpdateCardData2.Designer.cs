@@ -3,6 +3,7 @@ using System;
 using CardTradeHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardTradeHub.Migrations
 {
     [DbContext(typeof(CardTradeHubContext))]
-    partial class CardTradeHubContextModelSnapshot : ModelSnapshot
+    [Migration("20250422001538_UpdateCardData2")]
+    partial class UpdateCardData2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");

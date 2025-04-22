@@ -3,6 +3,7 @@ using System;
 using CardTradeHub.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardTradeHub.Migrations
 {
     [DbContext(typeof(CardTradeHubContext))]
-    partial class CardTradeHubContextModelSnapshot : ModelSnapshot
+    [Migration("20250422001352_UpdateCardData")]
+    partial class UpdateCardData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.3");
@@ -68,51 +71,51 @@ namespace CardTradeHub.Migrations
                             CardID = 1,
                             Category = "Pokemon",
                             Condition = "Mint",
-                            Description = "2019 Pikachu Pokemon Center Kyoto",
-                            ImageUrl = "/images/cards/pikachu.jpg",
+                            Description = "First edition Charizard in mint condition",
+                            ImageUrl = "/images/cards/charizard.jpg",
                             ListedDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 200.00m,
+                            Price = 1000.00m,
                             Status = "Available",
-                            Title = "Pikachu Pokemon Center Kyoto",
+                            Title = "Charizard First Edition",
                             UserID = 1
                         },
                         new
                         {
                             CardID = 2,
-                            Category = "Basketball",
+                            Category = "Magic: The Gathering",
                             Condition = "Good",
-                            Description = "Kobe Bryant 2012-13 Limited Auto",
-                            ImageUrl = "/images/cards/kobe1.jpg",
+                            Description = "Rare Black Lotus card from Magic: The Gathering",
+                            ImageUrl = "/images/cards/black-lotus.jpg",
                             ListedDate = new DateTime(2024, 1, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 3000.00m,
+                            Price = 5000.00m,
                             Status = "Available",
-                            Title = "Kobe Bryant 2012-13 Limited Auto",
+                            Title = "Black Lotus MTG",
                             UserID = 1
                         },
                         new
                         {
                             CardID = 3,
-                            Category = "Football",
+                            Category = "Yu-Gi-Oh",
                             Condition = "Excellent",
-                            Description = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
-                            ImageUrl = "/images/cards/messi.jpg",
+                            Description = "Classic Yu-Gi-Oh! card in excellent condition",
+                            ImageUrl = "/images/cards/blue-eyes.jpg",
                             ListedDate = new DateTime(2024, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 5000.00m,
+                            Price = 500.00m,
                             Status = "Available",
-                            Title = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
+                            Title = "Blue-Eyes White Dragon",
                             UserID = 1
                         },
                         new
                         {
                             CardID = 4,
-                            Category = "Basketball",
+                            Category = "Pokemon",
                             Condition = "Near Mint",
-                            Description = "Yao Ming 2016-17 Panini Flawless Autograph",
-                            ImageUrl = "/images/cards/yao.jpg",
+                            Description = "Extremely rare Pikachu Illustrator promo card",
+                            ImageUrl = "/images/cards/pikachu-illustrator.jpg",
                             ListedDate = new DateTime(2024, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 1000.00m,
+                            Price = 10000.00m,
                             Status = "Available",
-                            Title = "Yao Ming 2016-17 Panini Flawless Autograph",
+                            Title = "Pikachu Illustrator",
                             UserID = 1
                         },
                         new
@@ -120,12 +123,12 @@ namespace CardTradeHub.Migrations
                             CardID = 5,
                             Category = "Magic: The Gathering",
                             Condition = "Good",
-                            Description = "1993 Unlimited Black Lotus R",
-                            ImageUrl = "/images/cards/blacklotus.jpg",
+                            Description = "Vintage Time Walk card from MTG Alpha set",
+                            ImageUrl = "/images/cards/time-walk.jpg",
                             ListedDate = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Price = 3000.00m,
                             Status = "Available",
-                            Title = "Black Lotus R",
+                            Title = "Time Walk",
                             UserID = 1
                         },
                         new
@@ -133,12 +136,12 @@ namespace CardTradeHub.Migrations
                             CardID = 6,
                             Category = "Basketball",
                             Condition = "Near Mint",
-                            Description = "National Treasures Kevin Durant Auto USA",
-                            ImageUrl = "/images/cards/durant.jpg",
+                            Description = "1986 Fleer Michael Jordan Rookie Card",
+                            ImageUrl = "/images/cards/jordan-rookie.jpg",
                             ListedDate = new DateTime(2024, 1, 6, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 1500.00m,
+                            Price = 7500.00m,
                             Status = "Available",
-                            Title = "National Treasures Kevin Durant Auto USA",
+                            Title = "Michael Jordan Rookie Card",
                             UserID = 1
                         },
                         new
@@ -146,12 +149,12 @@ namespace CardTradeHub.Migrations
                             CardID = 7,
                             Category = "Baseball",
                             Condition = "Good",
-                            Description = "2019 Topps Chrome Shohei Ohtani",
-                            ImageUrl = "/images/cards/shohei.jpg",
+                            Description = "1952 Topps Mickey Mantle #311",
+                            ImageUrl = "/images/cards/mantle-1952.jpg",
                             ListedDate = new DateTime(2024, 1, 7, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 50.00m,
+                            Price = 15000.00m,
                             Status = "Available",
-                            Title = "Shohei Ohtani Topps Chrome",
+                            Title = "Mickey Mantle 1952 Topps",
                             UserID = 1
                         },
                         new
@@ -159,12 +162,12 @@ namespace CardTradeHub.Migrations
                             CardID = 8,
                             Category = "Football",
                             Condition = "Excellent",
-                            Description = "2022-23 Panini Eminence David Beckham Autograph",
-                            ImageUrl = "/images/cards/beckham.jpg",
+                            Description = "2000 Playoff Contenders Tom Brady Rookie Card",
+                            ImageUrl = "/images/cards/brady-rookie.jpg",
                             ListedDate = new DateTime(2024, 1, 8, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 1000.00m,
+                            Price = 8000.00m,
                             Status = "Available",
-                            Title = "David Beckham Autograph Card",
+                            Title = "Tom Brady Rookie Card",
                             UserID = 1
                         },
                         new
@@ -172,12 +175,12 @@ namespace CardTradeHub.Migrations
                             CardID = 9,
                             Category = "Yu-Gi-Oh",
                             Condition = "Near Mint",
-                            Description = "Red Eyes Black Dragon PSA 10",
-                            ImageUrl = "/images/cards/bluedragon.jpg",
+                            Description = "Complete set of all 5 Exodia pieces",
+                            ImageUrl = "/images/cards/exodia.jpg",
                             ListedDate = new DateTime(2024, 1, 9, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 8000.00m,
+                            Price = 800.00m,
                             Status = "Available",
-                            Title = "Red Eyes Black Dragon",
+                            Title = "Exodia the Forbidden One",
                             UserID = 1
                         },
                         new
@@ -185,12 +188,12 @@ namespace CardTradeHub.Migrations
                             CardID = 10,
                             Category = "Basketball",
                             Condition = "Mint",
-                            Description = "Kobe Bryant Gold Standard Superscribe Autograph",
-                            ImageUrl = "/images/cards/kobe2.jpg",
+                            Description = "2003-04 Upper Deck LeBron James Rookie Card",
+                            ImageUrl = "/images/cards/lebron-rookie.jpg",
                             ListedDate = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 1500.00m,
+                            Price = 6000.00m,
                             Status = "Available",
-                            Title = "Kobe Bryant Gold Standard Superscribe",
+                            Title = "LeBron James Rookie Card",
                             UserID = 1
                         },
                         new
@@ -211,12 +214,12 @@ namespace CardTradeHub.Migrations
                             CardID = 12,
                             Category = "Baseball",
                             Condition = "Good",
-                            Description = "2021 Topps Definitive Juan Soto Autograph Card",
-                            ImageUrl = "/images/cards/soto.jpg",
+                            Description = "1933 Goudey Babe Ruth Baseball Card",
+                            ImageUrl = "/images/cards/ruth-1933.jpg",
                             ListedDate = new DateTime(2024, 1, 12, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 2000.00m,
+                            Price = 12000.00m,
                             Status = "Available",
-                            Title = "Juan Soto Autograph Card",
+                            Title = "Babe Ruth 1933 Goudey",
                             UserID = 1
                         },
                         new
@@ -237,12 +240,12 @@ namespace CardTradeHub.Migrations
                             CardID = 14,
                             Category = "Basketball",
                             Condition = "Near Mint",
-                            Description = "2020-21 Kobe Bryant Hoops Slam",
-                            ImageUrl = "/images/cards/kobe3.jpg",
+                            Description = "1996-97 Topps Chrome Kobe Bryant Rookie Card",
+                            ImageUrl = "/images/cards/kobe-rookie.jpg",
                             ListedDate = new DateTime(2024, 1, 14, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 500.00m,
+                            Price = 5500.00m,
                             Status = "Available",
-                            Title = "Kobe Bryant Hoops Slam",
+                            Title = "Kobe Bryant Rookie Card",
                             UserID = 1
                         },
                         new
@@ -275,52 +278,52 @@ namespace CardTradeHub.Migrations
                         {
                             CardID = 17,
                             Category = "Pokemon",
-                            Condition = "Mint",
-                            Description = "Pokemon Lillie Full Art PSA 10",
-                            ImageUrl = "/images/cards/lillie.jpg",
+                            Condition = "Near Mint",
+                            Description = "Pokemon Movie Ancient Mew Promo Card",
+                            ImageUrl = "/images/cards/ancient-mew.jpg",
                             ListedDate = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             Price = 200.00m,
                             Status = "Available",
-                            Title = "Lillie Full Art PSA 10",
+                            Title = "Ancient Mew Promo",
                             UserID = 1
                         },
                         new
                         {
                             CardID = 18,
-                            Category = "Basketball",
+                            Category = "Football",
                             Condition = "Excellent",
-                            Description = "Kareem Abdul-Jabbar Unparalleled Autograph",
-                            ImageUrl = "/images/cards/jabbar.jpg",
+                            Description = "1986 Topps Jerry Rice Rookie Card",
+                            ImageUrl = "/images/cards/rice-rookie.jpg",
                             ListedDate = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
                             Price = 3500.00m,
                             Status = "Available",
-                            Title = "Kareem Abdul-Jabbar Unparalleled Autograph",
+                            Title = "Jerry Rice Rookie Card",
                             UserID = 1
                         },
                         new
                         {
                             CardID = 19,
-                            Category = "Baseball",
+                            Category = "Magic: The Gathering",
                             Condition = "Good",
-                            Description = "Topps Chrome Juan Soto Rookie Card PSA 10",
-                            ImageUrl = "/images/cards/soto2.jpg",
+                            Description = "Alpha Edition Ancestral Recall",
+                            ImageUrl = "/images/cards/ancestral-recall.jpg",
                             ListedDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 400.00m,
+                            Price = 4500.00m,
                             Status = "Available",
-                            Title = "Juan Soto Rookie Card",
+                            Title = "Ancestral Recall",
                             UserID = 1
                         },
                         new
                         {
                             CardID = 20,
-                            Category = "Basketball",
+                            Category = "Yu-Gi-Oh",
                             Condition = "Near Mint",
-                            Description = "Stephen Curry 2018-19 Immaculate Moments",
-                            ImageUrl = "/images/cards/curry.jpg",
+                            Description = "First Edition Red Eyes Black Dragon",
+                            ImageUrl = "/images/cards/red-eyes.jpg",
                             ListedDate = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 2600.00m,
+                            Price = 600.00m,
                             Status = "Available",
-                            Title = "Stephen Curry 2018-19 Immaculate Moments",
+                            Title = "Red Eyes Black Dragon",
                             UserID = 1
                         });
                 });
