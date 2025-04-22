@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using CardTradeHub.Data;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace CardTradeHub.Controllers
 {
@@ -18,15 +19,18 @@ namespace CardTradeHub.Controllers
         private readonly CardTradeHubContext _context;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly ILogger<AccountController> _logger;
 
         public AccountController(
             CardTradeHubContext context,
             UserManager<User> userManager,
-            SignInManager<User> signInManager)
+            SignInManager<User> signInManager,
+            ILogger<AccountController> logger)
         {
             _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
+            _logger = logger;
         }
 
         // GET: /Account/Login
@@ -57,8 +61,14 @@ namespace CardTradeHub.Controllers
                 var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "User does not exist. Please check your email or register a new account.");
                     return View(model);
+                }
+
+                if (!user.IsActive)
+                {
+                    _logger.LogWarning($"Disabled account login attempt: {model.Email}");
+                    return View("AccountDisabled");
                 }
 
                 var result = await _signInManager.PasswordSignInAsync(
@@ -89,7 +99,7 @@ namespace CardTradeHub.Controllers
                     return View("Lockout");
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                ModelState.AddModelError(string.Empty, "Incorrect password. Please try again.");
                 return View(model);
             }
             catch (Exception ex)

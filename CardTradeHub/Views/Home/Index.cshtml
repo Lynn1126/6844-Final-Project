@@ -54,116 +54,80 @@
     <div class="row mt-5">
         <div class="col-12">
             <h2 class="text-center mb-4">Latest Cards</h2>
+            <p class="text-center text-muted">Showing our 9 most recently listed cards</p>
         </div>
     </div>
 
-    <style>
-        /* 卡片布局样式 */
-        .card {
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
-        }
-
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            padding: 1rem;
-            flex: 1 0 auto;
-        }
-
-        .card-price {
-            font-weight: 600;
-            color: var(--bs-gray-900);
-            margin: 0;
-            font-size: 1.1rem;
-            margin-top: auto;
-            padding-top: 1rem;
-        }
-
-        .card-title {
-            height: 48px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-description {
-            height: 60px;
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            font-size: 0.875rem;
-            margin-bottom: 1rem;
-            color: var(--bs-gray-700);
-        }
-
-        .card-category {
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-            color: var(--bs-secondary);
-        }
-
-        .card-footer {
-            font-size: 0.75rem;
-            color: var(--bs-gray-600);
-        }
-
-        .card-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .card-link:hover {
-            text-decoration: none;
-            color: inherit;
-        }
-    </style>
-
-    <div class="row">
-        @foreach (var card in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" class="card-link">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
-                            @if (!string.IsNullOrEmpty(card.ImageUrl))
-                            {
-                                <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title"
-                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-                            }
-                            else
-                            {
-                                <img src="~/images/card-placeholder.jpg" class="card-img-top" alt="Card placeholder"
-                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-                            }
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle me-2"></i>No cards available at the moment.
+        </div>
+    }
+    else
+    {
+        <div id="cardCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner">
+                @{
+                    var cards = Model.ToList();
+                    var totalGroups = 3; // 固定为3组，每组3张卡片
+                    
+                    for (int i = 0; i < totalGroups; i++)
+                    {
+                        var groupCards = cards.Skip(i * 3).Take(3).ToList();
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="row g-4">
+                                @foreach (var card in groupCards)
+                                {
+                                    <div class="col-md-4">
+                                        <div class="card h-100 shadow-hover">
+                                            <div class="card-img-container" style="height: 200px; overflow: hidden;">
+                                                <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title" 
+                                                     style="width: 100%; height: 100%; object-fit: cover;">
+                                            </div>
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title text-truncate" title="@card.Title">@card.Title</h5>
+                                                <p class="card-text text-muted mb-2">@card.Category</p>
+                                                <div class="mb-3">
+                                                    <span class="badge bg-primary me-2">@card.Condition</span>
+                                                    <span class="badge bg-success">@card.Price.ToString("C")</span>
+                                                </div>
+                                                <a asp-controller="Cards" asp-action="Details" asp-route-id="@card.CardID" 
+                                                   class="btn btn-outline-primary mt-auto stretched-link">
+                                                    View Details
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title" title="@card.Title">@card.Title</h5>
-                            <div class="card-category">@card.Category</div>
-                            <div class="card-description" title="@card.Description">@(card.Description ?? "No description available")</div>
-                            <div class="card-price">@card.Price.ToString("C")</div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                            <small>
-                                Listed by @(card.User?.UserName ?? "Unknown") on @(card.ListedDate.ToString("MMM dd, yyyy", System.Globalization.CultureInfo.InvariantCulture))
-                            </small>
-                        </div>
-                    </div>
-                </a>
+                    }
+                }
             </div>
-        }
-    </div>
+            
+            @if (totalGroups > 1)
+            {
+                <button class="carousel-control-prev" type="button" data-bs-target="#cardCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#cardCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                
+                <div class="carousel-indicators">
+                    @for (int i = 0; i < totalGroups; i++)
+                    {
+                        <button type="button" data-bs-target="#cardCarousel" data-bs-slide-to="@i" 
+                                class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "false")" 
+                                aria-label="Slide @(i + 1)"></button>
+                    }
+                </div>
+            }
+        </div>
+    }
 
     <div class="row mt-4 mb-5">
         <div class="col-12 text-center">
@@ -183,3 +147,192 @@
         </div>
     }
 </div>
+
+@section Styles {
+    <style>
+        /* 轮播容器样式 */
+        .carousel {
+            margin-bottom: 5rem;
+            padding: 1rem;
+            background: linear-gradient(to bottom, #f8f9fa, #ffffff);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 轮播控制按钮样式 */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .carousel:hover .carousel-control-prev,
+        .carousel:hover .carousel-control-next {
+            opacity: 1;
+        }
+
+        .carousel-control-prev {
+            left: -20px;
+        }
+
+        .carousel-control-next {
+            right: -20px;
+        }
+
+        /* 轮播指示器样式 */
+        .carousel-indicators {
+            bottom: -4rem;
+        }
+
+        .carousel-indicators button {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #dee2e6;
+            margin: 0 6px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators button.active {
+            width: 10px;
+            height: 10px;
+            background-color: #0d6efd;
+            transform: scale(1.2);
+        }
+
+        /* 卡片样式 */
+        .shadow-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: white;
+        }
+
+        .shadow-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card-img-container {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .card-img-container img {
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img-container img {
+            transform: scale(1.1);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #2c3e50;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.bg-primary {
+            background-color: #e3f2fd !important;
+            color: #1976d2;
+        }
+
+        .badge.bg-success {
+            background-color: #e8f5e9 !important;
+            color: #2e7d32;
+        }
+
+        /* 轮播项动画 */
+        .carousel-item {
+            padding: 0.75rem;
+            opacity: 0;
+            transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+        }
+
+        .carousel-item.active {
+            opacity: 1;
+        }
+
+        .row.g-4 {
+            margin: 0 -0.75rem;
+        }
+
+        .col-md-4 {
+            padding: 0.75rem;
+        }
+
+        /* 按钮样式 */
+        .btn-outline-primary {
+            border-width: 2px;
+            font-weight: 500;
+            padding: 0.5rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(13, 110, 253, 0.2);
+        }
+    </style>
+}
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 确保轮播元素存在
+            const carouselElement = document.getElementById('cardCarousel');
+            if (!carouselElement) return;
+
+            // 初始化轮播
+            const carousel = new bootstrap.Carousel(carouselElement, {
+                interval: 5000,  // 设置为5秒
+                ride: 'carousel', // 确保自动开始播放
+                wrap: true,      // 循环播放
+                touch: true,     // 支持触摸滑动
+                pause: false     // 不要在hover时暂停
+            });
+
+            // 强制开始自动播放
+            carousel.cycle();
+
+            // 添加鼠标悬停效果（可选）
+            carouselElement.addEventListener('mouseenter', function() {
+                carousel.pause();
+            });
+
+            carouselElement.addEventListener('mouseleave', function() {
+                carousel.cycle();
+            });
+
+            // 平滑滚动效果
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)';
+                });
+            });
+        });
+    </script>
+}

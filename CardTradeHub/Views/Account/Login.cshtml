@@ -13,8 +13,7 @@
                     @if (!ViewData.ModelState.IsValid)
                     {
                         <div class="alert alert-danger">
-                            <h5 class="alert-heading">Login Failed</h5>
-                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div asp-validation-summary="All" class="text-danger list-unstyled mb-0"></div>
                         </div>
                     }
 
@@ -74,11 +73,9 @@
             const toggleIcon = document.getElementById('toggleIcon');
 
             togglePassword.addEventListener('click', function() {
-                // 切换密码显示状态
                 const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
                 passwordInput.setAttribute('type', type);
                 
-                // 切换图标样式
                 if (type === 'password') {
                     toggleIcon.classList.remove('bi-eye-slash');
                     toggleIcon.classList.add('bi-eye');

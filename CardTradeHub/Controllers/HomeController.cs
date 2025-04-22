@@ -20,14 +20,14 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var latestCards = await _context.Cards
+        var availableCards = await _context.Cards
             .Where(c => c.Status == "Available")
             .Include(c => c.User)
             .OrderByDescending(c => c.ListedDate)
-            .Take(3)
+            .Take(9)
             .ToListAsync();
 
-        return View(latestCards);
+        return View(availableCards);
     }
 
     public IActionResult Privacy()
@@ -36,8 +36,13 @@ public class HomeController : Controller
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
+    public IActionResult Error(string? message = null)
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(new ErrorViewModel
+        {
+            RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+            ErrorTitle = "Error",
+            ErrorMessage = message ?? "An unexpected error occurred. Please try again later."
+        });
     }
 }
