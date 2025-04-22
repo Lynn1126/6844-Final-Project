@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0/mLgCePBeO2lau45oPH0+oZ++wM8Wm6n4k8sJTL6ig=",
+  "Hash": "JAvWaU+qLRhULsgFPVfmhuDfyDHFohC94c/NLXkgWNg=",
   "Source": "CardTradeHub",
   "BasePath": "_content/CardTradeHub",
   "Mode": "Default",
@@ -99,27 +99,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
-      "SourceId": "CardTradeHub",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\",
-      "BasePath": "_content/CardTradeHub",
-      "RelativePath": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0#[.{fingerprint}]?.jpeg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "cs3t0bvvqh",
-      "Integrity": "lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\cards\\20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg"
     },
     {
       "Identity": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\adloppaz.kgu.jpg",
@@ -2233,88 +2212,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM="
-        }
-      ]
-    },
-    {
-      "Route": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.cs3t0bvvqh.jpeg",
-      "AssetFile": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10288"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 23:28:11 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "cs3t0bvvqh"
-        },
-        {
-          "Name": "label",
-          "Value": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
-        }
-      ]
-    },
-    {
-      "Route": "images/cards/20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
-      "AssetFile": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\20250421022554_1_ba37a5aa3e144853beb8f6e97f4738b0.jpeg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "10288"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Mon, 21 Apr 2025 23:28:11 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-lIs7wa3GLCaSWy+zU+b/zXl3CJ8ZZMTN2Vetjl1GEuw="
         }
       ]
     },
