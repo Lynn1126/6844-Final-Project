@@ -34,7 +34,7 @@ namespace CardTradeHub.Data
             var hasher = new PasswordHasher<User>();
             var adminUser = new User
             {
-                Id = "1", // IdentityUser uses string Id
+                Id = "11111111-1111-1111-1111-111111111111", // Admin user GUID
                 UserName = "admin",
                 NormalizedUserName = "ADMIN",
                 Email = "admin@cardtradehub.com",
@@ -52,7 +52,7 @@ namespace CardTradeHub.Data
             // Seed regular user
             var regularUser = new User
             {
-                Id = "2",
+                Id = "22222222-2222-2222-2222-222222222222", // Regular user GUID
                 UserName = "seller",
                 NormalizedUserName = "SELLER",
                 Email = "seller@cardtradehub.com",
@@ -102,7 +102,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/pikachu.jpg",
                     ListedDate = _seedDate,
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -115,7 +115,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/kobe1.jpg",
                     ListedDate = _seedDate.AddDays(1),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -128,7 +128,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/messi.jpg",
                     ListedDate = _seedDate.AddDays(2),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -141,7 +141,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/yao.jpg",
                     ListedDate = _seedDate.AddDays(3),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -154,7 +154,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/blacklotus.jpg",
                     ListedDate = _seedDate.AddDays(4),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 // Sports Cards
                 new Card
@@ -168,7 +168,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/durant.jpg",
                     ListedDate = _seedDate.AddDays(5),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -181,7 +181,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/shohei.jpg",
                     ListedDate = _seedDate.AddDays(6),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -194,7 +194,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/beckham.jpg",
                     ListedDate = _seedDate.AddDays(7),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -207,7 +207,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/bluedragon.jpg",
                     ListedDate = _seedDate.AddDays(8),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -220,7 +220,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/kobe2.jpg",
                     ListedDate = _seedDate.AddDays(9),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -233,7 +233,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/mewtwo-gx.jpg",
                     ListedDate = _seedDate.AddDays(10),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -246,7 +246,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/soto.jpg",
                     ListedDate = _seedDate.AddDays(11),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -259,7 +259,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/mox-sapphire.jpg",
                     ListedDate = _seedDate.AddDays(12),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -272,7 +272,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/kobe3.jpg",
                     ListedDate = _seedDate.AddDays(13),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -285,7 +285,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/dark-magician-girl.jpg",
                     ListedDate = _seedDate.AddDays(14),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -298,7 +298,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/gretzky-rookie.jpg",
                     ListedDate = _seedDate.AddDays(15),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -311,7 +311,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/lillie.jpg",
                     ListedDate = _seedDate.AddDays(16),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -324,7 +324,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/jabbar.jpg",
                     ListedDate = _seedDate.AddDays(17),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -337,7 +337,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/soto2.jpg",
                     ListedDate = _seedDate.AddDays(18),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 },
                 new Card
                 {
@@ -350,7 +350,7 @@ namespace CardTradeHub.Data
                     ImageUrl = "/images/cards/curry.jpg",
                     ListedDate = _seedDate.AddDays(19),
                     Status = "Available",
-                    UserID = regularUser.Id
+                    UserID = "22222222-2222-2222-2222-222222222222" // Update card foreign key
                 }
             };
 

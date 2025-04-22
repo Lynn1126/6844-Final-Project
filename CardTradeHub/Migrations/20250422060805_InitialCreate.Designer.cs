@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardTradeHub.Migrations
 {
     [DbContext(typeof(CardTradeHubContext))]
-    [Migration("20250422033111_InitialCreate")]
+    [Migration("20250422060805_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -78,7 +78,7 @@ namespace CardTradeHub.Migrations
                             Price = 200.00m,
                             Status = "Available",
                             Title = "Pikachu Pokemon Center Kyoto",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -91,7 +91,7 @@ namespace CardTradeHub.Migrations
                             Price = 3000.00m,
                             Status = "Available",
                             Title = "Kobe Bryant 2012-13 Limited Auto",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -104,7 +104,7 @@ namespace CardTradeHub.Migrations
                             Price = 5000.00m,
                             Status = "Available",
                             Title = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -117,7 +117,7 @@ namespace CardTradeHub.Migrations
                             Price = 1000.00m,
                             Status = "Available",
                             Title = "Yao Ming 2016-17 Panini Flawless Autograph",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -130,7 +130,7 @@ namespace CardTradeHub.Migrations
                             Price = 3000.00m,
                             Status = "Available",
                             Title = "Black Lotus R",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -143,7 +143,7 @@ namespace CardTradeHub.Migrations
                             Price = 1500.00m,
                             Status = "Available",
                             Title = "National Treasures Kevin Durant Auto USA",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -156,7 +156,7 @@ namespace CardTradeHub.Migrations
                             Price = 50.00m,
                             Status = "Available",
                             Title = "Shohei Ohtani Topps Chrome",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -169,7 +169,7 @@ namespace CardTradeHub.Migrations
                             Price = 1000.00m,
                             Status = "Available",
                             Title = "David Beckham Autograph Card",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -182,7 +182,7 @@ namespace CardTradeHub.Migrations
                             Price = 8000.00m,
                             Status = "Available",
                             Title = "Red Eyes Black Dragon",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -195,7 +195,7 @@ namespace CardTradeHub.Migrations
                             Price = 1500.00m,
                             Status = "Available",
                             Title = "Kobe Bryant Gold Standard Superscribe",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -208,7 +208,7 @@ namespace CardTradeHub.Migrations
                             Price = 300.00m,
                             Status = "Available",
                             Title = "Mewtwo GX Rainbow Rare",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -221,7 +221,7 @@ namespace CardTradeHub.Migrations
                             Price = 2000.00m,
                             Status = "Available",
                             Title = "Juan Soto Autograph Card",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -234,7 +234,7 @@ namespace CardTradeHub.Migrations
                             Price = 4000.00m,
                             Status = "Available",
                             Title = "Mox Sapphire",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -247,7 +247,7 @@ namespace CardTradeHub.Migrations
                             Price = 500.00m,
                             Status = "Available",
                             Title = "Kobe Bryant Hoops Slam",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -260,7 +260,7 @@ namespace CardTradeHub.Migrations
                             Price = 400.00m,
                             Status = "Available",
                             Title = "Dark Magician Girl",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -273,7 +273,7 @@ namespace CardTradeHub.Migrations
                             Price = 9000.00m,
                             Status = "Available",
                             Title = "Wayne Gretzky Rookie",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -286,7 +286,7 @@ namespace CardTradeHub.Migrations
                             Price = 200.00m,
                             Status = "Available",
                             Title = "Lillie Full Art PSA 10",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -299,7 +299,7 @@ namespace CardTradeHub.Migrations
                             Price = 3500.00m,
                             Status = "Available",
                             Title = "Kareem Abdul-Jabbar Unparalleled Autograph",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -312,7 +312,7 @@ namespace CardTradeHub.Migrations
                             Price = 400.00m,
                             Status = "Available",
                             Title = "Juan Soto Rookie Card",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         },
                         new
                         {
@@ -325,7 +325,7 @@ namespace CardTradeHub.Migrations
                             Price = 2600.00m,
                             Status = "Available",
                             Title = "Stephen Curry 2018-19 Immaculate Moments",
-                            UserID = "2"
+                            UserID = "22222222-2222-2222-2222-222222222222"
                         });
                 });
 
@@ -490,9 +490,9 @@ namespace CardTradeHub.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1",
+                            Id = "11111111-1111-1111-1111-111111111111",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "839b18ec-183d-4361-83c7-0c308108cda0",
+                            ConcurrencyStamp = "b6f0dec4-b812-48b1-8292-f876b5c7fc37",
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "admin@cardtradehub.com",
                             EmailConfirmed = true,
@@ -501,19 +501,19 @@ namespace CardTradeHub.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@CARDTRADEHUB.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJuEwQC2quN17C/GkpZmTEo9flggVob8vU7KOXKAC2JTXeHV9wsZZo3UtM13nxgMkA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEOq0p+6TeGu1Bwq3dcJ1Gn7X0ZAjNgvOTfb16Czq19IbXOCK0Gd5zrjT+Hh5MamlQQ==",
                             PhoneNumberConfirmed = false,
                             RegisterDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Role = "Admin",
-                            SecurityStamp = "8f94cb50-2d65-45b9-b25c-afcea2aa7f16",
+                            SecurityStamp = "93322686-36c9-4d8f-b1ec-1e12627cc086",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
                         new
                         {
-                            Id = "2",
+                            Id = "22222222-2222-2222-2222-222222222222",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2ce09d1e-4e96-48da-b872-eb9c8e31b743",
+                            ConcurrencyStamp = "8e7da82e-31b2-4024-9959-d92d84093782",
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "seller@cardtradehub.com",
                             EmailConfirmed = true,
@@ -522,11 +522,11 @@ namespace CardTradeHub.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SELLER@CARDTRADEHUB.COM",
                             NormalizedUserName = "SELLER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL3K/nt8D7tLEuDlqFvqy67GFRijsrh8B01mvdytxYaAeya/rEmXzB6xlEa85LAdVw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENaBrcsUVIXEy8DNgHSK0nqwz+XfC1nUdt/kmRQKgIUWWANol2qImlK6898fxI4o9A==",
                             PhoneNumberConfirmed = false,
                             RegisterDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Role = "User",
-                            SecurityStamp = "4b21235c-675c-4ee7-a32d-6370964c23bd",
+                            SecurityStamp = "54e6c626-f42e-4c8b-8338-40df8f16623d",
                             TwoFactorEnabled = false,
                             UserName = "seller"
                         });
