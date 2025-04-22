@@ -6,39 +6,66 @@
 }
 
 <div class="container mt-4">
+    <h1 class="mb-4">@Model.Title</h1>
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-4">
-                @if (!string.IsNullOrEmpty(Model.ImageUrl))
-                {
-                    <img src="@Model.ImageUrl" class="card-img-top" alt="@Model.Title">
-                }
-                else
-                {
-                    <img src="/images/cards/default.jpg" class="card-img-top" alt="Default Card Image">
-                }
+                <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img src="@Model.ImageUrl" alt="@Model.Title" 
+                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <img src="/images/cards/default.jpg" alt="Default Card Image"
+                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                    }
+                </div>
             </div>
         </div>
         <div class="col-md-6">
-            <h1 class="mb-3">@Model.Title</h1>
             <div class="card">
                 <div class="card-body">
-                    <p class="mb-2"><strong>Category:</strong> <span class="text-muted">@Model.Category</span></p>
-                    <p class="mb-2"><strong>Condition:</strong> <span class="text-muted">@Model.Condition</span></p>
-                    <p class="mb-2"><strong>Price:</strong> <span class="text-muted">$@Model.Price.ToString("N2")</span></p>
-                    <p class="mb-2"><strong>Status:</strong> 
-                        <span class="badge bg-@(Model.Status switch {
-                            "Available" => "success",
-                            "Pending" => "warning",
-                            "Sold" => "info",
-                            _ => "secondary"
-                        })">@Model.Status</span>
-                    </p>
-                    <p class="mb-2"><strong>Listed Date:</strong> <span class="text-muted">@Model.ListedDate.ToString("MMMM dd, yyyy")</span></p>
-                    <p class="mb-2"><strong>Seller:</strong> <span class="text-muted">@Model.User?.UserName</span></p>
-                    <hr>
-                    <h5>Description</h5>
-                    <p class="card-text">@Model.Description</p>
+                    <div class="mb-4">
+                        <h5 class="text-muted mb-3">Card Information</h5>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Category:</strong></div>
+                            <div class="col-8">@Model.Category</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Condition:</strong></div>
+                            <div class="col-8">@Model.Condition</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Price:</strong></div>
+                            <div class="col-8">$@Model.Price.ToString("N2")</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Status:</strong></div>
+                            <div class="col-8">
+                                <span class="badge bg-@(Model.Status switch {
+                                    "Available" => "success",
+                                    "Pending" => "warning",
+                                    "Sold" => "info",
+                                    _ => "secondary"
+                                })">@Model.Status</span>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Listed Date:</strong></div>
+                            <div class="col-8">@Model.ListedDate.ToString("MMMM dd, yyyy")</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><strong>Seller:</strong></div>
+                            <div class="col-8">@Model.User?.UserName</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="text-muted mb-3">Description</h5>
+                        <p class="card-text">@Model.Description</p>
+                    </div>
                     
                     <div class="mt-4">
                         @if (User.Identity?.IsAuthenticated == true)
@@ -55,15 +82,15 @@
                             }
                             else if (Model.Status == "Available")
                             {
-                                <form asp-controller="Transactions" asp-action="InitiatePurchase" method="post">
+                                <form id="purchaseForm" asp-controller="Transactions" asp-action="InitiatePurchase" method="post" onsubmit="return confirmPurchase(event)">
                                     <input type="hidden" name="cardId" value="@Model.CardID" />
-                                    <button type="submit" class="btn btn-success">Purchase</button>
+                                    <button type="submit" class="btn btn-success btn-lg w-100">Purchase</button>
                                 </form>
                             }
                         }
                         else
                         {
-                            <a asp-controller="Account" asp-action="Login" class="btn btn-primary">Login to Purchase</a>
+                            <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg w-100">Login to Purchase</a>
                         }
                     </div>
                 </div>
@@ -74,28 +101,34 @@
 
 @section Scripts {
     <script>
-        function purchaseCard(cardId) {
-            if (confirm('Are you sure you want to purchase this card?')) {
-                var token = $('input[name="__RequestVerificationToken"]').val();
-                $.ajax({
-                    url: '/Cards/Purchase/' + cardId,
-                    type: 'POST',
-                    data: {
-                        __RequestVerificationToken: token
-                    },
-                    success: function(response) {
-                        if (response.success) {
-                            alert(response.message);
-                            window.location.href = '/Cards';
-                        } else {
-                            alert(response.message || 'Purchase failed. Please try again.');
-                        }
-                    },
-                    error: function() {
-                        alert('An error occurred while processing your request.');
+        function confirmPurchase(event) {
+            event.preventDefault();
+            if (confirm('Are you sure you want to purchase this card for $@Model.Price.ToString("N2")?')) {
+                const form = document.getElementById('purchaseForm');
+                const formData = new FormData(form);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'RequestVerificationToken': document.querySelector('input[name="__RequestVerificationToken"]')?.value
                     }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Purchase successful! The card has been added to your collection.');
+                        window.location.href = '/Cards';
+                    } else {
+                        alert(data.message || 'Purchase failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while processing your purchase. Please try again.');
                 });
             }
+            return false;
         }
     </script>
 } 

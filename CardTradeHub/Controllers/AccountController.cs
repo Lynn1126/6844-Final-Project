@@ -137,7 +137,7 @@ namespace CardTradeHub.Controllers
 
                 var user = new User
                 {
-                    UserName = model.Email,
+                    UserName = model.Username,
                     Email = model.Email,
                     Role = model.Email.ToLower() == "admin@cardtradehub.com" ? "Admin" : "User",
                     IsActive = true,
@@ -250,6 +250,18 @@ namespace CardTradeHub.Controllers
                 return NotFound();
             }
 
+            // 检查用户名是否已被使用
+            if (user.UserName != model.Username)
+            {
+                var existingUser = await _userManager.FindByNameAsync(model.Username);
+                if (existingUser != null)
+                {
+                    ModelState.AddModelError("Username", "This username is already taken");
+                    return View(model);
+                }
+            }
+
+            user.UserName = model.Username?.Trim();
             user.FirstName = model.FirstName?.Trim();
             user.LastName = model.LastName?.Trim();
             user.PhoneNumber = model.PhoneNumber?.Trim();
@@ -263,6 +275,9 @@ namespace CardTradeHub.Controllers
                 }
                 return View(model);
             }
+
+            // 更新成功后刷新用户的 Claims
+            await _signInManager.RefreshSignInAsync(user);
 
             return RedirectToAction(nameof(Profile));
         }
@@ -290,9 +305,10 @@ namespace CardTradeHub.Controllers
             }
 
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            var username = email.Split('@')[0];
             var user = new User
             {
-                UserName = email,
+                UserName = username,
                 Email = email,
                 Role = "User",
                 IsActive = true,

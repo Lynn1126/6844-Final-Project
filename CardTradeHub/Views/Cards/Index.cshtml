@@ -1,10 +1,10 @@
-@model IEnumerable<CardTradeHub.Models.Card>
+@model CardTradeHub.Models.ViewModels.CardListViewModel
+
 @{
     ViewData["Title"] = "Browse Cards";
 }
 
 <div class="container mt-4">
-
     <!-- 搜索和筛选区域 -->
     <div class="card mb-4">
         <div class="card-body">
@@ -13,10 +13,10 @@
                 <div class="col-md-6">
                     <form method="get" class="search-form">
                         <div class="input-group">
-                            <input type="text" name="searchTerm" class="form-control" 
+                            <input type="text" name="searchString" class="form-control" 
                                    placeholder="Search by title, description or category..." 
-                                   value="@ViewBag.SearchTerm">
-                            <input type="hidden" name="category" value="@ViewBag.SelectedCategory">
+                                   value="@Model.CurrentSearch">
+                            <input type="hidden" name="category" value="@Model.CurrentCategory">
                             <button class="btn btn-primary" type="submit">
                                 <i class="bi bi-search"></i>
                                 Search
@@ -30,14 +30,14 @@
             <div>
                 <h5 class="mb-3">Filter by Category</h5>
                 <div class="d-flex flex-wrap gap-2">
-                    <a href="@Url.Action("Index", new { searchTerm = ViewBag.SearchTerm })" 
-                       class="btn btn-outline-primary category-btn @(string.IsNullOrEmpty(ViewBag.SelectedCategory) ? "active" : "")">
+                    <a asp-action="Index" asp-route-searchString="@Model.CurrentSearch" 
+                       class="btn btn-outline-primary category-btn @(string.IsNullOrEmpty(Model.CurrentCategory) ? "active" : "")">
                         All Categories
                     </a>
-                    @foreach (var category in ViewBag.Categories)
+                    @foreach (var category in Model.Categories)
                     {
-                        <a href="@Url.Action("Index", new { category = category, searchTerm = ViewBag.SearchTerm })" 
-                           class="btn btn-outline-primary category-btn @(category == ViewBag.SelectedCategory ? "active" : "")">
+                        <a asp-action="Index" asp-route-category="@category" asp-route-searchString="@Model.CurrentSearch"
+                           class="btn btn-outline-primary category-btn @(category == Model.CurrentCategory ? "active" : "")">
                             @category
                         </a>
                     }
@@ -100,33 +100,29 @@
 
         /* 卡片布局样式 */
         .card {
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
         }
-
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
         }
-
-        .card-body {
-            display: flex;
-            flex-direction: column;
-            padding: 1rem;
-            flex: 1 0 auto;
+        .card-img-container {
+            position: relative;
+            padding-bottom: 100%;
+            height: 0;
+            overflow: hidden;
         }
-
-        .card-price {
-            font-weight: 600;
-            color: var(--bs-gray-900);
-            margin: 0;
-            font-size: 1.1rem;
-            margin-top: auto;
-            padding-top: 1rem;
+        .card-img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
         }
-
+        .card:hover .card-img-container img {
+            transform: scale(1.05);
+        }
         .card-title {
             height: 48px;
             overflow: hidden;
@@ -136,7 +132,6 @@
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
         }
-
         .card-description {
             height: 60px;
             overflow: hidden;
@@ -144,105 +139,89 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             font-size: 0.875rem;
-            margin-bottom: 1rem;
             color: var(--bs-gray-700);
         }
-
         .card-category {
             font-size: 0.875rem;
-            margin-bottom: 0.5rem;
             color: var(--bs-secondary);
         }
-
-        .card-footer {
-            font-size: 0.75rem;
-            color: var(--bs-gray-600);
-        }
-
-        .card-link {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .card-link:hover {
-            text-decoration: none;
-            color: inherit;
+        .card-price {
+            font-weight: 600;
+            color: var(--bs-primary);
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
         }
     </style>
 
     <!-- 卡片网格 -->
-    <div class="row row-cols-1 row-cols-md-4 g-4">
-        @foreach (var card in Model)
-        {
-            <div class="col">
-                <a asp-action="Details" asp-route-id="@card.CardID" class="card-link">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
-                            @if (!string.IsNullOrEmpty(card.ImageUrl))
-                            {
-                                <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title"
-                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-                            }
-                            else
-                            {
-                                <img src="~/images/card-placeholder.jpg" class="card-img-top" alt="Card placeholder"
-                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" />
-                            }
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" title="@card.Title">@card.Title</h5>
-                            <div class="card-category">@card.Category</div>
-                            <div class="card-description" title="@card.Description">@card.Description</div>
-                            <div class="card-price">@card.Price.ToString("C")</div>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                            <small class="text-muted">Listed by: @card.User?.UserName</small>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        }
-    </div>
-
-    <!-- 分页 -->
-    @if (ViewBag.TotalPages > 1)
+    @if (!Model.Cards.Any())
     {
-        <div class="d-flex justify-content-center mt-4">
-            <nav aria-label="Page navigation">
-                <ul class="pagination">
-                    @if (ViewBag.HasPreviousPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Index", new { category = ViewBag.SelectedCategory, searchTerm = ViewBag.SearchTerm, page = ViewBag.CurrentPage - 1 })">Previous</a>
-                        </li>
-                    }
-                    @for (int i = 1; i <= ViewBag.TotalPages; i++)
-                    {
-                        <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
-                            <a class="page-link" href="@Url.Action("Index", new { category = ViewBag.SelectedCategory, searchTerm = ViewBag.SearchTerm, page = i })">@i</a>
-                        </li>
-                    }
-                    @if (ViewBag.HasNextPage)
-                    {
-                        <li class="page-item">
-                            <a class="page-link" href="@Url.Action("Index", new { category = ViewBag.SelectedCategory, searchTerm = ViewBag.SearchTerm, page = ViewBag.CurrentPage + 1 })">Next</a>
-                        </li>
-                    }
-                </ul>
-            </nav>
+        <div class="alert alert-info">
+            No cards found matching your criteria.
         </div>
     }
-</div>
+    else
+    {
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+            @foreach (var card in Model.Cards)
+            {
+                <div class="col">
+                    <a asp-action="Details" asp-route-id="@card.CardID" class="text-decoration-none">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-img-container">
+                                @if (!string.IsNullOrEmpty(card.ImageUrl))
+                                {
+                                    <img src="@card.ImageUrl" alt="@card.Title">
+                                }
+                                else
+                                {
+                                    <img src="~/images/card-placeholder.jpg" alt="Card placeholder">
+                                }
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title" title="@card.Title">@card.Title</h5>
+                                <div class="card-category">@card.Category</div>
+                                <div class="card-description" title="@card.Description">@card.Description</div>
+                                <div class="card-price">@card.Price.ToString("C")</div>
+                            </div>
+                            <div class="card-footer bg-transparent">
+                                <small class="text-muted">Listed by: @card.User?.UserName</small>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
 
-@section Scripts {
-    <script>
-        // 为了让卡片图片保持相同的宽高比
-        document.addEventListener('DOMContentLoaded', function () {
-            const cardImgs = document.querySelectorAll('.card-img-top');
-            cardImgs.forEach(img => {
-                img.style.height = '200px';
-                img.style.objectFit = 'cover';
-            });
-        });
-    </script>
-} 
+        @if (Model.PaginationInfo.TotalPages > 1)
+        {
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @(Model.PaginationInfo.CurrentPage == 1 ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginationInfo.CurrentPage - 1)"
+                           asp-route-category="@Model.CurrentCategory" asp-route-searchString="@Model.CurrentSearch">
+                            Previous
+                        </a>
+                    </li>
+
+                    @for (int i = 1; i <= Model.PaginationInfo.TotalPages; i++)
+                    {
+                        <li class="page-item @(Model.PaginationInfo.CurrentPage == i ? "active" : "")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@i"
+                               asp-route-category="@Model.CurrentCategory" asp-route-searchString="@Model.CurrentSearch">
+                                @i
+                            </a>
+                        </li>
+                    }
+
+                    <li class="page-item @(Model.PaginationInfo.CurrentPage == Model.PaginationInfo.TotalPages ? "disabled" : "")">
+                        <a class="page-link" asp-action="Index" asp-route-page="@(Model.PaginationInfo.CurrentPage + 1)"
+                           asp-route-category="@Model.CurrentCategory" asp-route-searchString="@Model.CurrentSearch">
+                            Next
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        }
+    }
+</div> 

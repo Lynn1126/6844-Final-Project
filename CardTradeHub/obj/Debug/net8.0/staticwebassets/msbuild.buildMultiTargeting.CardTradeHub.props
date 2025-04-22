@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../build/CardTradeHub.props" />
+  <Import Project="..\build\CardTradeHub.props" />
 </Project>

@@ -6,7 +6,7 @@
 <div class="container mt-4">
     @if (User.Identity?.IsAuthenticated == true)
     {
-        <h2 class="mb-4">Welcome back, @User.FindFirst("FullName")?.Value!</h2>
+        <h2 class="mb-4">Welcome back, @User.Identity.Name!</h2>
     }
     
     <!-- Hero Section -->

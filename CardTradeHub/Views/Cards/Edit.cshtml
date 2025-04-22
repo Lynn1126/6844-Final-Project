@@ -8,40 +8,27 @@
     <h2>Edit Card</h2>
     <hr />
     <div class="row">
-        <div class="col-md-6">
-            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="col-md-8">
+            <form asp-action="Edit" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" name="id" value="@ViewContext.RouteData.Values["id"]" />
-                
                 <div class="form-group mb-3">
                     <label asp-for="Title" class="control-label"></label>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-                
                 <div class="form-group mb-3">
                     <label asp-for="Description" class="control-label"></label>
                     <textarea asp-for="Description" class="form-control" rows="3"></textarea>
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
-                
                 <div class="form-group mb-3">
                     <label asp-for="Category" class="control-label"></label>
-                    <select asp-for="Category" class="form-select">
-                        <option value="Pokemon">Pokemon</option>
-                        <option value="Magic: The Gathering">Magic: The Gathering</option>
-                        <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
-                        <option value="Basketball">Basketball</option>
-                        <option value="Baseball">Baseball</option>
-                        <option value="Football">Football</option>
-                        <option value="Hockey">Hockey</option>
-                    </select>
+                    <input asp-for="Category" class="form-control" />
                     <span asp-validation-for="Category" class="text-danger"></span>
                 </div>
-                
                 <div class="form-group mb-3">
                     <label asp-for="Condition" class="control-label"></label>
-                    <select asp-for="Condition" class="form-select">
+                    <select asp-for="Condition" class="form-control">
                         <option value="Mint">Mint</option>
                         <option value="Near Mint">Near Mint</option>
                         <option value="Excellent">Excellent</option>
@@ -51,38 +38,18 @@
                     </select>
                     <span asp-validation-for="Condition" class="text-danger"></span>
                 </div>
-                
                 <div class="form-group mb-3">
                     <label asp-for="Price" class="control-label"></label>
-                    <input asp-for="Price" class="form-control" type="number" step="0.01" />
+                    <input asp-for="Price" class="form-control" type="number" step="0.01" min="0.01" />
                     <span asp-validation-for="Price" class="text-danger"></span>
                 </div>
-                
                 <div class="form-group mb-3">
-                    <label asp-for="ImageUrl" class="control-label">Current Image URL</label>
-                    <input asp-for="ImageUrl" class="form-control" readonly />
+                    <label asp-for="ImageUrl" class="control-label">Image URL</label>
+                    <input asp-for="ImageUrl" class="form-control" />
                     <span asp-validation-for="ImageUrl" class="text-danger"></span>
                 </div>
-
-                <div class="form-group mb-3">
-                    <label for="ImageFile" class="control-label">Upload New Image</label>
-                    <input type="file" name="ImageFile" id="ImageFile" class="form-control" accept="image/*" />
-                    <small class="text-muted">Supported formats: JPG, PNG, GIF. Max size: 5MB</small>
-                </div>
-
-                @if (!string.IsNullOrEmpty(Model.ImageUrl))
-                {
-                    <div class="form-group mb-3">
-                        <label class="control-label">Current Image Preview</label>
-                        <div class="mt-2">
-                            <img src="@Model.ImageUrl" alt="Current card image" class="img-thumbnail" style="max-width: 200px;" />
-                        </div>
-                    </div>
-                }
-                
-                <div class="form-group mb-3">
+                <div class="form-group mt-4">
                     <button type="submit" class="btn btn-primary">Save Changes</button>
-                    <a asp-action="ListCard" asp-route-id="@ViewContext.RouteData.Values["id"]" class="btn btn-success">List Card</a>
                     <a asp-action="MyCards" class="btn btn-secondary">Cancel</a>
                 </div>
             </form>
@@ -92,32 +59,4 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script>
-        // 预览选择的图片
-        document.getElementById('ImageFile').addEventListener('change', function (e) {
-            if (e.target.files && e.target.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const preview = document.createElement('img');
-                    preview.src = e.target.result;
-                    preview.className = 'img-thumbnail mt-2';
-                    preview.style.maxWidth = '200px';
-                    
-                    const previewContainer = document.createElement('div');
-                    previewContainer.className = 'form-group mb-3';
-                    previewContainer.innerHTML = '<label class="control-label">New Image Preview</label>';
-                    previewContainer.appendChild(preview);
-                    
-                    const existingPreview = document.querySelector('.preview-container');
-                    if (existingPreview) {
-                        existingPreview.remove();
-                    }
-                    
-                    previewContainer.classList.add('preview-container');
-                    document.getElementById('ImageFile').parentNode.appendChild(previewContainer);
-                }
-                reader.readAsDataURL(e.target.files[0]);
-            }
-        });
-    </script>
 } 

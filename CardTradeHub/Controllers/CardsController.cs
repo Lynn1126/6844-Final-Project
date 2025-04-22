@@ -21,38 +21,49 @@ namespace CardTradeHub.Controllers
         }
 
         // GET: Cards
-        public async Task<IActionResult> Index(string category = null, string condition = null, string sortOrder = null, string searchString = null)
+        public async Task<IActionResult> Index(
+            string category = null, 
+            string condition = null, 
+            string sortOrder = null, 
+            string searchString = null,
+            int page = 1)
         {
-            var cards = _context.Cards
+            var query = _context.Cards
                 .Include(c => c.User)
                 .Where(c => c.Status == "Available");
 
             if (!string.IsNullOrEmpty(category))
             {
-                cards = cards.Where(c => c.Category == category);
+                query = query.Where(c => c.Category == category);
             }
 
             if (!string.IsNullOrEmpty(condition))
             {
-                cards = cards.Where(c => c.Condition == condition);
+                query = query.Where(c => c.Condition == condition);
             }
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                cards = cards.Where(c => c.Title.Contains(searchString) || 
+                query = query.Where(c => c.Title.Contains(searchString) || 
                                        c.Description.Contains(searchString) ||
                                        c.Category.Contains(searchString));
             }
 
             // Apply sorting
-            cards = sortOrder switch
+            query = sortOrder switch
             {
-                "price_desc" => cards.OrderByDescending(c => c.Price),
-                "price_asc" => cards.OrderBy(c => c.Price),
-                "date_desc" => cards.OrderByDescending(c => c.ListedDate),
-                "date_asc" => cards.OrderBy(c => c.ListedDate),
-                _ => cards.OrderByDescending(c => c.ListedDate)
+                "price_desc" => query.OrderByDescending(c => c.Price),
+                "price_asc" => query.OrderBy(c => c.Price),
+                "date_desc" => query.OrderByDescending(c => c.ListedDate),
+                "date_asc" => query.OrderBy(c => c.ListedDate),
+                _ => query.OrderByDescending(c => c.ListedDate)
             };
+
+            var totalItems = await query.CountAsync();
+            var items = await query
+                .Skip((page - 1) * _pageSize)
+                .Take(_pageSize)
+                .ToListAsync();
 
             var categories = await _context.Cards
                 .Select(c => c.Category)
@@ -64,14 +75,24 @@ namespace CardTradeHub.Controllers
                 .Distinct()
                 .ToListAsync();
 
-            ViewBag.Categories = categories;
-            ViewBag.Conditions = conditions;
-            ViewBag.CurrentCategory = category;
-            ViewBag.CurrentCondition = condition;
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.CurrentSearch = searchString;
+            var viewModel = new CardListViewModel
+            {
+                Cards = items,
+                Categories = categories,
+                Conditions = conditions,
+                CurrentCategory = category,
+                CurrentCondition = condition,
+                CurrentSort = sortOrder,
+                CurrentSearch = searchString,
+                PaginationInfo = new PaginationInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = _pageSize,
+                    TotalItems = totalItems
+                }
+            };
 
-            return View(await cards.ToListAsync());
+            return View(viewModel);
         }
 
         // GET: Cards/Details/5
@@ -133,7 +154,7 @@ namespace CardTradeHub.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create(Card card)
+        public async Task<IActionResult> Create(CreateCardViewModel viewModel, IFormFile? ImageFile)
         {
             if (ModelState.IsValid)
             {
@@ -143,15 +164,48 @@ namespace CardTradeHub.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                card.UserID = userId;
-                card.ListedDate = DateTime.UtcNow;
-                card.Status = "Available";
+                string? imageUrl = null;
+                if (ImageFile != null && ImageFile.Length > 0)
+                {
+                    // 确保 wwwroot/images/cards 目录存在
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "cards");
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    // 生成唯一的文件名
+                    var uniqueFileName = $"{Guid.NewGuid()}_{ImageFile.FileName}";
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    // 保存文件
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await ImageFile.CopyToAsync(fileStream);
+                    }
+
+                    // 设置图片URL（相对路径）
+                    imageUrl = $"/images/cards/{uniqueFileName}";
+                }
+
+                var card = new Card
+                {
+                    Title = viewModel.Title,
+                    Description = viewModel.Description,
+                    Category = viewModel.Category,
+                    Condition = viewModel.Condition,
+                    Price = viewModel.Price,
+                    ImageUrl = imageUrl ?? "/images/card-placeholder.jpg", // 如果没有上传图片，使用默认图片
+                    UserID = userId,
+                    ListedDate = DateTime.UtcNow,
+                    Status = "Available"
+                };
 
                 _context.Add(card);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(MyCards));
             }
-            return View(card);
+            return View(viewModel);
         }
 
         // GET: Cards/Edit/5
@@ -180,16 +234,27 @@ namespace CardTradeHub.Controllers
                 return Forbid();
             }
 
-            return View(card);
+            var viewModel = new CreateCardViewModel
+            {
+                Title = card.Title,
+                Description = card.Description,
+                Category = card.Category,
+                Condition = card.Condition,
+                Price = card.Price,
+                ImageUrl = card.ImageUrl
+            };
+
+            return View(viewModel);
         }
 
         // POST: Cards/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Edit(int id, Card card)
+        public async Task<IActionResult> Edit(int id, CreateCardViewModel viewModel)
         {
-            if (id != card.CardID)
+            var card = await _context.Cards.FindAsync(id);
+            if (card == null)
             {
                 return NotFound();
             }
@@ -209,6 +274,13 @@ namespace CardTradeHub.Controllers
             {
                 try
                 {
+                    card.Title = viewModel.Title;
+                    card.Description = viewModel.Description;
+                    card.Category = viewModel.Category;
+                    card.Condition = viewModel.Condition;
+                    card.Price = viewModel.Price;
+                    card.ImageUrl = viewModel.ImageUrl;
+
                     _context.Update(card);
                     await _context.SaveChangesAsync();
                 }
@@ -225,7 +297,7 @@ namespace CardTradeHub.Controllers
                 }
                 return RedirectToAction(nameof(MyCards));
             }
-            return View(card);
+            return View(viewModel);
         }
 
         // POST: Cards/Delete/5

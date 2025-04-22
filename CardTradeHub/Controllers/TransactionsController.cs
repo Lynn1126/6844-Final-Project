@@ -57,7 +57,7 @@ namespace CardTradeHub.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null)
             {
-                return RedirectToAction("Login", "Account");
+                return Json(new { success = false, message = "Please login to purchase cards." });
             }
 
             var card = await _context.Cards
@@ -66,44 +66,49 @@ namespace CardTradeHub.Controllers
 
             if (card == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Card not found." });
             }
 
             if (card.Status != "Available")
             {
-                TempData["Error"] = "This card is no longer available for purchase.";
-                return RedirectToAction("Details", "Cards", new { id = cardId });
+                return Json(new { success = false, message = "This card is no longer available for purchase." });
             }
 
             if (card.UserID == userId)
             {
-                TempData["Error"] = "You cannot purchase your own card.";
-                return RedirectToAction("Details", "Cards", new { id = cardId });
+                return Json(new { success = false, message = "You cannot purchase your own card." });
             }
 
-            var transaction = new Transaction
+            try
             {
-                CardID = cardId,
-                BuyerID = userId,
-                SellerID = card.UserID,
-                Amount = card.Price,
-                Date = DateTime.UtcNow,
-                Status = "Pending",
-                PaymentMethod = "Direct",
-                TransactionReference = Guid.NewGuid().ToString(),
-                ShippingAddress = "To be provided",
-                TrackingNumber = string.Empty,
-                DisputeReason = string.Empty,
-                DisputeStatus = "None"
-            };
+                var transaction = new Transaction
+                {
+                    CardID = cardId,
+                    BuyerID = userId,
+                    SellerID = card.UserID,
+                    Amount = card.Price,
+                    Date = DateTime.UtcNow,
+                    Status = "Completed",
+                    PaymentMethod = "Direct",
+                    TransactionReference = Guid.NewGuid().ToString(),
+                    ShippingAddress = "To be provided",
+                    TrackingNumber = string.Empty,
+                    DisputeReason = string.Empty,
+                    DisputeStatus = "None"
+                };
 
-            card.Status = "Pending";
+                card.Status = "Sold";
+                card.UserID = userId;
 
-            _context.Transactions.Add(transaction);
-            await _context.SaveChangesAsync();
+                _context.Transactions.Add(transaction);
+                await _context.SaveChangesAsync();
 
-            TempData["Success"] = "Purchase initiated successfully.";
-            return RedirectToAction(nameof(Index));
+                return Json(new { success = true, message = "Purchase completed successfully!" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "An error occurred while processing your purchase." });
+            }
         }
 
         [HttpPost]

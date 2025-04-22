@@ -23,39 +23,65 @@
     }
     else
     {
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             @foreach (var card in Model.Cards)
             {
                 <div class="col">
-                    <div class="card h-100">
-                        @if (!string.IsNullOrEmpty(card.ImageUrl))
-                        {
-                            <img src="@card.ImageUrl" class="card-img-top" alt="@card.Title">
-                        }
+                    <div class="card h-100 shadow">
+                        <div class="card-img-container" style="position: relative; padding-bottom: 100%; height: 0; overflow: hidden;">
+                            @if (!string.IsNullOrEmpty(card.ImageUrl))
+                            {
+                                <img src="@card.ImageUrl" alt="@card.Title" 
+                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            }
+                            else
+                            {
+                                <img src="/images/card-placeholder.jpg" alt="Card placeholder"
+                                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+                            }
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">@card.Title</h5>
                             <p class="card-text">@card.Description</p>
-                            <p class="card-text">
-                                <small class="text-muted">
-                                    Category: @card.Category<br />
-                                    Condition: @card.Condition<br />
-                                    Price: @card.Price.ToString("C")<br />
-                                    Status: @card.Status
-                                </small>
-                            </p>
+                            <div class="card-details mb-3">
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">Category:</small>
+                                        <span>@card.Category</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">Condition:</small>
+                                        <span>@card.Condition</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">Price:</small>
+                                        <span class="text-primary fw-bold">@card.Price.ToString("C")</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted d-block">Status:</small>
+                                        <span class="badge bg-@(card.Status == "Available" ? "success" : "secondary")">
+                                            @card.Status
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-footer bg-transparent">
-                            <div class="btn-group w-100">
-                                <a asp-action="Edit" asp-route-id="@card.CardID" class="btn btn-outline-primary">Edit</a>
+                            <div class="d-flex gap-2">
+                                <a asp-action="Edit" asp-route-id="@card.CardID" class="btn btn-outline-primary flex-grow-1">Edit</a>
                                 @if (card.Status == "Available")
                                 {
-                                    <a asp-action="UnlistCard" asp-route-id="@card.CardID" class="btn btn-outline-warning">Unlist</a>
+                                    <a asp-action="UnlistCard" asp-route-id="@card.CardID" class="btn btn-outline-warning flex-grow-1">Unlist</a>
                                 }
                                 else
                                 {
-                                    <a asp-action="ListCard" asp-route-id="@card.CardID" class="btn btn-outline-success">List</a>
+                                    <a asp-action="ListCard" asp-route-id="@card.CardID" class="btn btn-outline-success flex-grow-1">List</a>
                                 }
-                                <a asp-action="Delete" asp-route-id="@card.CardID" class="btn btn-outline-danger">Delete</a>
+                                <form asp-action="Delete" method="post" class="flex-grow-1">
+                                    <input type="hidden" name="id" value="@card.CardID" />
+                                    <button type="submit" class="btn btn-outline-danger w-100" 
+                                            onclick="return confirm('Are you sure you want to delete this card?')">Delete</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -63,4 +89,25 @@
             }
         </div>
     }
-</div> 
+</div>
+
+<style>
+    .card {
+        transition: transform 0.2s ease-in-out;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-img-container img {
+        transition: transform 0.3s ease-in-out;
+    }
+    .card:hover .card-img-container img {
+        transform: scale(1.05);
+    }
+    .card-details {
+        font-size: 0.9rem;
+    }
+    .btn {
+        font-size: 0.9rem;
+    }
+</style> 
