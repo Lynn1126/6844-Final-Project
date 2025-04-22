@@ -5,6 +5,27 @@
 }
 
 <div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Purchase Statistics</h5>
+                    <p class="card-text">Total Purchases: @Model.Purchases.Count</p>
+                    <p class="card-text">Total Spent: @Model.TotalPurchases.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sales Statistics</h5>
+                    <p class="card-text">Total Sales: @Model.Sales.Count</p>
+                    <p class="card-text">Total Revenue: @Model.TotalSales.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-6">
             <div class="card mb-4">
@@ -28,7 +49,7 @@
                                         <h5 class="mb-1">@purchase.Card.Title</h5>
                                         <span class="badge bg-success">Purchased</span>
                                     </div>
-                                    <p class="mb-1">From: @purchase.Seller.Username</p>
+                                    <p class="mb-1">From: @purchase.Seller.UserName</p>
                                     <p class="mb-1">Price: @purchase.Card.Price.ToString("C")</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">@purchase.Date.ToString("MMM dd, yyyy HH:mm")</small>
@@ -65,7 +86,7 @@
                                         <h5 class="mb-1">@sale.Card.Title</h5>
                                         <span class="badge bg-primary">Sold</span>
                                     </div>
-                                    <p class="mb-1">To: @sale.Buyer.Username</p>
+                                    <p class="mb-1">To: @sale.Buyer.UserName</p>
                                     <p class="mb-1">Price: @sale.Card.Price.ToString("C")</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <small class="text-muted">@sale.Date.ToString("MMM dd, yyyy HH:mm")</small>

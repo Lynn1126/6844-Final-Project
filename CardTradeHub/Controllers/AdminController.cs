@@ -19,21 +19,16 @@ namespace CardTradeHub.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var users = await _context.Users
-                .OrderBy(u => u.Username)
-                .ToListAsync();
-            return View(users);
+            return View();
         }
 
         // User Management
         public async Task<IActionResult> ManageUsers()
         {
             var users = await _context.Users
-                .Include(u => u.Cards)
-                .Include(u => u.Transactions)
-                .OrderBy(u => u.Username)
+                .OrderBy(u => u.Email)
                 .ToListAsync();
             return View(users);
         }
@@ -73,7 +68,6 @@ namespace CardTradeHub.Controllers
         {
             var cards = await _context.Cards
                 .Include(c => c.User)
-                .OrderByDescending(c => c.ListedDate)
                 .ToListAsync();
             return View(cards);
         }
@@ -96,13 +90,12 @@ namespace CardTradeHub.Controllers
         // Transaction Management
         public async Task<IActionResult> ManageTrades()
         {
-            var transactions = await _context.Transactions
-                .Include(t => t.Card)
+            var trades = await _context.Transactions
                 .Include(t => t.Buyer)
                 .Include(t => t.Seller)
-                .OrderByDescending(t => t.Date)
+                .Include(t => t.Card)
                 .ToListAsync();
-            return View(transactions);
+            return View(trades);
         }
 
         [HttpPost]

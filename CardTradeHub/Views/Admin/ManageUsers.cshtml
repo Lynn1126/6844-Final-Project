@@ -4,8 +4,8 @@
     ViewData["Title"] = "Manage Users";
 }
 
-<div class="container">
-    <h1 class="mb-4">Manage Users</h1>
+<div class="container mt-4">
+    <h2 class="mb-4">@ViewData["Title"]</h2>
 
     <div class="table-responsive">
         <table class="table table-striped">
@@ -15,8 +15,6 @@
                     <th>Email</th>
                     <th>Role</th>
                     <th>Status</th>
-                    <th>Cards</th>
-                    <th>Transactions</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -24,41 +22,24 @@
                 @foreach (var user in Model)
                 {
                     <tr>
-                        <td>@user.Username</td>
+                        <td>@user.Id</td>
+                        <td>@user.UserName</td>
                         <td>@user.Email</td>
+                        <td>@user.Role</td>
                         <td>
-                            <span class="badge bg-@(user.Role == "Admin" ? "danger" : "primary")">
-                                @user.Role
+                            <span class="badge bg-@(user.IsActive ? "success" : "danger")">
+                                @(user.IsActive ? "Active" : "Disabled")
                             </span>
                         </td>
-                        <td>
-                            <span class="badge bg-@(user.IsActive ? "success" : "secondary")">
-                                @(user.IsActive ? "Active" : "Inactive")
-                            </span>
-                        </td>
-                        <td>@user.Cards.Count</td>
-                        <td>@user.Transactions.Count</td>
+                        <td>@user.RegisterDate.ToString("yyyy-MM-dd")</td>
+                        <td>@(user.LastLoginDate != null ? user.LastLoginDate.ToString("yyyy-MM-dd HH:mm") : "Never logged in")</td>
                         <td>
                             <div class="btn-group">
-                                <form asp-action="ToggleUserStatus" asp-route-id="@user.UserID" method="post" class="d-inline">
-                                    <button type="submit" class="btn btn-sm btn-@(user.IsActive ? "warning" : "success")">
-                                        @(user.IsActive ? "Deactivate" : "Activate")
-                                    </button>
-                                </form>
-                                @if (user.Role != "Admin")
-                                {
-                                    <form asp-action="ChangeUserRole" asp-route-id="@user.UserID" method="post" class="d-inline">
-                                        <input type="hidden" name="role" value="Admin" />
-                                        <button type="submit" class="btn btn-sm btn-danger">Make Admin</button>
-                                    </form>
-                                }
-                                else if (user.Email != "admin@cardtradehub.com") // 不允许取消主管理员的权限
-                                {
-                                    <form asp-action="ChangeUserRole" asp-route-id="@user.UserID" method="post" class="d-inline">
-                                        <input type="hidden" name="role" value="User" />
-                                        <button type="submit" class="btn btn-sm btn-secondary">Cancel Admin</button>
-                                    </form>
-                                }
+                                <button class="btn btn-sm btn-primary" onclick="editUser('@user.Id')">Edit</button>
+                                <button class="btn btn-sm @(user.IsActive ? "btn-danger" : "btn-success")" 
+                                        onclick="toggleUserStatus('@user.Id', @user.IsActive.ToString().ToLower())">
+                                    @(user.IsActive ? "Disable" : "Enable")
+                                </button>
                             </div>
                         </td>
                     </tr>
@@ -66,4 +47,5 @@
             </tbody>
         </table>
     </div>
-</div> 
+</div>
+

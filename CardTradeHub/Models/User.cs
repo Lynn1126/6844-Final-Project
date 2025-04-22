@@ -1,19 +1,17 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Identity;
 
 namespace CardTradeHub.Models
 {
-    public class User
+    public class User : IdentityUser
     {
         private static readonly DateTime DefaultDate = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         public User()
         {
-            Username = string.Empty;
-            Email = string.Empty;
-            PasswordHash = string.Empty;
             Role = "User";
+            IsActive = true;
             CreatedAt = DefaultDate;
             RegisterDate = DefaultDate;
             LastLoginDate = DefaultDate;
@@ -21,41 +19,24 @@ namespace CardTradeHub.Models
             Transactions = new List<Transaction>();
         }
 
-        [Key]
-        public int UserID { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public required string Username { get; set; }
-
-        [Required]
-        [EmailAddress]
-        [StringLength(100)]
-        public required string Email { get; set; }
-
-        [Required]
-        public required string PasswordHash { get; set; }
-
         [Required]
         [StringLength(20)]
-        public string Role { get; set; }
+        public required string Role { get; set; }
 
-        public bool IsActive { get; set; } = true;
+        public bool IsActive { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
+        public DateTime RegisterDate { get; set; }
+
+        public DateTime LastLoginDate { get; set; }
+
         public string? FirstName { get; set; }
+
         public string? LastName { get; set; }
 
-        [Phone(ErrorMessage = "Invalid phone number")]
-        public string? PhoneNumber { get; set; }
-
-        public DateTime RegisterDate { get; set; }
-        public DateTime LastLoginDate { get; set; }
-        public bool IsEmailVerified { get; set; }
-
         // Navigation properties
-        public ICollection<Card> Cards { get; set; }
-        public ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Card> Cards { get; set; }
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace CardTradeHub.Models
             Status = "Available";
             ListedDate = DefaultDate;
             Transactions = new List<Transaction>();
+            UserID = string.Empty;
         }
 
         [Key]
@@ -48,8 +49,9 @@ namespace CardTradeHub.Models
         public required string Status { get; set; } // Available, Sold, Pending
         
         // Foreign keys
+        [Required]
         [ForeignKey("User")]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
         public User? User { get; set; }
 

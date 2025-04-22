@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using CardTradeHub.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace CardTradeHub.Models.ViewModels
 {
@@ -9,6 +10,8 @@ namespace CardTradeHub.Models.ViewModels
     {
         public List<Transaction> Purchases { get; set; } = new List<Transaction>();
         public List<Transaction> Sales { get; set; } = new List<Transaction>();
+        public decimal TotalPurchases => Purchases.Sum(p => p.Amount);
+        public decimal TotalSales => Sales.Sum(s => s.Amount);
     }
 
     public class TradeDetailsViewModel

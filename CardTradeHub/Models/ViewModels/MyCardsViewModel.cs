@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using CardTradeHub.Models;
 
 namespace CardTradeHub.Models.ViewModels
 {
     public class MyCardsViewModel
     {
-        public required IEnumerable<CardViewModel> UserCards { get; set; }
+        public List<Card> Cards { get; set; } = new List<Card>();
+        public string UserName { get; set; }
+        public int TotalCards { get; set; }
+        public decimal TotalValue { get; set; }
     }
 
     public class CardViewModel

@@ -47,5 +47,9 @@ namespace CardTradeHub.Models.ViewModels
 
         [Display(Name = "Registration Date")]
         public DateTime CreatedAt { get; set; }
+
+        public DateTime RegisterDate { get; set; }
+
+        public DateTime LastLoginDate { get; set; }
     }
 } 

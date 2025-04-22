@@ -14,22 +14,23 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CardTradeHubContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Add Identity services
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequiredLength = 8;
+
+    options.User.RequireUniqueEmail = true;
+    options.SignIn.RequireConfirmedEmail = false;
+})
+.AddEntityFrameworkStores<CardTradeHubContext>()
+.AddDefaultTokenProviders();
+
 // Add authentication services
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-})
-.AddCookie(options =>
-{
-    options.LoginPath = "/Account/Login";
-    options.LogoutPath = "/Account/Logout";
-    options.AccessDeniedPath = "/Account/AccessDenied";
-    options.Cookie.Name = "CardTradeHub.Auth";
-    options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromDays(7);
-    options.SlidingExpiration = true;
-})
+builder.Services.AddAuthentication()
 .AddGoogle(options =>
 {
     options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
@@ -47,9 +48,6 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
 });
 
-// Add password hasher
-builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
-
 // Add session services
 builder.Services.AddSession(options =>
 {
@@ -58,7 +56,63 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+// Configure cookie settings
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.LogoutPath = "/Account/Logout";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.Cookie.Name = "CardTradeHub.Auth";
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromDays(7);
+    options.SlidingExpiration = true;
+});
+
 var app = builder.Build();
+
+// Initialize roles and admin user
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+
+    // Create roles if they don't exist
+    if (!await roleManager.RoleExistsAsync("Admin"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("Admin"));
+    }
+    if (!await roleManager.RoleExistsAsync("User"))
+    {
+        await roleManager.CreateAsync(new IdentityRole("User"));
+    }
+
+    // Find or create admin user and add to Admin role
+    var adminUser = await userManager.FindByEmailAsync("admin@cardtradehub.com");
+    if (adminUser == null)
+    {
+        adminUser = new User
+        {
+            UserName = "admin@cardtradehub.com",
+            Email = "admin@cardtradehub.com",
+            EmailConfirmed = true,
+            FirstName = "Admin",
+            LastName = "User",
+            Role = "Admin",
+            IsActive = true,
+            CreatedAt = DateTime.UtcNow,
+            RegisterDate = DateTime.UtcNow
+        };
+        var result = await userManager.CreateAsync(adminUser, "Admin@123456");
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(adminUser, "Admin");
+        }
+    }
+    else if (!await userManager.IsInRoleAsync(adminUser, "Admin"))
+    {
+        await userManager.AddToRoleAsync(adminUser, "Admin");
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

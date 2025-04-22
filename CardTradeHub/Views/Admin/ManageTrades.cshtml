@@ -4,53 +4,50 @@
     ViewData["Title"] = "Manage Trades";
 }
 
-<div class="container">
+<div class="container mt-4">
     <h1 class="mb-4">Manage Trades</h1>
 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
+                    <th>Date</th>
                     <th>Card</th>
                     <th>Buyer</th>
                     <th>Seller</th>
-                    <th>Price</th>
-                    <th>Date</th>
+                    <th>Amount</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var transaction in Model)
+                @foreach (var trade in Model)
                 {
                     <tr>
-                        <td>@transaction.Card.Title</td>
-                        <td>@transaction.Buyer.Username</td>
-                        <td>@transaction.Seller.Username</td>
-                        <td>@transaction.Amount.ToString("C")</td>
-                        <td>@transaction.Date.ToString("MMM dd, yyyy")</td>
+                        <td>@trade.TransactionID</td>
+                        <td>@trade.Card?.Title</td>
+                        <td>@trade.Buyer?.UserName</td>
+                        <td>@trade.Seller?.UserName</td>
+                        <td>@trade.Amount.ToString("C")</td>
                         <td>
-                            @if (transaction.HasDispute)
-                            {
-                                <span class="badge bg-danger">Dispute</span>
-                            }
-                            else
-                            {
-                                <span class="badge bg-success">Completed</span>
-                            }
+                            <span class="badge bg-@(trade.Status switch {
+                                "Pending" => "warning",
+                                "Completed" => "success",
+                                "Cancelled" => "danger",
+                                _ => "secondary"
+                            })">@trade.Status</span>
                         </td>
+                        <td>@trade.Date.ToString("yyyy-MM-dd HH:mm")</td>
                         <td>
-                            @if (transaction.HasDispute)
-                            {
-                                <form asp-action="ResolveDispute" asp-route-id="@transaction.TransactionID" method="post" class="d-inline">
-                                    <input type="hidden" name="resolution" value="Resolved by Admin" />
-                                    <button type="submit" class="btn btn-sm btn-success">Resolve</button>
-                                </form>
-                            }
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-info" onclick="viewDetails(@trade.TransactionID)">Details</button>
+                                <button class="btn btn-sm btn-warning" onclick="updateStatus(@trade.TransactionID)">Update Status</button>
+                            </div>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</div> 
+</div>

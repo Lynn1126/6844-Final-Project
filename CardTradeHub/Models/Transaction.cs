@@ -18,16 +18,18 @@ namespace CardTradeHub.Models
             TrackingNumber = string.Empty;
             DisputeReason = string.Empty;
             DisputeStatus = "None";
+            BuyerID = string.Empty;
+            SellerID = string.Empty;
         }
 
         [Key]
         public int TransactionID { get; set; }
 
         [ForeignKey("Buyer")]
-        public int BuyerID { get; set; }
+        public string BuyerID { get; set; }
 
         [ForeignKey("Seller")]
-        public int SellerID { get; set; }
+        public string SellerID { get; set; }
 
         [ForeignKey("Card")]
         public int CardID { get; set; }

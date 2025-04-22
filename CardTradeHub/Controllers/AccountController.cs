@@ -5,8 +5,6 @@ using Microsoft.AspNetCore.Identity;
 using CardTradeHub.Models;
 using CardTradeHub.Models.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
 using System.Security.Claims;
 using System.Collections.Generic;
 using CardTradeHub.Data;
@@ -18,88 +16,85 @@ namespace CardTradeHub.Controllers
     public class AccountController : Controller
     {
         private readonly CardTradeHubContext _context;
-        private readonly IPasswordHasher<User> _passwordHasher;
+        private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
 
-        public AccountController(CardTradeHubContext context, IPasswordHasher<User> passwordHasher)
+        public AccountController(
+            CardTradeHubContext context,
+            UserManager<User> userManager,
+            SignInManager<User> signInManager)
         {
             _context = context;
-            _passwordHasher = passwordHasher;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         // GET: /Account/Login
         [HttpGet]
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl = null)
         {
             if (User?.Identity?.IsAuthenticated == true)
             {
                 return RedirectToAction("Index", "Home");
             }
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         // POST: /Account/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             try
             {
+                ViewData["ReturnUrl"] = returnUrl;
                 if (!ModelState.IsValid)
                 {
                     return View(model);
                 }
 
-                var user = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Email == model.Email);
-
+                var user = await _userManager.FindByEmailAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError("", "Invalid username or password");
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return View(model);
                 }
 
-                var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash ?? "", model.Password);
-                if (result == PasswordVerificationResult.Failed)
+                var result = await _signInManager.PasswordSignInAsync(
+                    user,
+                    model.Password,
+                    model.RememberMe,
+                    lockoutOnFailure: true);
+
+                if (result.Succeeded)
                 {
-                    ModelState.AddModelError("", "Invalid username or password");
-                    return View(model);
+                    user.LastLoginDate = DateTime.UtcNow;
+                    await _context.SaveChangesAsync();
+
+                    if (!await _userManager.IsInRoleAsync(user, user.Role))
+                    {
+                        await _userManager.AddToRoleAsync(user, user.Role);
+                    }
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    return RedirectToAction("Index", "Home");
                 }
 
-                if (!user.IsActive)
+                if (result.IsLockedOut)
                 {
-                    ModelState.AddModelError("", "This account has been disabled");
-                    return View(model);
+                    return View("Lockout");
                 }
-                
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, user.Email),
-                    new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
-                    new Claim("FullName", user.Username),
-                    new Claim(ClaimTypes.Role, user.Role ?? "User")
-                };
 
-                var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-                var authProperties = new AuthenticationProperties
-                {
-                    IsPersistent = model.RememberMe,
-                    ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
-                };
-
-                await HttpContext.SignInAsync(
-                    CookieAuthenticationDefaults.AuthenticationScheme,
-                    new ClaimsPrincipal(claimsIdentity),
-                    authProperties);
-
-                user.LastLoginDate = DateTime.UtcNow;
-                await _context.SaveChangesAsync();
-
-                return RedirectToAction("Index", "Home");
+                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                return View(model);
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Login error: {ex.Message}");
-                
                 return View("Error", new ErrorViewModel
                 {
                     ErrorTitle = "Login Failed",
@@ -111,57 +106,39 @@ namespace CardTradeHub.Controllers
 
         // GET: /Account/Register
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult Register(string returnUrl = null)
         {
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
+            ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         // POST: /Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             try
             {
+                ViewData["ReturnUrl"] = returnUrl;
                 if (!ModelState.IsValid)
                 {
                     return View(model);
                 }
 
-                // Check email domain
                 if (!IsValidEmailDomain(model.Email))
                 {
                     ModelState.AddModelError("Email", "Please use a valid email domain");
                     return View(model);
                 }
 
-                // Check if user exists
-                var existingUser = await _context.Users
-                    .FirstOrDefaultAsync(u => u.Email.ToLower() == model.Email.ToLower() || 
-                                            u.Username.ToLower() == model.Username.ToLower());
-                if (existingUser != null)
-                {
-                    if (existingUser.Email.ToLower() == model.Email.ToLower())
-                    {
-                        ModelState.AddModelError("Email", "This email has already been registered");
-                    }
-                    if (existingUser.Username.ToLower() == model.Username.ToLower())
-                    {
-                        ModelState.AddModelError("Username", "This username has already been taken");
-                    }
-                    return View(model);
-                }
-
-                // Create new user
                 var user = new User
                 {
-                    Username = model.Username.Trim(),
-                    Email = model.Email.Trim().ToLower(),
-                    PasswordHash = _passwordHasher.HashPassword(null, model.Password),
+                    UserName = model.Email,
+                    Email = model.Email,
                     Role = model.Email.ToLower() == "admin@cardtradehub.com" ? "Admin" : "User",
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow,
@@ -170,28 +147,27 @@ namespace CardTradeHub.Controllers
                     PhoneNumber = model.PhoneNumber?.Trim()
                 };
 
-                _context.Users.Add(user);
-                await _context.SaveChangesAsync();
-
-                // Sign in user
-                await SignInUser(user);
-
-                return RedirectToAction("Index", "Home");
-            }
-            catch (DbUpdateException ex)
-            {
-                // Database error
-                Console.WriteLine($"Database error: {ex.Message}");
-                return View("Error", new ErrorViewModel
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
                 {
-                    ErrorTitle = "Registration Failed",
-                    ErrorMessage = "An error occurred while saving user information. Please try again later.",
-                    RequestId = HttpContext.TraceIdentifier
-                });
+                    await _userManager.AddToRoleAsync(user, user.Role);
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    {
+                        return Redirect(returnUrl);
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return View(model);
             }
             catch (Exception ex)
             {
-                // Other errors
                 Console.WriteLine($"Registration error: {ex.Message}");
                 return View("Error", new ErrorViewModel
                 {
@@ -207,24 +183,7 @@ namespace CardTradeHub.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            // Sign out from our application
-            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
-            // Clear session
-            HttpContext.Session.Clear();
-
-            // Clear authentication cookies
-            foreach (var cookie in Request.Cookies.Keys)
-            {
-                if (cookie.StartsWith(".AspNetCore.") || 
-                    cookie.StartsWith("Microsoft.Authentication") ||
-                    cookie.Equals("CardTradeHub.Auth"))
-                {
-                    Response.Cookies.Delete(cookie);
-                }
-            }
-
-            // Redirect to home page
+            await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
@@ -232,17 +191,19 @@ namespace CardTradeHub.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ResetAdminPassword()
         {
-            var admin = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == "admin@cardtradehub.com");
-            
+            var admin = await _userManager.FindByEmailAsync("admin@cardtradehub.com");
             if (admin == null)
             {
                 return NotFound("Admin user not found");
             }
 
-            // Reset password to "Admin123!"
-            admin.PasswordHash = _passwordHasher.HashPassword(null, "Admin123!");
-            await _context.SaveChangesAsync();
+            var token = await _userManager.GeneratePasswordResetTokenAsync(admin);
+            var result = await _userManager.ResetPasswordAsync(admin, token, "Admin123!");
+
+            if (!result.Succeeded)
+            {
+                return BadRequest("Failed to reset admin password");
+            }
 
             return RedirectToAction("Index", "Home");
         }
@@ -251,31 +212,31 @@ namespace CardTradeHub.Controllers
         [Authorize]
         public async Task<IActionResult> Profile()
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userId == null || !int.TryParse(userId, out int id))
-            {
-                return RedirectToAction("Login");
-            }
-
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound();
             }
 
-            var model = new ProfileViewModel
+            var viewModel = new ProfileViewModel
             {
-                Username = user.Username,
+                Username = user.UserName,
                 Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
                 Role = user.Role,
-                CreatedAt = user.CreatedAt
+                IsActive = user.IsActive,
+                RegisterDate = user.CreatedAt,
+                LastLoginDate = user.LastLoginDate
             };
 
-            return View(model);
+            return View(viewModel);
         }
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Profile(ProfileViewModel model)
         {
             if (!ModelState.IsValid)
@@ -283,160 +244,80 @@ namespace CardTradeHub.Controllers
                 return View(model);
             }
 
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            if (userId == null || !int.TryParse(userId, out int id))
-            {
-                return RedirectToAction("Login");
-            }
-
-            var user = await _context.Users.FindAsync(id);
+            var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
                 return NotFound();
             }
 
-            // 更新用户名
-            if (user.Username != model.Username)
+            user.FirstName = model.FirstName?.Trim();
+            user.LastName = model.LastName?.Trim();
+            user.PhoneNumber = model.PhoneNumber?.Trim();
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
             {
-                // 检查用户名是否已被使用
-                if (await _context.Users.AnyAsync(u => u.Username == model.Username && u.UserID != id))
+                foreach (var error in result.Errors)
                 {
-                    ModelState.AddModelError("Username", "This username is already taken.");
-                    return View(model);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
-                user.Username = model.Username;
+                return View(model);
             }
 
-            // 如果提供了当前密码和新密码，则更新密码
-            if (!string.IsNullOrEmpty(model.CurrentPassword) && !string.IsNullOrEmpty(model.NewPassword))
-            {
-                var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, model.CurrentPassword);
-                if (result == PasswordVerificationResult.Failed)
-                {
-                    ModelState.AddModelError("CurrentPassword", "Current password is incorrect");
-                    return View(model);
-                }
-
-                user.PasswordHash = _passwordHasher.HashPassword(null, model.NewPassword);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Profile", new { Message = "Profile updated" });
-        }
-
-        private async Task SignInUser(User user)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role),
-                new Claim("FullName", user.Username)
-            };
-
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var authProperties = new AuthenticationProperties
-            {
-                IsPersistent = true,
-                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(7)
-            };
-
-            await HttpContext.SignInAsync(
-                CookieAuthenticationDefaults.AuthenticationScheme,
-                new ClaimsPrincipal(claimsIdentity),
-                authProperties);
-        }
-
-        // 用于重置用户密码的辅助方法
-        private async Task<bool> ResetUserPassword(string email, string newPassword)
-        {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-            if (user == null)
-            {
-                return false;
-            }
-
-            user.PasswordHash = _passwordHasher.HashPassword(null, newPassword);
-            await _context.SaveChangesAsync();
-            return true;
+            return RedirectToAction(nameof(Profile));
         }
 
         [HttpGet]
         public IActionResult GoogleLogin()
         {
-            var properties = new AuthenticationProperties { RedirectUri = Url.Action("GoogleResponse") };
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action(nameof(GoogleResponse)));
             return Challenge(properties, "Google");
         }
 
         [HttpGet]
         public async Task<IActionResult> GoogleResponse()
         {
-            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            if (!result.Succeeded)
-                return RedirectToAction("Login");
-
-            var claims = result.Principal.Identities.FirstOrDefault()?.Claims;
-            var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-            
-            if (string.IsNullOrEmpty(email))
-                return RedirectToAction("Login");
-
-            // 检查用户是否已存在
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-            if (user == null)
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
             {
-                // 创建新用户
-                var username = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value ?? email.Split('@')[0];
-                user = new User
-                {
-                    Email = email,
-                    Username = username,
-                    PasswordHash = "GoogleAuth", // 标记为 Google 认证用户
-                    Role = "User",
-                    IsActive = true,
-                    CreatedAt = DateTime.UtcNow,
-                    RegisterDate = DateTime.UtcNow,
-                    LastLoginDate = DateTime.UtcNow,
-                    IsEmailVerified = true
-                };
-                _context.Users.Add(user);
-                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Login));
             }
 
-            // 更新登录时间
-            user.LastLoginDate = DateTime.UtcNow;
-            await _context.SaveChangesAsync();
-
-            // 创建身份验证票据
-            var identity = new ClaimsIdentity(new[]
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false);
+            if (result.Succeeded)
             {
-                new Claim(ClaimTypes.NameIdentifier, user.UserID.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.Role, user.Role),
-                new Claim("FullName", user.Username)
-            }, CookieAuthenticationDefaults.AuthenticationScheme);
+                return RedirectToAction("Index", "Home");
+            }
 
-            var principal = new ClaimsPrincipal(identity);
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+            var user = new User
+            {
+                UserName = email,
+                Email = email,
+                Role = "User",
+                IsActive = true,
+                CreatedAt = DateTime.UtcNow
+            };
 
-            return RedirectToAction("Index", "Home");
+            var createResult = await _userManager.CreateAsync(user);
+            if (createResult.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "User");
+                await _userManager.AddLoginAsync(user, info);
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction(nameof(Login));
         }
 
-        // Validate email domain
         private bool IsValidEmailDomain(string email)
         {
-            if (string.IsNullOrEmpty(email))
-                return false;
+            if (string.IsNullOrEmpty(email)) return false;
 
-            var domain = email.Split('@').LastOrDefault();
-            if (string.IsNullOrEmpty(domain))
-                return false;
-
-            // List of invalid domains
-            var invalidDomains = new[] { "example.com", "test.com", "temporary.com" };
-            return !invalidDomains.Contains(domain.ToLower());
+            var domain = email.Split('@').Last().ToLower();
+            var validDomains = new[] { "gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "cardtradehub.com" };
+            return validDomains.Contains(domain);
         }
     }
 }

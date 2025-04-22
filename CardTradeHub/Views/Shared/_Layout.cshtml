@@ -42,13 +42,43 @@
                                 <span class="ms-1">My Trades</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
                         @if (User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="Admin" asp-action="Index">
-                                    <i class="bi bi-gear"></i>
-                                    <span class="ms-1">Admin</span>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-shield-lock"></i>
+                                    <span class="ms-1">Admin Dashboard</span>
                                 </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="Index">
+                                            <i class="bi bi-speedometer2"></i>
+                                            <span class="ms-2">Admin Dashboard</span>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="ManageCards">
+                                            <i class="bi bi-card-list"></i>
+                                            <span class="ms-2">Card Management</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="ManageTrades">
+                                            <i class="bi bi-arrow-left-right"></i>
+                                            <span class="ms-2">Trade Management</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Admin" asp-action="ManageUsers">
+                                            <i class="bi bi-people"></i>
+                                            <span class="ms-2">User Management</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                         }
                     </ul>

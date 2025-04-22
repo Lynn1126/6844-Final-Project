@@ -4,18 +4,19 @@
     ViewData["Title"] = "Manage Cards";
 }
 
-<div class="container">
+<div class="container mt-4">
     <h1 class="mb-4">Manage Cards</h1>
 
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>Title</th>
-                    <th>Seller</th>
+                    <th>Category</th>
                     <th>Price</th>
+                    <th>Owner</th>
                     <th>Status</th>
-                    <th>Listed Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -23,25 +24,38 @@
                 @foreach (var card in Model)
                 {
                     <tr>
+                        <td>@card.CardID</td>
                         <td>@card.Title</td>
-                        <td>@card.User.Username</td>
+                        <td>@card.Category</td>
                         <td>@card.Price.ToString("C")</td>
+                        <td>@card.UserID</td>
+                        <td>@card.Status</td>
+                        <td>@card.ListedDate.ToString("yyyy-MM-dd")</td>
                         <td>
-                            <span class="badge bg-@(card.Status == "Available" ? "success" : "secondary")">
-                                @card.Status
-                            </span>
-                        </td>
-                        <td>@card.ListedDate.ToString("MMM dd, yyyy")</td>
-                        <td>
-                            <form asp-action="ToggleCardStatus" asp-route-id="@card.CardID" method="post" class="d-inline">
-                                <button type="submit" class="btn btn-sm btn-@(card.Status == "Available" ? "warning" : "success")">
-                                    @(card.Status == "Available" ? "Make Unavailable" : "Make Available")
-                                </button>
-                            </form>
+                            <div class="btn-group">
+                                <button class="btn btn-sm btn-primary" onclick="editCard(@card.CardID)">Edit</button>
+                                <button class="btn btn-sm btn-danger" onclick="deleteCard(@card.CardID)">Delete</button>
+                            </div>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-</div> 
+</div>
+
+@section Scripts {
+    <script>
+        function editCard(id) {
+            // TODO: 实现编辑功能
+            alert('Edit card ID: ' + id);
+        }
+
+        function deleteCard(id) {
+            if (confirm('Are you sure you want to delete this card?')) {
+                // TODO: 实现删除功能
+                alert('Delete card ID: ' + id);
+            }
+        }
+    </script>
+} 

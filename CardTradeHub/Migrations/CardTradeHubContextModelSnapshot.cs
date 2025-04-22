@@ -53,8 +53,9 @@ namespace CardTradeHub.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CardID");
 
@@ -74,7 +75,7 @@ namespace CardTradeHub.Migrations
                             Price = 200.00m,
                             Status = "Available",
                             Title = "Pikachu Pokemon Center Kyoto",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -87,7 +88,7 @@ namespace CardTradeHub.Migrations
                             Price = 3000.00m,
                             Status = "Available",
                             Title = "Kobe Bryant 2012-13 Limited Auto",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -100,7 +101,7 @@ namespace CardTradeHub.Migrations
                             Price = 5000.00m,
                             Status = "Available",
                             Title = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -113,7 +114,7 @@ namespace CardTradeHub.Migrations
                             Price = 1000.00m,
                             Status = "Available",
                             Title = "Yao Ming 2016-17 Panini Flawless Autograph",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -126,7 +127,7 @@ namespace CardTradeHub.Migrations
                             Price = 3000.00m,
                             Status = "Available",
                             Title = "Black Lotus R",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -139,7 +140,7 @@ namespace CardTradeHub.Migrations
                             Price = 1500.00m,
                             Status = "Available",
                             Title = "National Treasures Kevin Durant Auto USA",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -152,7 +153,7 @@ namespace CardTradeHub.Migrations
                             Price = 50.00m,
                             Status = "Available",
                             Title = "Shohei Ohtani Topps Chrome",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -165,7 +166,7 @@ namespace CardTradeHub.Migrations
                             Price = 1000.00m,
                             Status = "Available",
                             Title = "David Beckham Autograph Card",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -178,7 +179,7 @@ namespace CardTradeHub.Migrations
                             Price = 8000.00m,
                             Status = "Available",
                             Title = "Red Eyes Black Dragon",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -191,7 +192,7 @@ namespace CardTradeHub.Migrations
                             Price = 1500.00m,
                             Status = "Available",
                             Title = "Kobe Bryant Gold Standard Superscribe",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -204,7 +205,7 @@ namespace CardTradeHub.Migrations
                             Price = 300.00m,
                             Status = "Available",
                             Title = "Mewtwo GX Rainbow Rare",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -217,7 +218,7 @@ namespace CardTradeHub.Migrations
                             Price = 2000.00m,
                             Status = "Available",
                             Title = "Juan Soto Autograph Card",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -230,7 +231,7 @@ namespace CardTradeHub.Migrations
                             Price = 4000.00m,
                             Status = "Available",
                             Title = "Mox Sapphire",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -243,7 +244,7 @@ namespace CardTradeHub.Migrations
                             Price = 500.00m,
                             Status = "Available",
                             Title = "Kobe Bryant Hoops Slam",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -256,7 +257,7 @@ namespace CardTradeHub.Migrations
                             Price = 400.00m,
                             Status = "Available",
                             Title = "Dark Magician Girl",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -269,7 +270,7 @@ namespace CardTradeHub.Migrations
                             Price = 9000.00m,
                             Status = "Available",
                             Title = "Wayne Gretzky Rookie",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -282,7 +283,7 @@ namespace CardTradeHub.Migrations
                             Price = 200.00m,
                             Status = "Available",
                             Title = "Lillie Full Art PSA 10",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -295,7 +296,7 @@ namespace CardTradeHub.Migrations
                             Price = 3500.00m,
                             Status = "Available",
                             Title = "Kareem Abdul-Jabbar Unparalleled Autograph",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -308,7 +309,7 @@ namespace CardTradeHub.Migrations
                             Price = 400.00m,
                             Status = "Available",
                             Title = "Juan Soto Rookie Card",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -321,7 +322,7 @@ namespace CardTradeHub.Migrations
                             Price = 2600.00m,
                             Status = "Available",
                             Title = "Stephen Curry 2018-19 Immaculate Moments",
-                            UserID = 1
+                            UserID = "2"
                         });
                 });
 
@@ -334,8 +335,9 @@ namespace CardTradeHub.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("BuyerID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BuyerID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CardID")
                         .HasColumnType("INTEGER");
@@ -361,8 +363,9 @@ namespace CardTradeHub.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SellerID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("SellerID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ShippingAddress")
                         .IsRequired()
@@ -393,17 +396,25 @@ namespace CardTradeHub.Migrations
 
             modelBuilder.Entity("CardTradeHub.Models.User", b =>
                 {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(256)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
@@ -413,21 +424,34 @@ namespace CardTradeHub.Migrations
                         .HasColumnType("INTEGER")
                         .HasDefaultValue(true);
 
-                    b.Property<bool>("IsEmailVerified")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("LastLoginDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PasswordHash")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("TEXT");
@@ -439,29 +463,198 @@ namespace CardTradeHub.Migrations
                         .HasColumnType("TEXT")
                         .HasDefaultValue("Customer");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(50)
+                    b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("UserID");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
 
-                    b.ToTable("Users");
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
                         new
                         {
-                            UserID = 1,
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "839b18ec-183d-4361-83c7-0c308108cda0",
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "admin@cardtradehub.com",
+                            EmailConfirmed = true,
                             IsActive = true,
-                            IsEmailVerified = false,
                             LastLoginDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            PasswordHash = "AQAAAAEAACcQAAAAEHYxOE9wZQ==",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@CARDTRADEHUB.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJuEwQC2quN17C/GkpZmTEo9flggVob8vU7KOXKAC2JTXeHV9wsZZo3UtM13nxgMkA==",
+                            PhoneNumberConfirmed = false,
                             RegisterDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Role = "Admin",
-                            Username = "admin"
+                            SecurityStamp = "8f94cb50-2d65-45b9-b25c-afcea2aa7f16",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2ce09d1e-4e96-48da-b872-eb9c8e31b743",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "seller@cardtradehub.com",
+                            EmailConfirmed = true,
+                            IsActive = true,
+                            LastLoginDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SELLER@CARDTRADEHUB.COM",
+                            NormalizedUserName = "SELLER",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL3K/nt8D7tLEuDlqFvqy67GFRijsrh8B01mvdytxYaAeya/rEmXzB6xlEa85LAdVw==",
+                            PhoneNumberConfirmed = false,
+                            RegisterDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Role = "User",
+                            SecurityStamp = "4b21235c-675c-4ee7-a32d-6370964c23bd",
+                            TwoFactorEnabled = false,
+                            UserName = "seller"
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("CardTradeHub.Models.Card", b =>
@@ -500,6 +693,57 @@ namespace CardTradeHub.Migrations
                     b.Navigation("Card");
 
                     b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CardTradeHub.Models.Card", b =>

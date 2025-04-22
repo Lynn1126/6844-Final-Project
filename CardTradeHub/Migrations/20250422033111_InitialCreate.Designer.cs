@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardTradeHub.Migrations
 {
     [DbContext(typeof(CardTradeHubContext))]
-    [Migration("20250422001352_UpdateCardData")]
-    partial class UpdateCardData
+    [Migration("20250422033111_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,8 +56,9 @@ namespace CardTradeHub.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("CardID");
 
@@ -71,130 +72,130 @@ namespace CardTradeHub.Migrations
                             CardID = 1,
                             Category = "Pokemon",
                             Condition = "Mint",
-                            Description = "First edition Charizard in mint condition",
-                            ImageUrl = "/images/cards/charizard.jpg",
+                            Description = "2019 Pikachu Pokemon Center Kyoto",
+                            ImageUrl = "/images/cards/pikachu.jpg",
                             ListedDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 1000.00m,
+                            Price = 200.00m,
                             Status = "Available",
-                            Title = "Charizard First Edition",
-                            UserID = 1
+                            Title = "Pikachu Pokemon Center Kyoto",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 2,
-                            Category = "Magic: The Gathering",
+                            Category = "Basketball",
                             Condition = "Good",
-                            Description = "Rare Black Lotus card from Magic: The Gathering",
-                            ImageUrl = "/images/cards/black-lotus.jpg",
+                            Description = "Kobe Bryant 2012-13 Limited Auto",
+                            ImageUrl = "/images/cards/kobe1.jpg",
                             ListedDate = new DateTime(2024, 1, 2, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 5000.00m,
+                            Price = 3000.00m,
                             Status = "Available",
-                            Title = "Black Lotus MTG",
-                            UserID = 1
+                            Title = "Kobe Bryant 2012-13 Limited Auto",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 3,
-                            Category = "Yu-Gi-Oh",
+                            Category = "Football",
                             Condition = "Excellent",
-                            Description = "Classic Yu-Gi-Oh! card in excellent condition",
-                            ImageUrl = "/images/cards/blue-eyes.jpg",
+                            Description = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
+                            ImageUrl = "/images/cards/messi.jpg",
                             ListedDate = new DateTime(2024, 1, 3, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 500.00m,
+                            Price = 5000.00m,
                             Status = "Available",
-                            Title = "Blue-Eyes White Dragon",
-                            UserID = 1
+                            Title = "2014 Prizm World Cup Lionel Messi Auto PSA 10",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 4,
-                            Category = "Pokemon",
+                            Category = "Basketball",
                             Condition = "Near Mint",
-                            Description = "Extremely rare Pikachu Illustrator promo card",
-                            ImageUrl = "/images/cards/pikachu-illustrator.jpg",
+                            Description = "Yao Ming 2016-17 Panini Flawless Autograph",
+                            ImageUrl = "/images/cards/yao.jpg",
                             ListedDate = new DateTime(2024, 1, 4, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 10000.00m,
+                            Price = 1000.00m,
                             Status = "Available",
-                            Title = "Pikachu Illustrator",
-                            UserID = 1
+                            Title = "Yao Ming 2016-17 Panini Flawless Autograph",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 5,
                             Category = "Magic: The Gathering",
                             Condition = "Good",
-                            Description = "Vintage Time Walk card from MTG Alpha set",
-                            ImageUrl = "/images/cards/time-walk.jpg",
+                            Description = "1993 Unlimited Black Lotus R",
+                            ImageUrl = "/images/cards/blacklotus.jpg",
                             ListedDate = new DateTime(2024, 1, 5, 0, 0, 0, 0, DateTimeKind.Utc),
                             Price = 3000.00m,
                             Status = "Available",
-                            Title = "Time Walk",
-                            UserID = 1
+                            Title = "Black Lotus R",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 6,
                             Category = "Basketball",
                             Condition = "Near Mint",
-                            Description = "1986 Fleer Michael Jordan Rookie Card",
-                            ImageUrl = "/images/cards/jordan-rookie.jpg",
+                            Description = "National Treasures Kevin Durant Auto USA",
+                            ImageUrl = "/images/cards/durant.jpg",
                             ListedDate = new DateTime(2024, 1, 6, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 7500.00m,
+                            Price = 1500.00m,
                             Status = "Available",
-                            Title = "Michael Jordan Rookie Card",
-                            UserID = 1
+                            Title = "National Treasures Kevin Durant Auto USA",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 7,
                             Category = "Baseball",
                             Condition = "Good",
-                            Description = "1952 Topps Mickey Mantle #311",
-                            ImageUrl = "/images/cards/mantle-1952.jpg",
+                            Description = "2019 Topps Chrome Shohei Ohtani",
+                            ImageUrl = "/images/cards/shohei.jpg",
                             ListedDate = new DateTime(2024, 1, 7, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 15000.00m,
+                            Price = 50.00m,
                             Status = "Available",
-                            Title = "Mickey Mantle 1952 Topps",
-                            UserID = 1
+                            Title = "Shohei Ohtani Topps Chrome",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 8,
                             Category = "Football",
                             Condition = "Excellent",
-                            Description = "2000 Playoff Contenders Tom Brady Rookie Card",
-                            ImageUrl = "/images/cards/brady-rookie.jpg",
+                            Description = "2022-23 Panini Eminence David Beckham Autograph",
+                            ImageUrl = "/images/cards/beckham.jpg",
                             ListedDate = new DateTime(2024, 1, 8, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 8000.00m,
+                            Price = 1000.00m,
                             Status = "Available",
-                            Title = "Tom Brady Rookie Card",
-                            UserID = 1
+                            Title = "David Beckham Autograph Card",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 9,
                             Category = "Yu-Gi-Oh",
                             Condition = "Near Mint",
-                            Description = "Complete set of all 5 Exodia pieces",
-                            ImageUrl = "/images/cards/exodia.jpg",
+                            Description = "Red Eyes Black Dragon PSA 10",
+                            ImageUrl = "/images/cards/bluedragon.jpg",
                             ListedDate = new DateTime(2024, 1, 9, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 800.00m,
+                            Price = 8000.00m,
                             Status = "Available",
-                            Title = "Exodia the Forbidden One",
-                            UserID = 1
+                            Title = "Red Eyes Black Dragon",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 10,
                             Category = "Basketball",
                             Condition = "Mint",
-                            Description = "2003-04 Upper Deck LeBron James Rookie Card",
-                            ImageUrl = "/images/cards/lebron-rookie.jpg",
+                            Description = "Kobe Bryant Gold Standard Superscribe Autograph",
+                            ImageUrl = "/images/cards/kobe2.jpg",
                             ListedDate = new DateTime(2024, 1, 10, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 6000.00m,
+                            Price = 1500.00m,
                             Status = "Available",
-                            Title = "LeBron James Rookie Card",
-                            UserID = 1
+                            Title = "Kobe Bryant Gold Standard Superscribe",
+                            UserID = "2"
                         },
                         new
                         {
@@ -207,20 +208,20 @@ namespace CardTradeHub.Migrations
                             Price = 300.00m,
                             Status = "Available",
                             Title = "Mewtwo GX Rainbow Rare",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 12,
                             Category = "Baseball",
                             Condition = "Good",
-                            Description = "1933 Goudey Babe Ruth Baseball Card",
-                            ImageUrl = "/images/cards/ruth-1933.jpg",
+                            Description = "2021 Topps Definitive Juan Soto Autograph Card",
+                            ImageUrl = "/images/cards/soto.jpg",
                             ListedDate = new DateTime(2024, 1, 12, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 12000.00m,
+                            Price = 2000.00m,
                             Status = "Available",
-                            Title = "Babe Ruth 1933 Goudey",
-                            UserID = 1
+                            Title = "Juan Soto Autograph Card",
+                            UserID = "2"
                         },
                         new
                         {
@@ -233,20 +234,20 @@ namespace CardTradeHub.Migrations
                             Price = 4000.00m,
                             Status = "Available",
                             Title = "Mox Sapphire",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 14,
                             Category = "Basketball",
                             Condition = "Near Mint",
-                            Description = "1996-97 Topps Chrome Kobe Bryant Rookie Card",
-                            ImageUrl = "/images/cards/kobe-rookie.jpg",
+                            Description = "2020-21 Kobe Bryant Hoops Slam",
+                            ImageUrl = "/images/cards/kobe3.jpg",
                             ListedDate = new DateTime(2024, 1, 14, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 5500.00m,
+                            Price = 500.00m,
                             Status = "Available",
-                            Title = "Kobe Bryant Rookie Card",
-                            UserID = 1
+                            Title = "Kobe Bryant Hoops Slam",
+                            UserID = "2"
                         },
                         new
                         {
@@ -259,7 +260,7 @@ namespace CardTradeHub.Migrations
                             Price = 400.00m,
                             Status = "Available",
                             Title = "Dark Magician Girl",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
@@ -272,59 +273,59 @@ namespace CardTradeHub.Migrations
                             Price = 9000.00m,
                             Status = "Available",
                             Title = "Wayne Gretzky Rookie",
-                            UserID = 1
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 17,
                             Category = "Pokemon",
-                            Condition = "Near Mint",
-                            Description = "Pokemon Movie Ancient Mew Promo Card",
-                            ImageUrl = "/images/cards/ancient-mew.jpg",
+                            Condition = "Mint",
+                            Description = "Pokemon Lillie Full Art PSA 10",
+                            ImageUrl = "/images/cards/lillie.jpg",
                             ListedDate = new DateTime(2024, 1, 17, 0, 0, 0, 0, DateTimeKind.Utc),
                             Price = 200.00m,
                             Status = "Available",
-                            Title = "Ancient Mew Promo",
-                            UserID = 1
+                            Title = "Lillie Full Art PSA 10",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 18,
-                            Category = "Football",
+                            Category = "Basketball",
                             Condition = "Excellent",
-                            Description = "1986 Topps Jerry Rice Rookie Card",
-                            ImageUrl = "/images/cards/rice-rookie.jpg",
+                            Description = "Kareem Abdul-Jabbar Unparalleled Autograph",
+                            ImageUrl = "/images/cards/jabbar.jpg",
                             ListedDate = new DateTime(2024, 1, 18, 0, 0, 0, 0, DateTimeKind.Utc),
                             Price = 3500.00m,
                             Status = "Available",
-                            Title = "Jerry Rice Rookie Card",
-                            UserID = 1
+                            Title = "Kareem Abdul-Jabbar Unparalleled Autograph",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 19,
-                            Category = "Magic: The Gathering",
+                            Category = "Baseball",
                             Condition = "Good",
-                            Description = "Alpha Edition Ancestral Recall",
-                            ImageUrl = "/images/cards/ancestral-recall.jpg",
+                            Description = "Topps Chrome Juan Soto Rookie Card PSA 10",
+                            ImageUrl = "/images/cards/soto2.jpg",
                             ListedDate = new DateTime(2024, 1, 19, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 4500.00m,
+                            Price = 400.00m,
                             Status = "Available",
-                            Title = "Ancestral Recall",
-                            UserID = 1
+                            Title = "Juan Soto Rookie Card",
+                            UserID = "2"
                         },
                         new
                         {
                             CardID = 20,
-                            Category = "Yu-Gi-Oh",
+                            Category = "Basketball",
                             Condition = "Near Mint",
-                            Description = "First Edition Red Eyes Black Dragon",
-                            ImageUrl = "/images/cards/red-eyes.jpg",
+                            Description = "Stephen Curry 2018-19 Immaculate Moments",
+                            ImageUrl = "/images/cards/curry.jpg",
                             ListedDate = new DateTime(2024, 1, 20, 0, 0, 0, 0, DateTimeKind.Utc),
-                            Price = 600.00m,
+                            Price = 2600.00m,
                             Status = "Available",
-                            Title = "Red Eyes Black Dragon",
-                            UserID = 1
+                            Title = "Stephen Curry 2018-19 Immaculate Moments",
+                            UserID = "2"
                         });
                 });
 
@@ -337,8 +338,9 @@ namespace CardTradeHub.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("BuyerID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("BuyerID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("CardID")
                         .HasColumnType("INTEGER");
@@ -364,8 +366,9 @@ namespace CardTradeHub.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SellerID")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("SellerID")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("ShippingAddress")
                         .IsRequired()
@@ -396,17 +399,25 @@ namespace CardTradeHub.Migrations
 
             modelBuilder.Entity("CardTradeHub.Models.User", b =>
                 {
-                    b.Property<int>("UserID")
-                        .ValueGeneratedOnAdd()
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("AccessFailedCount")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(100)
+                        .HasMaxLength(256)
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
@@ -416,21 +427,34 @@ namespace CardTradeHub.Migrations
                         .HasColumnType("INTEGER")
                         .HasDefaultValue(true);
 
-                    b.Property<bool>("IsEmailVerified")
-                        .HasColumnType("INTEGER");
-
                     b.Property<DateTime>("LastLoginDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("LastName")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedUserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PasswordHash")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("RegisterDate")
                         .HasColumnType("TEXT");
@@ -442,29 +466,198 @@ namespace CardTradeHub.Migrations
                         .HasColumnType("TEXT")
                         .HasDefaultValue("Customer");
 
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasMaxLength(50)
+                    b.Property<string>("SecurityStamp")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("UserID");
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("INTEGER");
 
-                    b.ToTable("Users");
+                    b.Property<string>("UserName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("AspNetUsers", (string)null);
 
                     b.HasData(
                         new
                         {
-                            UserID = 1,
+                            Id = "1",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "839b18ec-183d-4361-83c7-0c308108cda0",
                             CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Email = "admin@cardtradehub.com",
+                            EmailConfirmed = true,
                             IsActive = true,
-                            IsEmailVerified = false,
                             LastLoginDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
-                            PasswordHash = "AQAAAAEAACcQAAAAEHYxOE9wZQ==",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@CARDTRADEHUB.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJuEwQC2quN17C/GkpZmTEo9flggVob8vU7KOXKAC2JTXeHV9wsZZo3UtM13nxgMkA==",
+                            PhoneNumberConfirmed = false,
                             RegisterDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
                             Role = "Admin",
-                            Username = "admin"
+                            SecurityStamp = "8f94cb50-2d65-45b9-b25c-afcea2aa7f16",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "2ce09d1e-4e96-48da-b872-eb9c8e31b743",
+                            CreatedAt = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Email = "seller@cardtradehub.com",
+                            EmailConfirmed = true,
+                            IsActive = true,
+                            LastLoginDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SELLER@CARDTRADEHUB.COM",
+                            NormalizedUserName = "SELLER",
+                            PasswordHash = "AQAAAAIAAYagAAAAEL3K/nt8D7tLEuDlqFvqy67GFRijsrh8B01mvdytxYaAeya/rEmXzB6xlEa85LAdVw==",
+                            PhoneNumberConfirmed = false,
+                            RegisterDate = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc),
+                            Role = "User",
+                            SecurityStamp = "4b21235c-675c-4ee7-a32d-6370964c23bd",
+                            TwoFactorEnabled = false,
+                            UserName = "seller"
                         });
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("AspNetRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetRoleClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("ClaimType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ClaimValue")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserClaims", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AspNetUserLogins", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("RoleId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId", "LoginProvider", "Name");
+
+                    b.ToTable("AspNetUserTokens", (string)null);
                 });
 
             modelBuilder.Entity("CardTradeHub.Models.Card", b =>
@@ -503,6 +696,57 @@ namespace CardTradeHub.Migrations
                     b.Navigation("Card");
 
                     b.Navigation("Seller");
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+                {
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+                {
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+                {
+                    b.HasOne("CardTradeHub.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("CardTradeHub.Models.Card", b =>
