@@ -5,78 +5,76 @@
 }
 
 <div class="container">
-    <h1 class="mb-4">List New Card</h1>
+    <div class="card-form">
+        <h1 class="mb-4">List New Card</h1>
 
-    <div class="row">
-        <div class="col-md-8">
-            <form asp-action="Create" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                
-                <div class="mb-3">
-                    <label asp-for="Title" class="form-label">Card Name</label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Card Name</label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
 
-                <div class="mb-3">
-                    <label asp-for="Description" class="form-label">Description</label>
-                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
 
-                <div class="mb-3">
-                    <label asp-for="Category" class="form-label">Category</label>
-                    <select asp-for="Category" class="form-select">
-                        <option value="">Select a category</option>
-                        <!-- Gaming Cards -->
-                        <option value="Pokemon">Pokemon</option>
-                        <option value="Magic: The Gathering">Magic: The Gathering</option>
-                        <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
-                        <!-- Sports Cards -->
-                        <option value="Basketball">Basketball</option>
-                        <option value="Baseball">Baseball</option>
-                        <option value="Football">Football</option>
-                        <option value="Hockey">Hockey</option>
-                    </select>
-                    <span asp-validation-for="Category" class="text-danger"></span>
-                </div>
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label">Category</label>
+                <select asp-for="Category" class="form-select">
+                    <option value="">Select a category</option>
+                    <!-- Gaming Cards -->
+                    <option value="Pokemon">Pokemon</option>
+                    <option value="Magic: The Gathering">Magic: The Gathering</option>
+                    <option value="Yu-Gi-Oh">Yu-Gi-Oh</option>
+                    <!-- Sports Cards -->
+                    <option value="Basketball">Basketball</option>
+                    <option value="Baseball">Baseball</option>
+                    <option value="Football">Football</option>
+                    <option value="Hockey">Hockey</option>
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
 
-                <div class="mb-3">
-                    <label asp-for="Condition" class="form-label">Condition</label>
-                    <select asp-for="Condition" class="form-select">
-                        <option value="">Select condition</option>
-                        <option value="Mint">Mint</option>
-                        <option value="Near Mint">Near Mint</option>
-                        <option value="Excellent">Excellent</option>
-                        <option value="Good">Good</option>
-                        <option value="Fair">Fair</option>
-                        <option value="Poor">Poor</option>
-                    </select>
-                    <span asp-validation-for="Condition" class="text-danger"></span>
-                </div>
+            <div class="mb-3">
+                <label asp-for="Condition" class="form-label">Condition</label>
+                <select asp-for="Condition" class="form-select">
+                    <option value="">Select condition</option>
+                    <option value="Mint">Mint</option>
+                    <option value="Near Mint">Near Mint</option>
+                    <option value="Excellent">Excellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Fair">Fair</option>
+                    <option value="Poor">Poor</option>
+                </select>
+                <span asp-validation-for="Condition" class="text-danger"></span>
+            </div>
 
-                <div class="mb-3">
-                    <label asp-for="Price" class="form-label">Price</label>
-                    <div class="input-group">
-                        <span class="input-group-text">$</span>
-                        <input asp-for="Price" class="form-control" type="number" step="0.01" min="0.01" />
-                    </div>
-                    <span asp-validation-for="Price" class="text-danger"></span>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input asp-for="Price" class="form-control" type="number" step="0.01" min="0.01" />
                 </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
 
-                <div class="mb-3">
-                    <label asp-for="ImageUrl" class="form-label">Card Image</label>
-                    <input type="file" name="ImageFile" class="form-control" accept="image/*" />
-                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
-                    <small class="form-text text-muted">Upload an image of your card (optional). Supported formats: JPG, PNG, GIF.</small>
-                </div>
+            <div class="mb-3">
+                <label asp-for="ImageUrl" class="form-label">Card Image</label>
+                <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                <small class="form-text text-muted">Upload an image of your card (optional). Supported formats: JPG, PNG, GIF.</small>
+            </div>
 
-                <div class="mb-3">
-                    <button type="submit" class="btn btn-primary">List Card</button>
-                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-                </div>
-            </form>
-        </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-outline-primary">List Card</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
 </div>
 

@@ -1,0 +1,94 @@
+/* 卡片表单样式 */
+.card-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card-form .form-group,
+.card-form .mb-3 {
+    margin-bottom: 1.5rem !important;
+}
+
+.card-form .form-label,
+.card-form .control-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.card-form .form-control,
+.card-form .form-select {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card-form .form-control:focus,
+.card-form .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.card-form .input-group {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.card-form .input-group .form-control {
+    border: none;
+}
+
+.card-form .input-group-text {
+    background-color: #f8f9fa;
+    border: none;
+    border-right: 1px solid #ced4da;
+}
+
+/* 按钮容器样式 */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions .btn {
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    min-width: 120px;
+}
+
+.form-actions .btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.form-actions .btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.form-actions .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+.form-actions .btn-secondary:hover {
+    background-color: #5c636a;
+    border-color: #565e64;
+}
+
+/* 文件上传样式 */
+.card-form .form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.25rem;
+}
+
+/* 验证消息样式 */
+.card-form .text-danger {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    display: block;
+} 

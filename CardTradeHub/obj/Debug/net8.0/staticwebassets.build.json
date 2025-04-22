@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rMZWuhhl6nDJM6P9aqip9HDu02fUy5I+eue0fbF66BE=",
+  "Hash": "VaLoIikcjWa2zY0eCTK9Rw7tz9EQ0eM6Bwn2UG//ar4=",
   "Source": "CardTradeHub",
   "BasePath": "_content/CardTradeHub",
   "Mode": "Default",
@@ -78,6 +78,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\account.css"
+    },
+    {
+      "Identity": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\css\\cards.css",
+      "SourceId": "CardTradeHub",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\",
+      "BasePath": "_content/CardTradeHub",
+      "RelativePath": "css/cards#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e8tmtz2u1h",
+      "Integrity": "gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf+iWaqAAxCos=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\cards.css"
     },
     {
       "Identity": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\css\\site.css",
@@ -2214,6 +2235,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-vLrjmzmT1Pldhx23GLURbHJ66e9Edr+jv6a2tk20z4E="
+        }
+      ]
+    },
+    {
+      "Route": "css/cards.css",
+      "AssetFile": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\css\\cards.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf+iWaqAAxCos=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 22 Apr 2025 07:36:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf+iWaqAAxCos="
+        }
+      ]
+    },
+    {
+      "Route": "css/cards.e8tmtz2u1h.css",
+      "AssetFile": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\css\\cards.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf+iWaqAAxCos=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 22 Apr 2025 07:36:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e8tmtz2u1h"
+        },
+        {
+          "Name": "label",
+          "Value": "css/cards.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf+iWaqAAxCos="
         }
       ]
     },

@@ -24,6 +24,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"wv4wacuca1"},{"Name":"integrity","Value":"sha256-vLrjmzmT1Pldhx23GLURbHJ66e9Edr\u002Bjv6a2tk20z4E="},{"Name":"label","Value":"_content/CardTradeHub/css/account.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1782"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022vLrjmzmT1Pldhx23GLURbHJ66e9Edr\u002Bjv6a2tk20z4E=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 07:07:25 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CardTradeHub/css/cards.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\cards.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf\u002BiWaqAAxCos="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1863"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf\u002BiWaqAAxCos=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 07:36:40 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/CardTradeHub/css/cards.e8tmtz2u1h.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\cards.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"e8tmtz2u1h"},{"Name":"integrity","Value":"sha256-gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf\u002BiWaqAAxCos="},{"Name":"label","Value":"_content/CardTradeHub/css/cards.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1863"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022gnlFR6Ld7LGrsSw3vuz3Ex0iWyvjkotf\u002BiWaqAAxCos=\u0022"},{"Name":"Last-Modified","Value":"Tue, 22 Apr 2025 07:36:40 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/CardTradeHub/css/site.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
