@@ -148,6 +148,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// 添加全局错误处理
+app.UseStatusCodePagesWithReExecute("/Home/Error", "?statusCode={0}");
+
 app.UseHttpsRedirection();
 
 // Configure static files

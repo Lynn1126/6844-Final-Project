@@ -44,9 +44,9 @@ namespace CardTradeHub.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                query = query.Where(c => c.Title.Contains(searchString) || 
-                                       c.Description.Contains(searchString) ||
-                                       c.Category.Contains(searchString));
+                query = query.Where(c => c.Title.ToLower().Contains(searchString.ToLower()) || 
+                                       c.Description.ToLower().Contains(searchString.ToLower()) ||
+                                       c.Category.ToLower().Contains(searchString.ToLower()));
             }
 
             // Apply sorting

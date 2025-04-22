@@ -36,13 +36,35 @@ public class HomeController : Controller
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error(string? message = null)
+    public IActionResult Error(string? message = null, int? statusCode = null)
     {
+        var errorMessage = message;
+        var errorTitle = "Error";
+
+        if (statusCode.HasValue)
+        {
+            switch (statusCode.Value)
+            {
+                case 404:
+                    errorTitle = "Page Not Found";
+                    errorMessage = "The page you are looking for does not exist.";
+                    break;
+                case 403:
+                    errorTitle = "Access Denied";
+                    errorMessage = "You do not have permission to access this resource.";
+                    break;
+                default:
+                    errorTitle = "An Error Occurred";
+                    errorMessage = errorMessage ?? "Sorry, something went wrong while processing your request.";
+                    break;
+            }
+        }
+
         return View(new ErrorViewModel
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-            ErrorTitle = "Error",
-            ErrorMessage = message ?? "An unexpected error occurred. Please try again later."
+            ErrorTitle = errorTitle,
+            ErrorMessage = errorMessage ?? "An unexpected error occurred. Please try again later."
         });
     }
 }

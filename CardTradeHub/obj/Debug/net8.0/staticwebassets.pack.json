@@ -1,387 +1,391 @@
 {
   "Files": [
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/obj/Debug/net8.0/scopedcss/projectbundle/CardTradeHub.bundle.scp.css",
-      "PackagePath": "staticwebassets/CardTradeHub.7lgs5j0jew.bundle.scp.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CardTradeHub.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CardTradeHub.q3rnl9dotx.bundle.scp.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/css/site.css",
-      "PackagePath": "staticwebassets/css/site.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\css\\account.css",
+      "PackagePath": "staticwebassets\\css\\account.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/favicon.ico",
-      "PackagePath": "staticwebassets/favicon.ico"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg",
-      "PackagePath": "staticwebassets/images/cards/64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/adloppaz.kgu.jpg",
-      "PackagePath": "staticwebassets/images/cards/adloppaz.kgu.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\64440c34-57ee-4976-8f18-c7c32d630f55_2014 Prizm World Cup Cristiano Ronaldo PSA 10.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/b6228409-0eb9-4fdc-bc63-705b1b4e99fa_截屏2025-04-16 17.48.35.png",
-      "PackagePath": "staticwebassets/images/cards/b6228409-0eb9-4fdc-bc63-705b1b4e99fa_截屏2025-04-16 17.48.35.png"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\adloppaz.kgu.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\adloppaz.kgu.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/beckham.jpg",
-      "PackagePath": "staticwebassets/images/cards/beckham.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\b6228409-0eb9-4fdc-bc63-705b1b4e99fa_截屏2025-04-16 17.48.35.png",
+      "PackagePath": "staticwebassets\\images\\cards\\b6228409-0eb9-4fdc-bc63-705b1b4e99fa_截屏2025-04-16 17.48.35.png"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/blacklotus.jpg",
-      "PackagePath": "staticwebassets/images/cards/blacklotus.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\beckham.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\beckham.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/bluedragon.jpg",
-      "PackagePath": "staticwebassets/images/cards/bluedragon.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\blacklotus.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\blacklotus.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/curry.jpg",
-      "PackagePath": "staticwebassets/images/cards/curry.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\bluedragon.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\bluedragon.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/dark-magician-girl.jpg",
-      "PackagePath": "staticwebassets/images/cards/dark-magician-girl.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\curry.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\curry.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/durant.jpg",
-      "PackagePath": "staticwebassets/images/cards/durant.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\dark-magician-girl.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\dark-magician-girl.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/elqlmwtj.mjw.jpg",
-      "PackagePath": "staticwebassets/images/cards/elqlmwtj.mjw.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\durant.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\durant.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/gretzky-rookie.jpg",
-      "PackagePath": "staticwebassets/images/cards/gretzky-rookie.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\elqlmwtj.mjw.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\elqlmwtj.mjw.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/jabbar.jpg",
-      "PackagePath": "staticwebassets/images/cards/jabbar.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\gretzky-rookie.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\gretzky-rookie.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/kobe1.jpg",
-      "PackagePath": "staticwebassets/images/cards/kobe1.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\jabbar.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\jabbar.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/kobe2.jpg",
-      "PackagePath": "staticwebassets/images/cards/kobe2.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\kobe1.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\kobe1.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/kobe3.jpg",
-      "PackagePath": "staticwebassets/images/cards/kobe3.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\kobe2.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\kobe2.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/lillie.jpg",
-      "PackagePath": "staticwebassets/images/cards/lillie.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\kobe3.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\kobe3.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/messi.jpg",
-      "PackagePath": "staticwebassets/images/cards/messi.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\lillie.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\lillie.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/mewtwo-gx.jpg",
-      "PackagePath": "staticwebassets/images/cards/mewtwo-gx.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\messi.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\messi.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/mox-sapphire.jpg",
-      "PackagePath": "staticwebassets/images/cards/mox-sapphire.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\mewtwo-gx.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\mewtwo-gx.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/pikachu.jpg",
-      "PackagePath": "staticwebassets/images/cards/pikachu.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\mox-sapphire.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\mox-sapphire.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/shohei.jpg",
-      "PackagePath": "staticwebassets/images/cards/shohei.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\pikachu.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\pikachu.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/soto.jpg",
-      "PackagePath": "staticwebassets/images/cards/soto.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\shohei.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\shohei.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/soto2.jpg",
-      "PackagePath": "staticwebassets/images/cards/soto2.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\soto.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\soto.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/sz3gavih.j0z.jpg",
-      "PackagePath": "staticwebassets/images/cards/sz3gavih.j0z.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\soto2.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\soto2.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/cards/yao.jpg",
-      "PackagePath": "staticwebassets/images/cards/yao.jpg"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\sz3gavih.j0z.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\sz3gavih.j0z.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/images/logo.png",
-      "PackagePath": "staticwebassets/images/logo.png"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\cards\\yao.jpg",
+      "PackagePath": "staticwebassets\\images\\cards\\yao.jpg"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/js/site.js",
-      "PackagePath": "staticwebassets/js/site.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\images\\logo.png",
+      "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/LICENSE",
-      "PackagePath": "staticwebassets/lib/bootstrap"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
-      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation/LICENSE.md",
-      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\dist\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation/dist/additional-methods.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/LICENSE.txt",
-      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.js",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.min.js",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.min.map",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.slim.js",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.slim.min.js",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.js"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\dist\\jquery.slim.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/lib/jquery/dist/jquery.slim.min.map",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.slim.min.map"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.js"
     },
     {
-      "Id": "/Users/lynn/VS Code Project/6844-Final-Project/CardTradeHub/wwwroot/uploads/.gitkeep",
-      "PackagePath": "staticwebassets/uploads/.gitkeep"
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\lib\\jquery\\dist\\jquery.slim.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.slim.min.map"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.CardTradeHub.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "Id": "C:\\Users\\three\\6844-Final-Project\\CardTradeHub\\wwwroot\\uploads\\.gitkeep",
+      "PackagePath": "staticwebassets\\uploads\\.gitkeep"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CardTradeHub.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.CardTradeHub.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CardTradeHub.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.CardTradeHub.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CardTradeHub.props",
       "PackagePath": "build\\CardTradeHub.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.CardTradeHub.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CardTradeHub.props",
       "PackagePath": "buildMultiTargeting\\CardTradeHub.props"
     },
     {
-      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.CardTradeHub.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CardTradeHub.props",
       "PackagePath": "buildTransitive\\CardTradeHub.props"
     }
   ],
