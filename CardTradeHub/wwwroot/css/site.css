@@ -1,17 +1,20 @@
-html, body {
-  height: 100%;
-  margin: 0;
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  margin: 0;
+  padding-bottom: 200px;
 }
 
 main {
   flex: 1 0 auto;
   padding: 2rem 0;
+  margin-bottom: 2rem;
 }
 
 .container {
@@ -135,17 +138,33 @@ main {
 
 /* 页脚样式 */
 .footer {
+  background-color: #343a40;
+  width: 100%;
+  margin-top: auto;
   flex-shrink: 0;
-  background-color: #212529;
   color: white;
-  padding: 1rem 0;
-  margin-top: 2rem;
+  padding: 1.5rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: auto;
+  z-index: 1000;
 }
 
 @media (max-width: 767.98px) {
+  body {
+    padding-bottom: 250px;
+  }
+  
+  main {
+    margin-bottom: 160px;
+  }
+  
   .footer {
     text-align: center;
+    padding: 2rem 0;
   }
+  
   .footer .text-md-end {
     text-align: center !important;
     margin-top: 1rem;

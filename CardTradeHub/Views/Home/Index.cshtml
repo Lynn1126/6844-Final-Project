@@ -135,7 +135,7 @@
         </div>
     </div>
 
-    @if (!User.Identity.IsAuthenticated)
+    @if (User?.Identity?.IsAuthenticated != true)
     {
         <!-- Call to Action -->
         <div class="row mt-5 mb-5">

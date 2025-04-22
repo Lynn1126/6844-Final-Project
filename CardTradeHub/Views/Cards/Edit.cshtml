@@ -4,9 +4,17 @@
     ViewData["Title"] = "Edit Card";
 }
 
+@section Header {
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">Edit Card</h1>
+            <p class="lead text-muted">Update your card's information</p>
+        </div>
+    </div>
+}
+
 <div class="container mt-4">
     <div class="card-form">
-        <h2>Edit Card</h2>
         <hr />
         <form asp-action="Edit" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

@@ -4,9 +4,17 @@
     ViewData["Title"] = "List New Card";
 }
 
+@section Header {
+    <div class="row mb-4">
+        <div class="col">
+            <h1 class="display-4">List New Card</h1>
+            <p class="lead text-muted">Share your card with the community</p>
+        </div>
+    </div>
+}
+
 <div class="container">
     <div class="card-form">
-        <h1 class="mb-4">List New Card</h1>
 
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
